@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://us6xibl3xfl5"]
+
+[ext_resource type="Script" uid="uid://dmsep141cbhmh" path="res://scenes/game.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://bvl5jg0nxiulh" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://ebkuajd5sso1" path="res://scenes/enemy.tscn" id="2_yqjtg"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_of2ov"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iwiun"]
+radius = 40.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_p57ef"]
+vertices = PackedVector2Array(13.90625, 630.0078, 9.4296875, 100.71875, 68.24219, 243.85156, 65.34375, 74.421875, 61.84375, 161.82813, 1.0625, 13.8984375, 1070.9688, 585.7422, 847.9531, 170.07813, 1003.5078, 269.46875, 1144.8438, 631.97656, 310.78125, -34.992188, 243.21094, 46, 312.1172, 46, 787.3281, -34, 580.28906, 135.57813, 657.64844, 132.42188, 645.6406, 499.7422, 594.3125, 606.3281, 825.75, 98.85156, 719, 106.27344, 719, 41.71875, 1135.1328, 10.8125, 321.5625, 546.71094, 306.52344, 251.0625, 448.9375, 251.92969, 446.9375, 601.6875, 516.22656, 47.257813, 512.25, 213.20313, 326.1797, 198.67969, 1055.4766, 198.82813, 738.5078, 493.28906, 721.53125, 176.54688, 774.78125, 174.27344, 978.39844, 607.60156, 178.53125, 246.28125, 153.84375, 135.21094, 238.04688, 112.96094, 240.03906, 541.3672)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(3, 5, 10, 11), PackedInt32Array(12, 11, 10, 13), PackedInt32Array(14, 15, 16, 17), PackedInt32Array(18, 19, 20, 13, 21), PackedInt32Array(22, 23, 24, 25), PackedInt32Array(26, 27, 28, 12), PackedInt32Array(26, 12, 13, 20), PackedInt32Array(29, 18, 21), PackedInt32Array(29, 21, 9), PackedInt32Array(8, 29, 9), PackedInt32Array(30, 31, 32, 33), PackedInt32Array(34, 35, 36), PackedInt32Array(34, 36, 37, 0), PackedInt32Array(0, 2, 34), PackedInt32Array(17, 16, 30, 33), PackedInt32Array(33, 6, 9), PackedInt32Array(33, 9, 0, 17), PackedInt32Array(25, 17, 0), PackedInt32Array(25, 0, 37, 22)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(4, 640, -1, 49, 75, 234, 166, 236, 142, 128, 248, 100, 250, 532, 311, 536, 296, 241, 459, 242, 457, 592, 584, 596, 570, 126, 668, 122, 656, 489, 728, 484, 711, 167, 781, 164, 984, 596, 1056, 579, 821, 141, 1001, 256, 1040, 203, 824, 109, 709, 117, 709, 52, 526, 57, 522, 224, 317, 208, 303, 56, 244, 56, 75, 83, 70, 208, -13, 6, 310, -45, 788, -44, 1145, 2, 1155, 642)])
+
+[node name="Game" type="Node" unique_id=400425213]
+script = ExtResource("1_lnu2h")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=852098179]
+position = Vector2(577.24994, 304.50003)
+scale = Vector2(1155.4999, 689)
+texture = SubResource("CanvasTexture_of2ov")
+
+[node name="Area2D" type="StaticBody2D" parent="." unique_id=236701533]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=911418364]
+position = Vector2(-10.2797165, -9.542301)
+scale = Vector2(1.1468531, 1.1800433)
+polygon = PackedVector2Array(71.743904, 77.57536, 222.59148, 60.62684, 273.16464, 66.55882, 278.39636, 183.50368, 465.86588, 196.21507, 466.73782, 59.779415, 627.1769, 55.542282, 626.30493, 107.23529, 743.1464, 106.38786, 917.5367, 187.74081, 890.50616, 225.02757, 722.2196, 126.726105, 928.00006, 502.98346, 869.57935, 509.76288, 689.9574, 146.2169, 623.6891, 146.2169, 642.872, 422.47794, 578.34766, 425.02023, 590.55493, 109.77757, 500.74393, 112.319855, 519.9269, 511.45773, 405.70123, 512.3052, 407.44516, 214.01103, 270.5488, 213.1636, 283.62805, 464.84927, 222.59148, 457.2224, 226.95123, 94.523895, 131.90854, 108.930145, 158.93903, 207.23161, 69.12805, 201.29964)
+
+[node name="Polygon2D" type="Polygon2D" parent="Area2D" unique_id=557700164]
+position = Vector2(-10.2797165, -9.542301)
+scale = Vector2(1.1468531, 1.1800433)
+color = Color(1, 0.15294118, 1, 1)
+polygon = PackedVector2Array(228, 59, 70, 76, 70, 204, 159, 209, 134, 112, 227, 92, 228, 460, 287, 464, 272, 214, 408, 217, 406, 512, 521, 513, 504, 113, 590, 112, 581, 427, 642, 425, 627, 145, 689, 145, 868, 514, 928, 501, 724, 126, 889, 228, 921, 187, 735, 102, 630, 107, 630, 53, 464, 55, 464, 195, 278, 188, 277, 66)
+
+[node name="Player" parent="." unique_id=160797757 groups=["Player"] instance=ExtResource("1_uwrxv")]
+unique_name_in_owner = true
+position = Vector2(146, 255)
+
+[node name="Enemy" parent="." unique_id=513737343 instance=ExtResource("2_yqjtg")]
+position = Vector2(824, 543)
+rotation = -0.00448278
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Enemy" unique_id=6611386]
+shape = SubResource("CircleShape2D_iwiun")
+target_position = Vector2(2.9644165, 231.01569)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=2100458619]
+navigation_polygon = SubResource("NavigationPolygon_p57ef")
+
+[node name="Label" type="Label" parent="." unique_id=304502781]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 100
