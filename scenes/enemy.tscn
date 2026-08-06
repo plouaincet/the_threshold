@@ -24,12 +24,14 @@ shape = SubResource("CapsuleShape2D_md0e3")
 unique_name_in_owner = true
 path_desired_distance = 10.0
 target_desired_distance = 16.0
+path_postprocessing = 1
 simplify_path = true
 path_search_max_polygons = 10000
 avoidance_enabled = true
 max_neighbors = 30
 max_speed = 500.0
 avoidance_layers = 2
+debug_enabled = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1664559223]
 wait_time = 0.1
