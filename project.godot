@@ -23,6 +23,7 @@ window/stretch/aspect="expand"
 [global_group]
 
 navigation_polygon_source_geometry_group=""
+Player=""
 
 [input]
 

@@ -4,24 +4,51 @@ extends CharacterBody2D
 @onready var timer: Timer = $Timer
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var vision: ShapeCast2D = $ShapeCast2D
+@onready var game: Node = $".."
+@onready var area_w_o_light: Area2D = $"Area w_o light"
+@onready var area_w_light: Area2D = $"Area w light"
+signal Enemy_Chasing
 
-const SPEED := 50
+var spotted_by_enemy: bool = false
+var spotted_by_enemy_forced: bool = false
+var patrol_points: Array[Vector2] = [
+	 Vector2(-584, -721),
+	 Vector2(-400, -677),
+	 Vector2(452, -614),
+	 Vector2(621, -534),
+	 Vector2(181, -330), 
+	 Vector2(-525, -325),
+	 Vector2(-584, -721),	
+	]
+const SPEED := 40
+var current_patrol_index: int = 0
 
 var target: CharacterBody2D = null
 
-var max_view_distance := 500.0
+var max_view_distance := 500
 var view_angle := deg_to_rad(30.0)
 
 func _ready() -> void:
-	nav.target_position = player.global_position
 
 	vision.enabled = true
 	vision.target_position = Vector2.UP * max_view_distance
+	if patrol_points.size() > 0: 
+		set_next_patrol_point()
 
 	timer.start()
 	
 func _physics_process(_delta):
-
+	check_player_inside()
+	if spotted_by_enemy or spotted_by_enemy_forced: 
+		emit_signal("Enemy_Chasing")
+		nav.target_position = player.global_position 
+		if abs(position-player.position)<=Vector2(20,20):
+			catch_player() 
+			return
+	else:
+		if nav.is_target_reached():
+			set_next_patrol_point()
+	
 	if !nav.is_target_reached():
 		var dir = (nav.get_next_path_position() - global_position).normalized()
 		velocity = dir * SPEED
@@ -34,10 +61,20 @@ func _physics_process(_delta):
 
 	check_for_player()
 
-func _on_timer_timeout():
+func set_next_patrol_point() -> void:
+	if patrol_points.is_empty():
+		velocity = Vector2.ZERO
+		return
+	nav.target_position = patrol_points[current_patrol_index]
+	
+	current_patrol_index += 1
+	
+	if current_patrol_index >= patrol_points.size():
+		current_patrol_index = 0
 
-	nav.target_position = player.global_position
-	timer.start()
+func catch_player() -> void:
+	velocity = Vector2.ZERO
+	print("Player caught!")
 
 func update_vision():
 
@@ -52,14 +89,15 @@ func update_vision():
 func check_for_player():
 	
 	target = null
-	#$"../Label".text = "NOT SEEN"
+	spotted_by_enemy=false
 	if velocity.length() < 1:
 		return
 
 	var facing = velocity.normalized()
+	var triangle_angle := Vector2.DOWN.angle_to(facing)
+	$"Area w light/CollisionPolygon2D".rotation = triangle_angle
 
 	for i in vision.get_collision_count():
-
 		var collider = vision.get_collider(i)
 
 		if collider != player:
@@ -74,6 +112,16 @@ func check_for_player():
 
 		if abs(angle) <= view_angle / 2.0:
 			target = player
-			print("PLAYER SEEN")
 			#$"../Label".text="PLAYER SEEN"
+			#print("PLAYER SEEN")
+			spotted_by_enemy=true
 			return
+
+func check_player_inside() -> void:
+	if area_w_o_light.check_for_player() or area_w_light.check_for_player():
+		spotted_by_enemy_forced=true
+	else:
+		spotted_by_enemy_forced=false
+
+func is_chasing() -> bool:
+	return spotted_by_enemy or spotted_by_enemy_forced

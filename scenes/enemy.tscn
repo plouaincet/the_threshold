@@ -2,13 +2,18 @@
 
 [ext_resource type="Texture2D" uid="uid://c1s1ap4akumj3" path="res://icon.svg" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://bec63vkjupu5d" path="res://scenes/enemy.gd" id="1_md0e3"]
+[ext_resource type="Script" uid="uid://djslwasj401a3" path="res://scenes/area_w_o_light.gd" id="3_4ra3w"]
+[ext_resource type="Script" uid="uid://qsjiln88154c" path="res://scenes/area_w_light.gd" id="4_5uy6h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
 radius = 2.9998398
-height = 20.0
+height = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3owqy"]
+radius = 115.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=513737343]
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("1_md0e3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1472649679]
@@ -25,16 +30,25 @@ unique_name_in_owner = true
 path_desired_distance = 10.0
 target_desired_distance = 16.0
 path_postprocessing = 1
-simplify_path = true
 path_search_max_polygons = 10000
 avoidance_enabled = true
 max_neighbors = 30
 max_speed = 500.0
-avoidance_layers = 2
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1664559223]
 wait_time = 0.1
 one_shot = true
+
+[node name="Area w_o light" type="Area2D" parent="." unique_id=1172928723]
+script = ExtResource("3_4ra3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area w_o light" unique_id=2078240769]
+shape = SubResource("CircleShape2D_3owqy")
+
+[node name="Area w light" type="Area2D" parent="." unique_id=261377323]
+script = ExtResource("4_5uy6h")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area w light" unique_id=1053790904]
+polygon = PackedVector2Array(0, -1, -140, 250, 140, 250)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

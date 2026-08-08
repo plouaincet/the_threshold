@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 signal Light_Toggled
-
+#signal Door_Opened(Door_Opened: String) TODO: Later!!
 var SPEED = 100
 @onready var playersprite: AnimatedSprite2D = $Sprite2D
 
