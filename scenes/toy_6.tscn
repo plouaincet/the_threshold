@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://brg71fvmefk1e"]
+
+[ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="1_071qr"]
+
+[node name="Toy6" type="StaticBody2D" unique_id=1279865778]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=814516320]
+position = Vector2(0, 4)
+texture = ExtResource("1_071qr")
+region_enabled = true
+region_rect = Rect2(371, 28, 24, 37)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=262237335]
+position = Vector2(0, -2)
+polygon = PackedVector2Array(-12, 16, 12, 16, 11, 12, 6, 8, 7, 2, -8, 2, -6, 8, -11, 12)

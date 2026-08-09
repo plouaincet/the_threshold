@@ -8,11 +8,23 @@
 [ext_resource type="PackedScene" uid="uid://5ywne437pulm" path="res://scenes/hud.tscn" id="5_iywne"]
 [ext_resource type="Texture2D" uid="uid://cqfef4daroj3l" path="res://sprites/mapfull.png" id="7_u5sy4"]
 [ext_resource type="AudioStream" uid="uid://clk5752h0onii" path="res://assets/lightswitch_on.mp3" id="8_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://chrehl7mdvq7a" path="res://scenes/toy_2.tscn" id="8_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://cwt4uwys4eo2h" path="res://scenes/toy_3.tscn" id="9_264po"]
 [ext_resource type="AudioStream" uid="uid://cbwtrp6kmsxe8" path="res://assets/lightswitch_off.mp3" id="9_vtaks"]
+[ext_resource type="PackedScene" uid="uid://ce1odtdbuwngj" path="res://scenes/toy_4.tscn" id="10_1kice"]
 [ext_resource type="PackedScene" uid="uid://pru35yism46k" path="res://scenes/Clock.tscn" id="10_vtaks"]
+[ext_resource type="PackedScene" uid="uid://di2c7evf5u87e" path="res://scenes/toy_5.tscn" id="11_5newe"]
 [ext_resource type="AudioStream" uid="uid://b7gj1nq6rkmxf" path="res://assets/chase_music3.mp3" id="11_kvuet"]
+[ext_resource type="PackedScene" uid="uid://brg71fvmefk1e" path="res://scenes/toy_6.tscn" id="12_37s47"]
 [ext_resource type="AudioStream" uid="uid://b3536kp7080yr" path="res://assets/screen_notifier.mp3" id="12_dinhu"]
+[ext_resource type="PackedScene" uid="uid://cc30yr65csee6" path="res://scenes/toy_7.tscn" id="13_bt5mj"]
 [ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="13_kvuet"]
+[ext_resource type="PackedScene" uid="uid://divwc4iubmb1n" path="res://scenes/toy_8.tscn" id="14_e1j6l"]
+[ext_resource type="PackedScene" uid="uid://dykpo53dno7y0" path="res://scenes/piano.tscn" id="14_trtic"]
+[ext_resource type="PackedScene" uid="uid://dx2ur261pmen8" path="res://scenes/clank.tscn" id="15_ir15t"]
+[ext_resource type="PackedScene" uid="uid://cd43s7fbl0hrb" path="res://scenes/music_box.tscn" id="16_ca42v"]
+[ext_resource type="PackedScene" uid="uid://dpdev3g83or22" path="res://scenes/painting.tscn" id="16_pl11u"]
+[ext_resource type="PackedScene" uid="uid://ca2jwhvv3x4ot" path="res://scenes/toy_1.tscn" id="17_rysoc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbhrr"]
 radius = 2.0
@@ -22,6 +34,7 @@ y_sort_enabled = true
 script = ExtResource("1_lnu2h")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=32945564]
+visible = false
 energy = 0.92
 blend_mode = 1
 range_z_max = 0
@@ -33,15 +46,54 @@ position = Vector2(-866, -966)
 visible = false
 position = Vector2(-723, -870)
 
-[node name="Clock" parent="." unique_id=1985709023 instance=ExtResource("10_vtaks")]
+[node name="Objects" type="Node2D" parent="." unique_id=1576869208]
+y_sort_enabled = true
+
+[node name="Clock" parent="Objects" unique_id=1985709023 instance=ExtResource("10_vtaks")]
 y_sort_enabled = false
 position = Vector2(413, -703)
+
+[node name="Piano" parent="Objects" unique_id=278822223 instance=ExtResource("14_trtic")]
+position = Vector2(-468, -103)
+
+[node name="music_box" parent="Objects" unique_id=1317212613 instance=ExtResource("16_ca42v")]
+position = Vector2(400, -322)
+
+[node name="Toy1" parent="Objects" unique_id=1661247524 instance=ExtResource("17_rysoc")]
+position = Vector2(-158, 6)
+
+[node name="Toy2" parent="Objects" unique_id=725107376 instance=ExtResource("8_ssvqc")]
+position = Vector2(90, -629)
+
+[node name="Toy3" parent="Objects" unique_id=2140941126 instance=ExtResource("9_264po")]
+position = Vector2(353, -215)
+
+[node name="Toy4" parent="Objects" unique_id=1587486842 instance=ExtResource("10_1kice")]
+position = Vector2(609, -292)
+
+[node name="Toy5" parent="Objects" unique_id=1512639463 instance=ExtResource("11_5newe")]
+position = Vector2(547, -381)
+
+[node name="Toy6" parent="Objects" unique_id=1279865778 instance=ExtResource("12_37s47")]
+position = Vector2(-127, -573)
+
+[node name="Toy7" parent="Objects" unique_id=2134750043 instance=ExtResource("13_bt5mj")]
+position = Vector2(-643, -295)
+
+[node name="Toy8" parent="Objects" unique_id=37846185 instance=ExtResource("14_e1j6l")]
+position = Vector2(-578, -686)
+
+[node name="Clank" parent="Objects" unique_id=1497044883 instance=ExtResource("15_ir15t")]
+position = Vector2(-502, -721)
+
+[node name="Painting" parent="Objects" unique_id=2024703500 instance=ExtResource("16_pl11u")]
+position = Vector2(425, -157)
 
 [node name="player" parent="." unique_id=1698648380 instance=ExtResource("2_yqjtg")]
 unique_name_in_owner = true
 z_index = 0
 y_sort_enabled = true
-position = Vector2(-1, 2)
+position = Vector2(463, -58)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=678641909]
 offset = Vector2(0, -20)
@@ -70,27 +122,25 @@ target_position = Vector2(2.9644165, 231.01569)
 position = Vector2(2031, -559)
 texture = ExtResource("7_u5sy4")
 
-[node name="LightOn" type="AudioStreamPlayer2D" parent="." unique_id=766249937]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1689083668]
+position = Vector2(1489, 1612)
+scale = Vector2(10, 10)
+texture = ExtResource("13_kvuet")
+
+[node name="Sounds" type="Node" parent="." unique_id=263239707]
+
+[node name="LightOn" type="AudioStreamPlayer2D" parent="Sounds" unique_id=766249937]
 stream = ExtResource("8_0tnpc")
 
-[node name="LightOff" type="AudioStreamPlayer2D" parent="." unique_id=875399332]
+[node name="LightOff" type="AudioStreamPlayer2D" parent="Sounds" unique_id=875399332]
 stream = ExtResource("9_vtaks")
 
-[node name="Chasing_Music" type="AudioStreamPlayer2D" parent="." unique_id=743895711]
+[node name="Chasing_Music" type="AudioStreamPlayer2D" parent="Sounds" unique_id=743895711]
 stream = ExtResource("11_kvuet")
 max_distance = 20000.0
 
-[node name="Timer" type="Timer" parent="." unique_id=1571140894]
-wait_time = 3.0
-one_shot = true
-
-[node name="Screen_Entered_By_Enemy" type="AudioStreamPlayer2D" parent="." unique_id=1251449746]
+[node name="Screen_Entered_By_Enemy" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1251449746]
 stream = ExtResource("12_dinhu")
 volume_db = -5.0
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1689083668]
-position = Vector2(1489, 1612)
-scale = Vector2(7.6796875, 11.4375)
-texture = ExtResource("13_kvuet")
 
 [connection signal="screen_entered" from="Enemy/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
