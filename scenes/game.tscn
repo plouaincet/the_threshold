@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="13_kvuet"]
 [ext_resource type="PackedScene" uid="uid://dykpo53dno7y0" path="res://scenes/piano.tscn" id="14_trtic"]
 [ext_resource type="PackedScene" uid="uid://dx2ur261pmen8" path="res://scenes/clank.tscn" id="15_ir15t"]
+[ext_resource type="PackedScene" uid="uid://cd43s7fbl0hrb" path="res://scenes/music_box.tscn" id="16_ca42v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbhrr"]
 radius = 2.0
@@ -47,7 +48,7 @@ position = Vector2(-468, -103)
 unique_name_in_owner = true
 z_index = 0
 y_sort_enabled = true
-position = Vector2(-1, 2)
+position = Vector2(386, -270)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=678641909]
 offset = Vector2(0, -20)
@@ -97,5 +98,8 @@ texture = ExtResource("13_kvuet")
 
 [node name="Clank" parent="." unique_id=1497044883 instance=ExtResource("15_ir15t")]
 position = Vector2(-502, -721)
+
+[node name="music_box" parent="." unique_id=1317212613 instance=ExtResource("16_ca42v")]
+position = Vector2(400, -322)
 
 [connection signal="screen_entered" from="Enemy/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
