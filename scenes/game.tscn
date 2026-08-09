@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://b3536kp7080yr" path="res://assets/screen_notifier.mp3" id="12_dinhu"]
 [ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="13_kvuet"]
 [ext_resource type="PackedScene" uid="uid://dykpo53dno7y0" path="res://scenes/piano.tscn" id="14_trtic"]
+[ext_resource type="PackedScene" uid="uid://dx2ur261pmen8" path="res://scenes/clank.tscn" id="15_ir15t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbhrr"]
 radius = 2.0
@@ -23,6 +24,7 @@ y_sort_enabled = true
 script = ExtResource("1_lnu2h")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=32945564]
+visible = false
 energy = 0.92
 blend_mode = 1
 range_z_max = 0
@@ -92,5 +94,8 @@ volume_db = -5.0
 position = Vector2(1489, 1612)
 scale = Vector2(7.6796875, 11.4375)
 texture = ExtResource("13_kvuet")
+
+[node name="Clank" parent="." unique_id=1497044883 instance=ExtResource("15_ir15t")]
+position = Vector2(-502, -721)
 
 [connection signal="screen_entered" from="Enemy/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
