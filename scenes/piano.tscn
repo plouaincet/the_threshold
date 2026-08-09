@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dykpo53dno7y0"]
+
+[ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="1_vxdml"]
+
+[node name="Piano" type="StaticBody2D" unique_id=278822223]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=150578921]
+position = Vector2(0, 42)
+texture = ExtResource("1_vxdml")
+region_enabled = true
+region_rect = Rect2(23, 8, 70, 84)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=141938806]
+position = Vector2(0, 42)
+polygon = PackedVector2Array(-8, 35, 8, 35, 8, 29, 13, 24, 21, 17, 30, 24, 33, 25, 35, 13, 34, -22, 21, -25, 4, -28, -9, -39, -20, -42, -31, -39, -35, -33, -35, 13, -32, 25, -29, 25, -29, 17, -21, 17, -13, 25, -8, 29)

@@ -3,7 +3,6 @@ extends Node
 @onready var enemy: CharacterBody2D = %Enemy
 @onready var point_light_2d: PointLight2D = $player/PointLight2D
 @onready var label: Label = $HUD/Control/Label
-@onready var timer: Timer = $Timer
 @onready var chasing_music: AudioStreamPlayer2D = $Chasing_Music
 @onready var screenent_sound: AudioStreamPlayer2D = $Screen_Entered_By_Enemy
 
@@ -24,7 +23,6 @@ var fade_tween: Tween
 func _ready() -> void:
 	player.Light_Toggled.connect(light_toggled)
 	enemy.Enemy_Chasing.connect(_chasing_handle)
-	timer.one_shot = true
 
 func _process(_delta: float) -> void:
 	if !enemy.is_chasing() and is_chasing and (abs(enemy.global_position.y - player.global_position.y) >= 200 or abs(enemy.global_position.x - player.global_position.x) >= 200):
