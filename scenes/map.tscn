@@ -36,6 +36,7 @@ position = Vector2(795, 619.6266)
 texture = ExtResource("1_4xfga")
 
 [node name="Collisions (do not open)" type="StaticBody2D" parent="." unique_id=781031164]
+visible = false
 position = Vector2(795, 620)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions (do not open)" unique_id=1432040354]

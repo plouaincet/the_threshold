@@ -1,8 +1,16 @@
 [gd_scene format=3 uid="uid://cwt4uwys4eo2h"]
 
 [ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="1_a50cx"]
+[ext_resource type="Script" uid="uid://bhkn65im3j0qj" path="res://scenes/toy_3.gd" id="1_ia14f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3owqy"]
+radius = 25.019993
 
 [node name="Toy3" type="StaticBody2D" unique_id=2140941126]
+script = ExtResource("1_ia14f")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1217745646]
+points = PackedVector2Array(-3, -13, 3, -12, 8, -9, 10, -10, 12, -3, 10, 1, 11, 5, 14, 8, 10, 11, 5, 9, 1, 11, -5, 14, -9, 10, -13, 7, -14, 2, -7, 1, -8, -5, -6, -12, -4, -15, -1, -12)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=291623512]
 texture = ExtResource("1_a50cx")
@@ -12,3 +20,11 @@ region_rect = Rect2(224, 35, 28, 27)
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1372609137]
 position = Vector2(0, -3.5)
 polygon = PackedVector2Array(-6, -4.5, 11, -4.5, 10, 4.5, 12, 8.5, -11, 8.5, -11, 4.5, -6, 4.5, -8, -0.5)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1484509775]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2046447001]
+shape = SubResource("CircleShape2D_3owqy")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
