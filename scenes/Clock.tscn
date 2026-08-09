@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://pru35yism46k"]
 
+[ext_resource type="Script" uid="uid://bj3fmro3hm2qo" path="res://scenes/clock.gd" id="1_ohn53"]
 [ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="1_y451n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
 size = Vector2(24, 60)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3owqy"]
+radius = 54.00926
+
 [node name="Clock" type="StaticBody2D" unique_id=1365671390]
 y_sort_enabled = true
+script = ExtResource("1_ohn53")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1501951712]
+points = PackedVector2Array(-12, -34, 3, -35, 10, -35, 12, -31, 9, -16, 12, 36, -11, 35, -13, 21, -12, 5, -11, -13, -13, -29, -8, -36)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=183701436]
 texture = ExtResource("1_y451n")
@@ -16,3 +24,11 @@ region_rect = Rect2(538, 11, 23, 70)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=815344523]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_dinhu")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1709148324]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=331919175]
+shape = SubResource("CircleShape2D_3owqy")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

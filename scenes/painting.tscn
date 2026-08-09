@@ -1,10 +1,23 @@
 [gd_scene format=3 uid="uid://dpdev3g83or22"]
 
+[ext_resource type="Script" uid="uid://bdocge6sbd64c" path="res://scenes/painting.gd" id="1_ddhaa"]
 [ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="1_maw3x"]
 
 [node name="Painting" type="Node2D" unique_id=2024703500]
+script = ExtResource("1_ddhaa")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=347828295]
+points = PackedVector2Array(-49, -15, -49, 6, -49, 17, -32, 15, -18, 15, -2, 16, 19, 15, 42, 16, 50, 14, 50, 2, 49, -15, 44, -18, 15, -16, -14, -16, -24, -18, -42, -14, -49, -14, -50, -10, -49, -5)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=557935211]
 texture = ExtResource("1_maw3x")
 region_enabled = true
 region_rect = Rect2(17, 109, 99, 32)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1438800227]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1251797891]
+polygon = PackedVector2Array(-54, -19, 53, -20, 97, -1, 84, 30, 49, 43, -44, 43, -81, 27, -92, -5)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
