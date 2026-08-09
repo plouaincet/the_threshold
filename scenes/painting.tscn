@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dpdev3g83or22"]
+
+[ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="1_maw3x"]
+
+[node name="Painting" type="Node2D" unique_id=2024703500]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=557935211]
+texture = ExtResource("1_maw3x")
+region_enabled = true
+region_rect = Rect2(17, 109, 99, 32)

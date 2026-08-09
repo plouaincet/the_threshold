@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://dykpo53dno7y0" path="res://scenes/piano.tscn" id="14_trtic"]
 [ext_resource type="PackedScene" uid="uid://dx2ur261pmen8" path="res://scenes/clank.tscn" id="15_ir15t"]
 [ext_resource type="PackedScene" uid="uid://cd43s7fbl0hrb" path="res://scenes/music_box.tscn" id="16_ca42v"]
+[ext_resource type="PackedScene" uid="uid://dpdev3g83or22" path="res://scenes/painting.tscn" id="16_pl11u"]
 [ext_resource type="PackedScene" uid="uid://ca2jwhvv3x4ot" path="res://scenes/toy_1.tscn" id="17_rysoc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbhrr"]
@@ -82,11 +83,17 @@ position = Vector2(-643, -295)
 [node name="Toy8" parent="Objects" unique_id=37846185 instance=ExtResource("14_e1j6l")]
 position = Vector2(-578, -686)
 
+[node name="Clank" parent="Objects" unique_id=1497044883 instance=ExtResource("15_ir15t")]
+position = Vector2(-502, -721)
+
+[node name="Painting" parent="Objects" unique_id=2024703500 instance=ExtResource("16_pl11u")]
+position = Vector2(425, -157)
+
 [node name="player" parent="." unique_id=1698648380 instance=ExtResource("2_yqjtg")]
 unique_name_in_owner = true
 z_index = 0
 y_sort_enabled = true
-position = Vector2(-176, -579)
+position = Vector2(463, -58)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=678641909]
 offset = Vector2(0, -20)
@@ -119,9 +126,6 @@ texture = ExtResource("7_u5sy4")
 position = Vector2(1489, 1612)
 scale = Vector2(10, 10)
 texture = ExtResource("13_kvuet")
-
-[node name="Clank" parent="." unique_id=1497044883 instance=ExtResource("15_ir15t")]
-position = Vector2(-502, -721)
 
 [node name="Sounds" type="Node" parent="." unique_id=263239707]
 
