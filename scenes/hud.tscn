@@ -6,6 +6,7 @@
 
 [node name="Control" type="Control" parent="." unique_id=2082992269]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -20,30 +21,3 @@ offset_bottom = 51.0
 theme_override_fonts/font = ExtResource("1_ahhtf")
 theme_override_font_sizes/font_size = 32
 text = "Toggle light OFF: Z"
-
-[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1918233617]
-visible = false
-modulate = Color(0, 0, 0, 0.42745098)
-layout_mode = 0
-offset_left = 281.0
-offset_top = 263.0
-offset_right = 856.0
-offset_bottom = 390.0
-
-[node name="Enemy_Chasing" type="Label" parent="Control" unique_id=1094139131]
-visible = false
-modulate = Color(0.98039216, 0.23137255, 0.77254903, 1)
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-theme_override_colors/font_color = Color(0.8784314, 0.023529412, 0.1882353, 1)
-theme_override_fonts/font = ExtResource("1_ahhtf")
-theme_override_font_sizes/font_size = 96
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ColorRect3" type="ColorRect" parent="Control" unique_id=768113586]
-modulate = Color(1, 1, 1, 0.6392157)
-layout_mode = 1
-offset_right = 61.0
-offset_bottom = 15.0

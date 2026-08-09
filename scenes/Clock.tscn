@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://pru35yism46k"]
+
+[ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="1_y451n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
+size = Vector2(24, 60)
+
+[node name="Clock" type="StaticBody2D" unique_id=1365671390]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=183701436]
+texture = ExtResource("1_y451n")
+region_enabled = true
+region_rect = Rect2(538, 11, 23, 70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=815344523]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_dinhu")

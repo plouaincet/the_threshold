@@ -20,7 +20,7 @@ var patrol_points: Array[Vector2] = [
 	 Vector2(-525, -325),
 	 Vector2(-584, -721),	
 	]
-const SPEED := 40
+var SPEED :int = 50
 var current_patrol_index: int = 0
 
 var target: CharacterBody2D = null
@@ -29,7 +29,7 @@ var max_view_distance := 500
 var view_angle := deg_to_rad(30.0)
 
 func _ready() -> void:
-
+	vision.shape.radius=2.0
 	vision.enabled = true
 	vision.target_position = Vector2.UP * max_view_distance
 	if patrol_points.size() > 0: 
@@ -38,14 +38,19 @@ func _ready() -> void:
 	timer.start()
 	
 func _physics_process(_delta):
+	vision.shape.radius+=3.0
+	if vision.shape.radius>90.0:
+		vision.shape.radius=2.0
 	check_player_inside()
 	if spotted_by_enemy or spotted_by_enemy_forced: 
+		SPEED=70
 		emit_signal("Enemy_Chasing")
 		nav.target_position = player.global_position 
-		if abs(position-player.position)<=Vector2(20,20):
+		if abs(global_position-player.global_position).length()<=25:
 			catch_player() 
 			return
 	else:
+		SPEED=50
 		if nav.is_target_reached():
 			set_next_patrol_point()
 	
@@ -74,7 +79,7 @@ func set_next_patrol_point() -> void:
 
 func catch_player() -> void:
 	velocity = Vector2.ZERO
-	print("Player caught!")
+	get_tree().reload_current_scene()
 
 func update_vision():
 

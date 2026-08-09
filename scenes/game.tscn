@@ -9,11 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://cqfef4daroj3l" path="res://sprites/mapfull.png" id="7_u5sy4"]
 [ext_resource type="AudioStream" uid="uid://clk5752h0onii" path="res://assets/lightswitch_on.mp3" id="8_0tnpc"]
 [ext_resource type="AudioStream" uid="uid://cbwtrp6kmsxe8" path="res://assets/lightswitch_off.mp3" id="9_vtaks"]
+[ext_resource type="PackedScene" uid="uid://pru35yism46k" path="res://scenes/Clock.tscn" id="10_vtaks"]
+[ext_resource type="AudioStream" uid="uid://b7gj1nq6rkmxf" path="res://assets/chase_music3.mp3" id="11_kvuet"]
+[ext_resource type="AudioStream" uid="uid://b3536kp7080yr" path="res://assets/screen_notifier.mp3" id="12_dinhu"]
+[ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="13_kvuet"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbhrr"]
-radius = 40.0
+radius = 2.0
 
-[node name="Game" type="Node" unique_id=339253228]
+[node name="Game" type="Node2D" unique_id=285650532]
+y_sort_enabled = true
 script = ExtResource("1_lnu2h")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=32945564]
@@ -22,15 +27,21 @@ blend_mode = 1
 range_z_max = 0
 
 [node name="Map" parent="." unique_id=515555644 instance=ExtResource("1_uwrxv")]
-position = Vector2(-79, -346)
+position = Vector2(-866, -966)
 
 [node name="TileMap" parent="." unique_id=395610868 instance=ExtResource("3_p57ef")]
 visible = false
 position = Vector2(-723, -870)
 
+[node name="Clock" parent="." unique_id=1985709023 instance=ExtResource("10_vtaks")]
+y_sort_enabled = false
+position = Vector2(413, -703)
+
 [node name="player" parent="." unique_id=1698648380 instance=ExtResource("2_yqjtg")]
 unique_name_in_owner = true
 z_index = 0
+y_sort_enabled = true
+position = Vector2(-1, 2)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=678641909]
 offset = Vector2(0, -20)
@@ -44,12 +55,14 @@ position_smoothing_speed = 10.0
 
 [node name="Enemy" parent="." unique_id=513737343 instance=ExtResource("4_lbhrr")]
 unique_name_in_owner = true
-position = Vector2(-583.9999, -721)
-rotation = -0.00448278
+position = Vector2(-574, -709)
+rotation = 0.008707285
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="Enemy" unique_id=1620613552]
 shape = SubResource("CircleShape2D_lbhrr")
 target_position = Vector2(2.9644165, 231.01569)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Enemy" unique_id=1069889644]
 
 [node name="HUD" parent="." unique_id=2082992269 instance=ExtResource("5_iywne")]
 
@@ -62,3 +75,22 @@ stream = ExtResource("8_0tnpc")
 
 [node name="LightOff" type="AudioStreamPlayer2D" parent="." unique_id=875399332]
 stream = ExtResource("9_vtaks")
+
+[node name="Chasing_Music" type="AudioStreamPlayer2D" parent="." unique_id=743895711]
+stream = ExtResource("11_kvuet")
+max_distance = 20000.0
+
+[node name="Timer" type="Timer" parent="." unique_id=1571140894]
+wait_time = 3.0
+one_shot = true
+
+[node name="Screen_Entered_By_Enemy" type="AudioStreamPlayer2D" parent="." unique_id=1251449746]
+stream = ExtResource("12_dinhu")
+volume_db = -5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1689083668]
+position = Vector2(1489, 1612)
+scale = Vector2(7.6796875, 11.4375)
+texture = ExtResource("13_kvuet")
+
+[connection signal="screen_entered" from="Enemy/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

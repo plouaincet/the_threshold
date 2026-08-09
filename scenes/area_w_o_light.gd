@@ -7,8 +7,8 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	check_for_player()
+func _process(_delta: float) -> void:
+	pass
 
 func check_for_player() -> bool:
 	var bodies := get_overlapping_bodies()

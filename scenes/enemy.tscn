@@ -12,6 +12,15 @@ height = 18.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_3owqy"]
 radius = 115.0
 
+[sub_resource type="Gradient" id="Gradient_5uy6h"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8upip"]
+gradient = SubResource("Gradient_5uy6h")
+fill = 1
+fill_from = Vector2(0.49565217, 0.5173913)
+fill_to = Vector2(0.87391305, 0.14782609)
+
 [node name="Enemy" type="CharacterBody2D" unique_id=513737343]
 collision_mask = 0
 script = ExtResource("1_md0e3")
@@ -49,6 +58,12 @@ shape = SubResource("CircleShape2D_3owqy")
 script = ExtResource("4_5uy6h")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area w light" unique_id=1053790904]
-polygon = PackedVector2Array(0, -1, -140, 250, 140, 250)
+polygon = PackedVector2Array(0, -1, -72, 235, 72, 235)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1642775087]
+visible = false
+color = Color(1, 0.12156863, 1, 1)
+energy = 1.5
+texture = SubResource("GradientTexture2D_8upip")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
