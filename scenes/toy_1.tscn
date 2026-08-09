@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ca2jwhvv3x4ot"]
+
+[ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="1_tjj65"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
+size = Vector2(24, 15)
+
+[node name="Toy1" type="StaticBody2D" unique_id=1661247524]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=237070017]
+position = Vector2(0, 6)
+texture = ExtResource("1_tjj65")
+region_enabled = true
+region_rect = Rect2(133, 32, 24, 28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=491006314]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_3owqy")

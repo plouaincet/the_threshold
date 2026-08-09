@@ -3,8 +3,8 @@ extends Node
 @onready var enemy: CharacterBody2D = %Enemy
 @onready var point_light_2d: PointLight2D = $player/PointLight2D
 @onready var label: Label = $HUD/Control/Label
-@onready var chasing_music: AudioStreamPlayer2D = $Chasing_Music
-@onready var screenent_sound: AudioStreamPlayer2D = $Screen_Entered_By_Enemy
+@onready var chasing_music: AudioStreamPlayer2D = $Sounds/Chasing_Music
+@onready var screenent_sound: AudioStreamPlayer2D = $Sounds/Screen_Entered_By_Enemy
 
 const SCREEN_SIZE := Vector2(1152, 648)
 const INDICATOR_SPEED := 500.0
@@ -33,11 +33,11 @@ func _process(_delta: float) -> void:
 func light_toggled() -> void:
 	point_light_2d.enabled = not point_light_2d.enabled
 	if point_light_2d.enabled:
-		$LightOn.play()
+		$Sounds/LightOn.play()
 		label.text = "Toggle light OFF: Z"
 		light_state = true
 	else:
-		$LightOff.play()
+		$Sounds/LightOff.play()
 		label.text = "Toggle light ON: Z"
 		light_state = false
 
