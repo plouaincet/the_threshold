@@ -112,17 +112,14 @@ tile_set = SubResource("TileSet_8upip")
 [node name="BlueDoor" type="TileMapLayer" parent="." unique_id=1307287487]
 tile_map_data = PackedByteArray("AABJABoAAAAAAAAAAABKABoAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_drsw1")
-navigation_enabled = false
 
 [node name="PinkDoors" type="TileMapLayer" parent="." unique_id=1742611493]
 tile_map_data = PackedByteArray("AABQACoAAAAAAAAAAABRACoAAAAAAAAAAAA6ACoAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_urbdc")
-navigation_enabled = false
 
 [node name="OrangeDoors" type="TileMapLayer" parent="." unique_id=1274486248]
 tile_map_data = PackedByteArray("AAAbADEAAAAAAAAAAAAbADIAAAAAAAAAAAAbADMAAAAAAAAAAAAKACUAAAAAAAAAAAALACUAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_1wgif")
-navigation_enabled = false
 
 [node name="PurpleDoors" type="TileMapLayer" parent="." unique_id=803370591]
 tile_map_data = PackedByteArray("AAAKABoAAAAAAAAAAAALABoAAAAAAAAAAAAkABgAAAAAAAAAAAAlABgAAAAAAAAAAAA=")
