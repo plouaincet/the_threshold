@@ -2,7 +2,7 @@ extends CharacterBody2D
 signal Light_Toggled
 signal Door_Opened
 
-const BASE_SPEED: float = 75.0
+var BASE_SPEED: float = 75.0
 const SPRINT_SPEED_BONUS: float = 30.0
 
 const MAX_STAMINA: float = 100.0

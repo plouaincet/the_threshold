@@ -38,7 +38,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if !enemy.is_chasing() and is_chasing and (abs(enemy.global_position.y - player.global_position.y) >= 200 or abs(enemy.global_position.x - player.global_position.x) >= 200):
-		player.SPEED=75
+		player.BASE_SPEED=75
 		_fade_out_chase_music()
 		is_chasing = false
 
