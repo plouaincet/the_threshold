@@ -25,6 +25,25 @@
 [ext_resource type="PackedScene" uid="uid://cd43s7fbl0hrb" path="res://scenes/music_box.tscn" id="16_ca42v"]
 [ext_resource type="PackedScene" uid="uid://dpdev3g83or22" path="res://scenes/painting.tscn" id="16_pl11u"]
 [ext_resource type="PackedScene" uid="uid://ca2jwhvv3x4ot" path="res://scenes/toy_1.tscn" id="17_rysoc"]
+[ext_resource type="Script" uid="uid://05r6t0h3nefo" path="res://scenes/door_2.gd" id="19_twgab"]
+[ext_resource type="Script" uid="uid://byau5mpaa0fbn" path="res://scenes/door_3.gd" id="21_02fa5"]
+[ext_resource type="Script" uid="uid://creyik4p5ca1y" path="res://scenes/door_4.gd" id="23_nepv3"]
+[ext_resource type="Script" uid="uid://o8uxg3irbt7n" path="res://scenes/door_5.gd" id="25_7025r"]
+[ext_resource type="PackedScene" uid="uid://bkabtpdx6whca" path="res://scenes/door_1.tscn" id="26_bhx41"]
+[ext_resource type="Script" uid="uid://j61mfpt8ybva" path="res://scenes/door_6.gd" id="27_m4url"]
+[ext_resource type="PackedScene" uid="uid://cjwwpxd71pnxw" path="res://scenes/door_2.tscn" id="27_qnb83"]
+[ext_resource type="PackedScene" uid="uid://nxc5tpknafws" path="res://scenes/door_3.tscn" id="28_sww3w"]
+[ext_resource type="Script" uid="uid://crk7skhooj24" path="res://scenes/door_7.gd" id="29_8ool0"]
+[ext_resource type="PackedScene" uid="uid://p62vf71y7lqw" path="res://scenes/door_4.tscn" id="29_suyxu"]
+[ext_resource type="PackedScene" uid="uid://blrfrkwn0k5ac" path="res://scenes/door_5.tscn" id="30_sgl2t"]
+[ext_resource type="Script" uid="uid://ci150mjf2lj8w" path="res://scenes/door_8.gd" id="31_pr1ej"]
+[ext_resource type="PackedScene" uid="uid://c7u4d1t08ys7v" path="res://scenes/door_6.tscn" id="31_qouja"]
+[ext_resource type="PackedScene" uid="uid://5l3q0qa2hok7" path="res://scenes/door_7.tscn" id="32_wljb1"]
+[ext_resource type="Script" uid="uid://d0iu4kmydwxl" path="res://scenes/door_9.gd" id="33_05nbr"]
+[ext_resource type="PackedScene" uid="uid://cge866o2kbjjr" path="res://scenes/door_8.tscn" id="33_v2yb1"]
+[ext_resource type="PackedScene" uid="uid://cf3bmsen6nj0h" path="res://scenes/door_9.tscn" id="34_js0lu"]
+[ext_resource type="Script" uid="uid://buyo1y5vd85qj" path="res://scenes/door_10.gd" id="35_0sl42"]
+[ext_resource type="PackedScene" uid="uid://cyunrt25osjwx" path="res://scenes/door_10.tscn" id="35_gxtfn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbhrr"]
 radius = 2.0
@@ -42,6 +61,7 @@ range_z_max = 0
 position = Vector2(-866, -966)
 
 [node name="TileMap" parent="." unique_id=395610868 instance=ExtResource("3_p57ef")]
+unique_name_in_owner = true
 visible = false
 position = Vector2(-709, -869)
 
@@ -88,9 +108,51 @@ position = Vector2(-502, -721)
 [node name="Painting" parent="Objects" unique_id=2024703500 instance=ExtResource("16_pl11u")]
 position = Vector2(425, -157)
 
+[node name="Doors" type="Node2D" parent="." unique_id=1970429183]
+y_sort_enabled = true
+
+[node name="Door1" parent="Doors" unique_id=342416571 instance=ExtResource("26_bhx41")]
+y_sort_enabled = false
+position = Vector2(8, -172)
+
+[node name="Door2" parent="Doors" unique_id=1816986383 instance=ExtResource("27_qnb83")]
+position = Vector2(223, -172)
+script = ExtResource("19_twgab")
+
+[node name="Door3" parent="Doors" unique_id=1341295897 instance=ExtResource("28_sww3w")]
+position = Vector2(579, -166)
+script = ExtResource("21_02fa5")
+
+[node name="Door4" parent="Doors" unique_id=1607397317 instance=ExtResource("29_suyxu")]
+position = Vector2(473, -428)
+script = ExtResource("23_nepv3")
+
+[node name="Door5" parent="Doors" unique_id=864523037 instance=ExtResource("30_sgl2t")]
+position = Vector2(-280, -65)
+script = ExtResource("25_7025r")
+
+[node name="Door6" parent="Doors" unique_id=829741888 instance=ExtResource("31_qouja")]
+position = Vector2(-535, -256)
+script = ExtResource("27_m4url")
+
+[node name="Door7" parent="Doors" unique_id=1485702572 instance=ExtResource("32_wljb1")]
+position = Vector2(-537, -428)
+script = ExtResource("29_8ool0")
+
+[node name="Door8" parent="Doors" unique_id=731832104 instance=ExtResource("33_v2yb1")]
+position = Vector2(-626, -514)
+script = ExtResource("31_pr1ej")
+
+[node name="Door9" parent="Doors" unique_id=606037630 instance=ExtResource("34_js0lu")]
+position = Vector2(-122, -484)
+script = ExtResource("33_05nbr")
+
+[node name="Door10" parent="Doors" unique_id=1158636396 instance=ExtResource("35_gxtfn")]
+position = Vector2(-171, -719)
+script = ExtResource("35_0sl42")
+
 [node name="player" parent="." unique_id=1698648380 instance=ExtResource("2_yqjtg")]
 unique_name_in_owner = true
-z_index = 0
 y_sort_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=678641909]
@@ -102,6 +164,8 @@ limit_right = 892
 limit_bottom = 197
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="Timer" type="Timer" parent="player" unique_id=614593929]
 
 [node name="Enemy" parent="." unique_id=513737343 instance=ExtResource("4_lbhrr")]
 unique_name_in_owner = true
@@ -141,4 +205,5 @@ max_distance = 20000.0
 stream = ExtResource("12_dinhu")
 volume_db = -5.0
 
+[connection signal="timeout" from="player/Timer" to="player" method="_on_timer_timeout"]
 [connection signal="screen_entered" from="Enemy/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
