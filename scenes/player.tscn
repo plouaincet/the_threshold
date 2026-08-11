@@ -166,6 +166,9 @@ fill_from = Vector2(0.50427353, 0.508547)
 [sub_resource type="CircleShape2D" id="CircleShape2D_3owqy"]
 radius = 5.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8upip"]
+radius = 5.0
+
 [node name="player" type="CharacterBody2D" unique_id=1698648380 groups=["Player"]]
 z_index = 1
 script = ExtResource("1_g2els")
@@ -188,3 +191,12 @@ texture_scale = 0.7
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1285556858]
 position = Vector2(1, -5)
 shape = SubResource("CircleShape2D_3owqy")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=2136745214]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1149983019]
+position = Vector2(1, -5)
+shape = SubResource("CircleShape2D_8upip")
+
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]
