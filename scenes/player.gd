@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 
 	progress.value = stamina
 	var current_speed: float = BASE_SPEED + (SPRINT_SPEED_BONUS if is_sprinting else 0.0)
-	print(is_sprinting, " ", stamina)
+	#print(is_sprinting, " ", stamina)
 	var direction := Input.get_vector("left","right","up","down")
 	velocity = direction * current_speed
 

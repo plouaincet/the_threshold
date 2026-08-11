@@ -57,7 +57,7 @@ func _handle_doors(_door_name: String) -> void:
 	pass
 		
 func _chasing_handle() -> void:
-	player.SPEED=80
+	player.BASE_SPEED=80
 	if !is_chasing:
 		is_chasing = true
 		if fade_tween and fade_tween.is_valid():
