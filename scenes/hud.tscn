@@ -21,3 +21,19 @@ offset_bottom = 51.0
 theme_override_fonts/font = ExtResource("1_ahhtf")
 theme_override_font_sizes/font_size = 32
 text = "Toggle light OFF: Z"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1045735025]
+offset_left = 43.0
+offset_top = 567.0
+offset_right = 223.0
+offset_bottom = 607.0
+color = Color(0.11764706, 0, 0, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="ColorRect" unique_id=2062475683]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 175.0
+offset_bottom = 33.0
+value = 100.0
+show_percentage = false

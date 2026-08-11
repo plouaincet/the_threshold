@@ -10,19 +10,31 @@ const SCREEN_SIZE := Vector2(1152, 648)
 const INDICATOR_SPEED := 500.0
 const INDICATOR_MARGIN := 0
 const CHASE_MUSIC_VOLUME := 0.0
-var indicator_pos := 0.0
-var light_state: bool = true
-var Purple_Doors: bool = false
-var Orange_Doors: bool = false
-var Pink_Doors: bool = false
-var Blue_Door: bool = false
-var White_Door: bool = false
+var flg:bool=1
+
+var Pink_Door1: bool =true
+var Pink_Door2: bool=true
+var Blue_Door: bool =true
+var Orange_Door1: bool=true
+var Orange_Door2: bool =true
+var Purple_Door1: bool=true
+var Purple_Door2: bool =true
+
+var Purple_Doors: int = 4
+var Orange_Doors: int = 2
+var Pink_Doors: int = 2
+var Blue_Doors: int = 1
+var White_Doors: int = 1
+
 var is_chasing: bool = false
 var fade_tween: Tween
+var indicator_pos := 0.0
+var light_state: bool = true
 
 func _ready() -> void:
 	player.Light_Toggled.connect(light_toggled)
 	enemy.Enemy_Chasing.connect(_chasing_handle)
+	player.Door_Opened.connect(_check_doors)
 
 func _process(_delta: float) -> void:
 	if !enemy.is_chasing() and is_chasing and (abs(enemy.global_position.y - player.global_position.y) >= 200 or abs(enemy.global_position.x - player.global_position.x) >= 200):
@@ -64,3 +76,25 @@ func _fade_out_chase_music() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	screenent_sound.play()
+
+func _check_doors() -> void:
+	#print(White_Doors,Blue_Doors,Pink_Doors,Orange_Doors,Purple_Doors)
+	if Pink_Door1==false:
+		%TileMap/PinkDoor1.navigation_enabled=true
+	if Pink_Door2==false:
+		%TileMap/PinkDoor2.navigation_enabled=true
+	if Blue_Door==false:
+		%TileMap/BlueDoor.navigation_enabled=true
+	if Orange_Door1==false:
+		%TileMap/OrangeDoor1.navigation_enabled=true
+	if Orange_Door2==false:
+		%TileMap/OrangeDoor2.navigation_enabled=true
+	if Purple_Door1==false:
+		%TileMap/PurpleDoor1.navigation_enabled=true
+	if Purple_Door2==false:
+		%TileMap/PurpleDoor2.navigation_enabled=true
+
+	if !Pink_Doors and !Blue_Doors and flg:
+		enemy.patrol_points.insert(4,Vector2(539, -307))
+		enemy.patrol_points.insert(5,Vector2(407, -20))
+		flg=0

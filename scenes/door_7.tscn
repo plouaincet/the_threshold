@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://5l3q0qa2hok7"]
+
+[ext_resource type="Texture2D" uid="uid://byirvqq4vondw" path="res://sprites/doors.png" id="1_sut5s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
+size = Vector2(28, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sut5s"]
+size = Vector2(28, 81)
+
+[node name="Door7" type="StaticBody2D" unique_id=1485702572]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=898449701]
+scale = Vector2(1.04, 1)
+texture = ExtResource("1_sut5s")
+region_enabled = true
+region_rect = Rect2(335, 429, 29, 51)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1694685953]
+shape = SubResource("RectangleShape2D_3owqy")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=954694493]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1947786892]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_sut5s")

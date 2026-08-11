@@ -170,7 +170,6 @@ radius = 5.0
 radius = 5.0
 
 [node name="player" type="CharacterBody2D" unique_id=1698648380 groups=["Player"]]
-z_index = 1
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=247219942]

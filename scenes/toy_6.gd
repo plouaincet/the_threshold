@@ -7,11 +7,11 @@ extends Interactable
 func _ready() -> void:
 	line_2d.visible=false
 
-func interact(player: Node) -> void:
+func interact(_player: Node) -> void:
 	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
