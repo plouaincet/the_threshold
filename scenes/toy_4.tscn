@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="1_ihfrm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3owqy"]
-radius = 25.079872
+radius = 40.04997
 
 [node name="Toy4" type="StaticBody2D" unique_id=1587486842]
 script = ExtResource("1_6lomh")

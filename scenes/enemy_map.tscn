@@ -127,3 +127,4 @@ navigation_enabled = false
 [node name="PurpleDoors" type="TileMapLayer" parent="." unique_id=803370591]
 tile_map_data = PackedByteArray("AAAKABoAAAAAAAAAAAALABoAAAAAAAAAAAAkABgAAAAAAAAAAAAlABgAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_373yu")
+navigation_enabled = false

@@ -4,8 +4,9 @@ signal Light_Toggled
 #signal Door_Opened(Door_Opened: String) TODO: Later!!
 var SPEED:int = 75
 @onready var playersprite: AnimatedSprite2D = $Sprite2D
-
+var nearby_interactables: Array[Interactable] = []
 var anim
+var lantern_open: bool =true
 
 func ready(_delta: float) -> void:
 	pass
@@ -28,6 +29,29 @@ func _physics_process(_delta: float) -> void:
 			playersprite.play("running_left")
 	if Input.is_action_just_pressed("light_toggle"):
 		emit_signal("Light_Toggled")
+		lantern_open = not lantern_open
 	move_and_slide()
 	
-	
+
+func _on_interaction_area_area_entered(area: Area2D) -> void:
+	if area.get_parent() is Interactable:
+		nearby_interactables.append(area.get_parent())
+
+
+func _on_interaction_area_area_exited(area: Area2D) -> void:
+	if area.get_parent() is Interactable:
+		nearby_interactables.erase(area.get_parent())
+
+func _unhandled_input(event):
+	if event.is_action_pressed("interact"):
+		try_interact()
+
+func try_interact():
+	if not lantern_open:
+		return
+
+	if nearby_interactables.is_empty():
+		return
+
+	var object = nearby_interactables[0]
+	object.interact(self)

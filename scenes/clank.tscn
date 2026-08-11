@@ -3,10 +3,14 @@
 [ext_resource type="Script" uid="uid://dk1cm2xmvcd1s" path="res://scenes/clank.gd" id="1_j2gyt"]
 [ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="1_mf2vg"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3owqy"]
-radius = 22.022715
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3owqy"]
+radius = 5.0
+height = 14.0
 
-[node name="Clank" type="Node2D" unique_id=1497044883]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3owqy"]
+radius = 36.0
+
+[node name="Clank" type="StaticBody2D" unique_id=1741922069]
 script = ExtResource("1_j2gyt")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=929449977]
@@ -16,6 +20,10 @@ points = PackedVector2Array(-6, -4, 0, -4, 3, 1, 6, 3, 7, 4, -5, -1, -7, -5, -3,
 texture = ExtResource("1_mf2vg")
 region_enabled = true
 region_rect = Rect2(505, 44, 13, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=756583163]
+rotation = 1.9159983
+shape = SubResource("CapsuleShape2D_3owqy")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=88465308]
 
