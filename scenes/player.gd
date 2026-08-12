@@ -11,7 +11,10 @@ const DRAIN_RATE: float = MAX_STAMINA / DRAIN_TIME
 const REGEN_RATE: float = DRAIN_RATE / 3.0
 
 @onready var progress: ProgressBar = $"../HUD/ColorRect/ProgressBar"
+@onready var slots: HBoxContainer = $"../HUD/PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots"
 @onready var playersprite: AnimatedSprite2D = $Sprite2D
+
+
 
 var nearby_interactables: Array[Interactable] = []
 var nearby_doors: Array[Doors] = []

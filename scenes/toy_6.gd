@@ -1,13 +1,14 @@
 extends Interactable
 @onready var line_2d: Line2D = $Line2D
+@onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var game: Node2D = $"../.."
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	line_2d.visible=false
 
 func interact(_player: Node) -> void:
+	game.add_object(sprite_2d)
 	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

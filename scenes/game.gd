@@ -5,6 +5,8 @@ extends Node
 @onready var label: Label = $HUD/Control/Label
 @onready var chasing_music: AudioStreamPlayer2D = $Sounds/Chasing_Music
 @onready var screenent_sound: AudioStreamPlayer2D = $Sounds/Screen_Entered_By_Enemy
+@onready var slots: HBoxContainer = $"HUD/PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot"
+
 
 const SCREEN_SIZE := Vector2(1152, 648)
 const INDICATOR_SPEED := 500.0
@@ -31,6 +33,8 @@ var fade_tween: Tween
 var indicator_pos := 0.0
 var light_state: bool = true
 
+var Slots: Array[bool] = [0,0,0,0,0]
+
 func _ready() -> void:
 	player.Light_Toggled.connect(light_toggled)
 	enemy.Enemy_Chasing.connect(_chasing_handle)
@@ -46,11 +50,11 @@ func light_toggled() -> void:
 	point_light_2d.enabled = not point_light_2d.enabled
 	if point_light_2d.enabled:
 		$Sounds/LightOn.play()
-		label.text = "Toggle light OFF: Z"
+		label.text = "Toggle light OFF: Z/Space"
 		light_state = true
 	else:
 		$Sounds/LightOff.play()
-		label.text = "Toggle light ON: Z"
+		label.text = "Toggle light ON: Z/Space"
 		light_state = false
 
 func _handle_doors(_door_name: String) -> void:
@@ -98,3 +102,14 @@ func _check_doors() -> void:
 		enemy.patrol_points.insert(4,Vector2(539, -307))
 		enemy.patrol_points.insert(5,Vector2(407, -20))
 		flg=0
+
+func add_object(img: Sprite2D):
+	for i in range(Slots.size()):
+		if Slots[i] == false:
+			Slots[i] = true
+			var slot = get_node("./HUD/PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot" + str(i + 1))
+			img.reparent(slot)
+			img.position = slot.size / 2
+			img.scale = Vector2(2, 2)
+			return
+	#no_more_slot_spaces_msg()

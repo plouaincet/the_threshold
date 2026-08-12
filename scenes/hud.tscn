@@ -1,8 +1,44 @@
 [gd_scene format=3 uid="uid://5ywne437pulm"]
 
 [ext_resource type="FontFile" uid="uid://ctc05h4iw85k6" path="res://assets/PixelOperator.ttf" id="1_ahhtf"]
+[ext_resource type="Shader" uid="uid://bmdby1b74ugry" path="res://scenes/paintingbg.gdshader" id="2_5ysmq"]
+[ext_resource type="Texture2D" uid="uid://cftc8ehpd0vil" path="res://sprites/tablou.png" id="2_oo0fn"]
+[ext_resource type="Texture2D" uid="uid://dsll6mifrj2s6" path="res://sprites/backgrslot.png" id="4_6fi6k"]
+[ext_resource type="Texture2D" uid="uid://3kdxqn5o6lwk" path="res://sprites/slot.png" id="5_uo2fv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3owqy"]
+shader = ExtResource("2_5ysmq")
+shader_parameter/blur_amount = 4.0
 
 [node name="HUD" type="CanvasLayer" unique_id=1381510903]
+
+[node name="PaintingViewer" type="Control" parent="." unique_id=41867143]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="PaintingViewer" unique_id=956846693]
+material = SubResource("ShaderMaterial_3owqy")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="PaintingViewer" unique_id=915195236]
+position = Vector2(568, 344)
+texture = ExtResource("2_oo0fn")
 
 [node name="Control" type="Control" parent="." unique_id=2082992269]
 layout_mode = 3
@@ -20,13 +56,13 @@ offset_right = 241.0
 offset_bottom = 51.0
 theme_override_fonts/font = ExtResource("1_ahhtf")
 theme_override_font_sizes/font_size = 32
-text = "Toggle light OFF: Z"
+text = "Toggle light OFF: Z/Space"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1045735025]
-offset_left = 43.0
-offset_top = 567.0
-offset_right = 223.0
-offset_bottom = 607.0
+offset_left = 32.0
+offset_top = 576.0
+offset_right = 212.0
+offset_bottom = 616.0
 color = Color(0.11764706, 0, 0, 1)
 
 [node name="ProgressBar" type="ProgressBar" parent="ColorRect" unique_id=2062475683]
@@ -37,3 +73,121 @@ offset_right = 175.0
 offset_bottom = 33.0
 value = 100.0
 show_percentage = false
+
+[node name="PlayerInventory" type="Control" parent="." unique_id=2014681485]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryPosition" type="CenterContainer" parent="PlayerInventory" unique_id=793609769]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.823
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.3040161
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryBg" type="TextureRect" parent="PlayerInventory/InventoryPosition" unique_id=1289284135]
+self_modulate = Color(1, 1, 1, 0.50980395)
+custom_minimum_size = Vector2(340, 70)
+layout_mode = 2
+texture = ExtResource("4_6fi6k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerInventory/InventoryPosition/InventoryBg" unique_id=147312862]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Slots" type="HBoxContainer" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer" unique_id=854844169]
+layout_mode = 2
+
+[node name="Slot1" type="Control" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots" unique_id=103980299]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot1" unique_id=245466329]
+self_modulate = Color(1, 1, 1, 0.50980395)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_uo2fv")
+
+[node name="Slot2" type="Control" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots" unique_id=491785749]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot2" unique_id=1938291771]
+self_modulate = Color(1, 1, 1, 0.50980395)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_uo2fv")
+
+[node name="Slot3" type="Control" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots" unique_id=1917005016]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot3" unique_id=1937095280]
+self_modulate = Color(1, 1, 1, 0.50980395)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_uo2fv")
+
+[node name="Slot4" type="Control" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots" unique_id=743812170]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot4" unique_id=1584878695]
+self_modulate = Color(1, 1, 1, 0.50980395)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_uo2fv")
+
+[node name="Slot5" type="Control" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots" unique_id=1183025858]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot5" unique_id=810585529]
+self_modulate = Color(1, 1, 1, 0.50980395)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_uo2fv")
