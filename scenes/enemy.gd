@@ -50,8 +50,10 @@ func _physics_process(_delta):
 			catch_player() 
 			return
 	else:
-		SPEED=50
-		if nav.is_target_reached():
+		SPEED = 50
+		if not is_position_navigable(nav.target_position):
+			set_next_patrol_point()
+		elif nav.is_target_reached():
 			set_next_patrol_point()
 	
 	if !nav.is_target_reached():
@@ -130,3 +132,8 @@ func check_player_inside() -> void:
 
 func is_chasing() -> bool:
 	return spotted_by_enemy or spotted_by_enemy_forced
+
+func is_position_navigable(pos: Vector2, tolerance: float = 16.0) -> bool:
+	var map_rid := nav.get_navigation_map()
+	var closest_point := NavigationServer2D.map_get_closest_point(map_rid, pos)
+	return closest_point.distance_to(pos) <= tolerance
