@@ -10,7 +10,8 @@ radius = 26.076809
 script = ExtResource("1_hwuh6")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=175843159]
-points = PackedVector2Array(1, -4, 8, -10, 9, -1, 5, 5, 9, 9, 12, 13, 9, 15, 6, 19, 0, 19, -4, 18, -9, 19, -11, 15, -10, 11, -7, 7, -7, 3, -9, 0, -6, -3, -6, -9, -4, -11, 0, -5)
+points = PackedVector2Array(4, 3, 6, -10, 7, -3, 8, 0, 6, 3, 10, 10, 9, 17, 6, 18, 0, 18, -4, 18, -9, 17, -10, 10, -7, 4, -8, 0, -6, -3, -5, -10, -4, -3, 4, -3)
+width = 7.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=94773132]
 position = Vector2(0, 5)
