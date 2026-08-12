@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://n6krf57ibe8t"]
+
+[ext_resource type="Script" uid="uid://bnm4hq3rln2ow" path="res://scenes/c_toy_1.gd" id="2_vouoj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3owqy"]
+radius = 20.22375
+
+[node name="ChairMinigame" type="Node2D" unique_id=2057355413]
+
+[node name="CToy1" type="Area2D" parent="." unique_id=869744837]
+position = Vector2(278, 49)
+script = ExtResource("2_vouoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CToy1" unique_id=1793122170]
+shape = SubResource("CircleShape2D_3owqy")
+
+[node name="CToy2" type="Area2D" parent="." unique_id=1634220861]
+position = Vector2(152, 24)
+script = ExtResource("2_vouoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CToy2" unique_id=500518477]
+shape = SubResource("CircleShape2D_3owqy")
+
+[node name="CToy3" type="Area2D" parent="." unique_id=916783558]
+position = Vector2(-83, 93)
+script = ExtResource("2_vouoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CToy3" unique_id=368225162]
+shape = SubResource("CircleShape2D_3owqy")
+
+[node name="CToy4" type="Area2D" parent="." unique_id=2116449903]
+position = Vector2(321, 84)
+script = ExtResource("2_vouoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CToy4" unique_id=572652946]
+shape = SubResource("CircleShape2D_3owqy")
+
+[node name="CToy5" type="Area2D" parent="." unique_id=2092934414]
+position = Vector2(78, 25)
+script = ExtResource("2_vouoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CToy5" unique_id=471932433]
+shape = SubResource("CircleShape2D_3owqy")
+
+[node name="CToy6" type="Area2D" parent="." unique_id=1408421273]
+position = Vector2(-47, 57)
+script = ExtResource("2_vouoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CToy6" unique_id=1562705617]
+shape = SubResource("CircleShape2D_3owqy")
+
+[node name="CToy7" type="Area2D" parent="." unique_id=1910361238]
+position = Vector2(9, 34)
+script = ExtResource("2_vouoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CToy7" unique_id=1552481230]
+shape = SubResource("CircleShape2D_3owqy")
+
+[node name="CToy8" type="Area2D" parent="." unique_id=1854193039]
+position = Vector2(218, 36)
+script = ExtResource("2_vouoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CToy8" unique_id=151961399]
+shape = SubResource("CircleShape2D_3owqy")

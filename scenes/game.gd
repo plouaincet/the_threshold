@@ -33,7 +33,7 @@ var fade_tween: Tween
 var indicator_pos := 0.0
 var light_state: bool = true
 
-var Slots: Array[bool] = [0,0,0,0,0]
+var Slots: Array[String] = ["null","null","null","null","null"]
 
 func _ready() -> void:
 	player.Light_Toggled.connect(light_toggled)
@@ -103,19 +103,19 @@ func _check_doors() -> void:
 		enemy.patrol_points.insert(5,Vector2(407, -20))
 		flg=0
 
-func add_object(img: Sprite2D) -> bool:
+func add_object(img: Sprite2D, sname: String) -> bool:
 	for i in range(Slots.size()):
-		if Slots[i] == false:
-			Slots[i] = true
+		if Slots[i] == "null":
+			Slots[i] = sname
 			var slot = get_node("./HUD/PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot" + str(i + 1))
 			img.reparent(slot)
 			img.position = slot.size / 2
-			img.scale = Vector2(2, 2)
+			img.scale = Vector2(1.3, 1.3)
 			return true
-	no_more_slot_spaces_shake()
+	slot_spaces_shake()
 	return false
 
-func no_more_slot_spaces_shake() -> void:
+func slot_spaces_shake() -> void:
 	var original_pos: Vector2 = inventory.position
 	var shake_amount: float = 6.0
 	var shake_time: float = 0.0625

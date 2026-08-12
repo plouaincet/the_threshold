@@ -15,10 +15,9 @@ const REGEN_RATE: float = DRAIN_RATE / 3.0
 @onready var playersprite: AnimatedSprite2D = $Sprite2D
 @onready var painting_viewer: Control = $"../HUD/PaintingViewer"
 
-
-
 var nearby_interactables: Array[Interactable] = []
 var nearby_doors: Array[Doors] = []
+var nearby_chairs: Array[Chair] = []
 var anim
 
 var stamina: float = MAX_STAMINA
@@ -65,19 +64,25 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("light_toggle"):
 		emit_signal("Light_Toggled")
 		lantern_open = not lantern_open
-	move_and_slide()
+		
+	if not restrained():
+		move_and_slide()
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Interactable:
 		nearby_interactables.append(area.get_parent())
 	if area.get_parent() is Doors:
 		nearby_doors.append(area.get_parent())
+	if area is Chair:
+		nearby_chairs.append(area)
 
 func _on_interaction_area_area_exited(area: Area2D) -> void:
 	if area.get_parent() is Interactable:
 		nearby_interactables.erase(area.get_parent())
 	if area.get_parent() is Doors:
 		nearby_doors.erase(area.get_parent())
+	if area is Chair:
+		nearby_chairs.erase(area)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
@@ -86,10 +91,17 @@ func _unhandled_input(event):
 func try_interact():
 	if not lantern_open:
 		return
-	if nearby_interactables.is_empty() and nearby_doors.is_empty():
+	if nearby_interactables.is_empty() and nearby_doors.is_empty() and nearby_chairs.is_empty():
 		return
 	if !nearby_interactables.is_empty():
 		nearby_interactables[0].interact(self)
 	if !nearby_doors.is_empty():
 		nearby_doors[0].open(self)
 		emit_signal("Door_Opened")
+	if !nearby_chairs.is_empty():
+		nearby_chairs[0].place(self)
+	
+func restrained() -> bool:
+	if painting_viewer.visible:
+		return true
+	return false
