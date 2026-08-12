@@ -2,7 +2,7 @@ extends CharacterBody2D
 signal Light_Toggled
 signal Door_Opened
 
-var BASE_SPEED: float = 75.0
+var BASE_SPEED: float = 60.0
 const SPRINT_SPEED_BONUS: float = 30.0
 
 const MAX_STAMINA: float = 100.0
@@ -13,6 +13,7 @@ const REGEN_RATE: float = DRAIN_RATE / 3.0
 @onready var progress: ProgressBar = $"../HUD/ColorRect/ProgressBar"
 @onready var slots: HBoxContainer = $"../HUD/PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots"
 @onready var playersprite: AnimatedSprite2D = $Sprite2D
+@onready var painting_viewer: Control = $"../HUD/PaintingViewer"
 
 
 
@@ -64,7 +65,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("light_toggle"):
 		emit_signal("Light_Toggled")
 		lantern_open = not lantern_open
-
 	move_and_slide()
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:

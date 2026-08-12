@@ -155,7 +155,6 @@ script = ExtResource("35_0sl42")
 [node name="player" parent="." unique_id=1698648380 instance=ExtResource("2_yqjtg")]
 unique_name_in_owner = true
 y_sort_enabled = true
-position = Vector2(501, -290)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=678641909]
 offset = Vector2(0, -20)

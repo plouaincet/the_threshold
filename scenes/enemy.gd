@@ -21,7 +21,7 @@ var patrol_points: Array[Vector2] = [
 	 Vector2(-525, -325),
 	 Vector2(-584, -721),	
 	]
-var SPEED :int = 50
+var SPEED :int = 30
 var current_patrol_index: int = 0
 
 var target: CharacterBody2D = null
@@ -48,14 +48,14 @@ func _physics_process(_delta):
 		vision.shape.radius=2.0
 	check_player_inside()
 	if spotted_by_enemy or spotted_by_enemy_forced: 
-		SPEED=70
+		SPEED=60
 		emit_signal("Enemy_Chasing")
 		nav.target_position = player.global_position 
 		if abs(global_position-player.global_position).length()<=25:
 			catch_player() 
 			return
 	else:
-		SPEED = 50
+		SPEED = 30
 		if not is_position_navigable(nav.target_position):
 			set_next_patrol_point()
 		elif nav.is_target_reached():
