@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var area_w_o_light: Area2D = $"Area w_o light"
 @onready var area_w_light: Area2D = $"Area w light"
 signal Enemy_Chasing
+var map_synced: bool = false
 
 var spotted_by_enemy: bool = false
 var spotted_by_enemy_forced: bool = false
@@ -20,7 +21,7 @@ var patrol_points: Array[Vector2] = [
 	 Vector2(-525, -325),
 	 Vector2(-584, -721),	
 	]
-var SPEED :int = 50
+var SPEED :int = 30
 var current_patrol_index: int = 0
 
 var target: CharacterBody2D = null
@@ -36,22 +37,28 @@ func _ready() -> void:
 		set_next_patrol_point()
 
 	timer.start()
+	NavigationServer2D.map_changed.connect(_on_map_changed)
 	
+func _on_map_changed(_map_rid: RID) -> void:
+	map_synced = true
+
 func _physics_process(_delta):
 	vision.shape.radius+=3.0
 	if vision.shape.radius>90.0:
 		vision.shape.radius=2.0
 	check_player_inside()
 	if spotted_by_enemy or spotted_by_enemy_forced: 
-		SPEED=70
+		SPEED=60
 		emit_signal("Enemy_Chasing")
 		nav.target_position = player.global_position 
 		if abs(global_position-player.global_position).length()<=25:
 			catch_player() 
 			return
 	else:
-		SPEED=50
-		if nav.is_target_reached():
+		SPEED = 30
+		if not is_position_navigable(nav.target_position):
+			set_next_patrol_point()
+		elif nav.is_target_reached():
 			set_next_patrol_point()
 	
 	if !nav.is_target_reached():
@@ -130,3 +137,10 @@ func check_player_inside() -> void:
 
 func is_chasing() -> bool:
 	return spotted_by_enemy or spotted_by_enemy_forced
+
+func is_position_navigable(pos: Vector2, tolerance: float = 16.0) -> bool:
+	if not map_synced:
+		return true
+	var map_rid := nav.get_navigation_map()
+	var closest_point := NavigationServer2D.map_get_closest_point(map_rid, pos)
+	return closest_point.distance_to(pos) <= tolerance

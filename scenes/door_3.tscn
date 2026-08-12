@@ -8,7 +8,7 @@ size = Vector2(30, 52)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m7lx8"]
 size = Vector2(28, 81)
 
-[node name="Door3" type="StaticBody2D" unique_id=342416571]
+[node name="Door3" type="StaticBody2D" unique_id=1877989126]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1876528302]
 scale = Vector2(1.04, 1)

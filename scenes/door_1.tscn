@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://byirvqq4vondw" path="res://sprites/doors.png" id="1_j3s2y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
-size = Vector2(28, 51)
+size = Vector2(26, 51)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajw6c"]
-size = Vector2(28, 81)
+size = Vector2(26, 81)
 
-[node name="Door1" type="StaticBody2D" unique_id=342416571]
+[node name="Door1" type="StaticBody2D" unique_id=280161838]
 y_sort_enabled = true
 script = ExtResource("1_ajw6c")
 
