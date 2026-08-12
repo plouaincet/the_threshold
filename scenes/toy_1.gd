@@ -8,8 +8,8 @@ func _ready() -> void:
 	line_2d.visible=false
 
 func interact(_player: Node) -> void:
-	game.add_object(sprite_2d)
-	queue_free()
+	if game.add_object(sprite_2d):
+		queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

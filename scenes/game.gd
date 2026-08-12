@@ -5,7 +5,7 @@ extends Node
 @onready var label: Label = $HUD/Control/Label
 @onready var chasing_music: AudioStreamPlayer2D = $Sounds/Chasing_Music
 @onready var screenent_sound: AudioStreamPlayer2D = $Sounds/Screen_Entered_By_Enemy
-@onready var slots: HBoxContainer = $"HUD/PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot"
+@onready var inventory: Control = $"./HUD/PlayerInventory"
 
 
 const SCREEN_SIZE := Vector2(1152, 648)
@@ -103,7 +103,7 @@ func _check_doors() -> void:
 		enemy.patrol_points.insert(5,Vector2(407, -20))
 		flg=0
 
-func add_object(img: Sprite2D):
+func add_object(img: Sprite2D) -> bool:
 	for i in range(Slots.size()):
 		if Slots[i] == false:
 			Slots[i] = true
@@ -111,5 +111,17 @@ func add_object(img: Sprite2D):
 			img.reparent(slot)
 			img.position = slot.size / 2
 			img.scale = Vector2(2, 2)
-			return
-	#no_more_slot_spaces_msg()
+			return true
+	no_more_slot_spaces_shake()
+	return false
+
+func no_more_slot_spaces_shake() -> void:
+	var original_pos: Vector2 = inventory.position
+	var shake_amount: float = 6.0
+	var shake_time: float = 0.0625
+
+	var tween := create_tween()
+	tween.tween_property(inventory, "position:x", original_pos.x - shake_amount, shake_time)
+	tween.tween_property(inventory, "position:x", original_pos.x + shake_amount, shake_time)
+	tween.tween_property(inventory, "position:x", original_pos.x - shake_amount, shake_time)
+	tween.tween_property(inventory, "position:x", original_pos.x, shake_time)

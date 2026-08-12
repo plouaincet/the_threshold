@@ -191,3 +191,47 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_uo2fv")
+
+[node name="Notfication" type="Control" parent="." unique_id=801133820]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Notfication" unique_id=746513032]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29500002
+anchor_right = 1.0
+anchor_bottom = 0.26900002
+offset_left = 0.15997314
+offset_bottom = -0.31201172
+
+[node name="ColorRect" type="ColorRect" parent="Notfication/CenterContainer" unique_id=160331127]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+color = Color(1, 1, 1, 0.13333334)
+
+[node name="MarginContainer" type="MarginContainer" parent="Notfication/CenterContainer/ColorRect" unique_id=2134013935]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Notfication/CenterContainer/ColorRect/MarginContainer" unique_id=922841634]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ahhtf")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
