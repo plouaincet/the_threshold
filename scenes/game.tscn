@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cewoanqwrmokb" path="res://scenes/enemy_map.tscn" id="3_p57ef"]
 [ext_resource type="PackedScene" uid="uid://ebkuajd5sso1" path="res://scenes/enemy.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://5ywne437pulm" path="res://scenes/hud.tscn" id="5_iywne"]
-[ext_resource type="Texture2D" uid="uid://cqfef4daroj3l" path="res://sprites/mapfull.png" id="7_u5sy4"]
 [ext_resource type="AudioStream" uid="uid://clk5752h0onii" path="res://assets/lightswitch_on.mp3" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://chrehl7mdvq7a" path="res://scenes/toy_2.tscn" id="8_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://cwt4uwys4eo2h" path="res://scenes/toy_3.tscn" id="9_264po"]
@@ -18,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://brg71fvmefk1e" path="res://scenes/toy_6.tscn" id="12_37s47"]
 [ext_resource type="AudioStream" uid="uid://b3536kp7080yr" path="res://assets/screen_notifier.mp3" id="12_dinhu"]
 [ext_resource type="PackedScene" uid="uid://cc30yr65csee6" path="res://scenes/toy_7.tscn" id="13_bt5mj"]
-[ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="13_kvuet"]
 [ext_resource type="PackedScene" uid="uid://divwc4iubmb1n" path="res://scenes/toy_8.tscn" id="14_e1j6l"]
 [ext_resource type="PackedScene" uid="uid://dykpo53dno7y0" path="res://scenes/piano.tscn" id="14_trtic"]
 [ext_resource type="PackedScene" uid="uid://dx2ur261pmen8" path="res://scenes/clank.tscn" id="15_ir15t"]
@@ -44,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://cf3bmsen6nj0h" path="res://scenes/door_9.tscn" id="34_js0lu"]
 [ext_resource type="Script" uid="uid://buyo1y5vd85qj" path="res://scenes/door_10.gd" id="35_0sl42"]
 [ext_resource type="PackedScene" uid="uid://cyunrt25osjwx" path="res://scenes/door_10.tscn" id="35_gxtfn"]
+[ext_resource type="PackedScene" uid="uid://n6krf57ibe8t" path="res://scenes/chair_minigame.tscn" id="45_oaba0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbhrr"]
 radius = 2.0
@@ -53,7 +52,6 @@ y_sort_enabled = true
 script = ExtResource("1_lnu2h")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=32945564]
-visible = false
 energy = 0.92
 blend_mode = 1
 range_z_max = 0
@@ -152,6 +150,9 @@ script = ExtResource("33_05nbr")
 position = Vector2(-171, -719)
 script = ExtResource("35_0sl42")
 
+[node name="ChairMinigame" parent="." unique_id=2057355413 instance=ExtResource("45_oaba0")]
+position = Vector2(292, -125)
+
 [node name="player" parent="." unique_id=1698648380 instance=ExtResource("2_yqjtg")]
 unique_name_in_owner = true
 y_sort_enabled = true
@@ -170,7 +171,7 @@ position_smoothing_speed = 10.0
 
 [node name="Enemy" parent="." unique_id=513737343 instance=ExtResource("4_lbhrr")]
 unique_name_in_owner = true
-position = Vector2(-574, -709)
+position = Vector2(-568, -710.00006)
 rotation = 0.008707285
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="Enemy" unique_id=1620613552]
@@ -180,15 +181,6 @@ target_position = Vector2(2.9644165, 231.01569)
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Enemy" unique_id=1069889644]
 
 [node name="HUD" parent="." unique_id=2082992269 instance=ExtResource("5_iywne")]
-
-[node name="Mapfull" type="Sprite2D" parent="." unique_id=1453621738]
-position = Vector2(2031, -559)
-texture = ExtResource("7_u5sy4")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1689083668]
-position = Vector2(1489, 1612)
-scale = Vector2(10, 10)
-texture = ExtResource("13_kvuet")
 
 [node name="Sounds" type="Node" parent="." unique_id=263239707]
 
