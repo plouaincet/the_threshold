@@ -14,6 +14,8 @@ const REGEN_RATE: float = DRAIN_RATE / 3.0
 @onready var slots: HBoxContainer = $"../HUD/PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots"
 @onready var playersprite: AnimatedSprite2D = $Sprite2D
 @onready var painting_viewer: Control = $"../HUD/PaintingViewer"
+@onready var clockMinigame: CanvasLayer = $"../ClockMinigame"
+
 
 var nearby_interactables: Array[Interactable] = []
 var nearby_doors: Array[Doors] = []
@@ -103,5 +105,7 @@ func try_interact():
 	
 func restrained() -> bool:
 	if painting_viewer.visible:
+		return true
+	if clockMinigame.visible:
 		return true
 	return false

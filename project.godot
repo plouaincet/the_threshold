@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="enemyai_tesing"
+config/name="TheThreshold"
 run/main_scene="uid://ctgq8iovwgmr0"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
