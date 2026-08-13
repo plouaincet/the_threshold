@@ -3,7 +3,7 @@ extends Interactable
 @onready var clockMinigame: CanvasLayer = $"../../ClockMinigame"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	clockMinigame.visible=true
+	clockMinigame.visible=false
 	line_2d.visible=false
 
 func interact(_player: Node) -> void:
