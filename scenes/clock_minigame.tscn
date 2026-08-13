@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://b0ixgpkqkpsjo"]
+
+[ext_resource type="Shader" uid="uid://bmdby1b74ugry" path="res://scenes/paintingbg.gdshader" id="1_02e1d"]
+[ext_resource type="Texture2D" uid="uid://77kkuy20xjhg" path="res://sprites/clockbg.png" id="1_derwk"]
+[ext_resource type="Texture2D" uid="uid://bqab87kenb57t" path="res://sprites/clockframe.png" id="2_6csmt"]
+[ext_resource type="Texture2D" uid="uid://b2rpu60m0nwdn" path="res://sprites/clocknumbers.png" id="3_e1aeb"]
+[ext_resource type="Texture2D" uid="uid://dl0f8btyhj1p0" path="res://sprites/textbox.png" id="3_yhoar"]
+[ext_resource type="Texture2D" uid="uid://btk75etgblaiv" path="res://sprites/clockhand1.png" id="4_4i8yj"]
+[ext_resource type="Texture2D" uid="uid://bua4sdxkrii4w" path="res://sprites/douapuncte.png" id="5_02e1d"]
+[ext_resource type="Script" uid="uid://cviagkdc5o53x" path="res://scenes/input_space.gd" id="6_4c3m2"]
+[ext_resource type="FontFile" uid="uid://8sth7a34psu1" path="res://assets/PressStart2P.ttf" id="7_4i8yj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4i8yj"]
+shader = ExtResource("1_02e1d")
+shader_parameter/blur_amount = 4.0
+
+[node name="ClockMinigame" type="CanvasLayer" unique_id=301125098]
+
+[node name="ClockMinigameControl" type="Control" parent="." unique_id=128066031]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Screen" type="CenterContainer" parent="ClockMinigameControl" unique_id=288810519]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="ClockMinigameControl/Screen" unique_id=746357571]
+material = SubResource("ShaderMaterial_4i8yj")
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 2
+
+[node name="ClockBg" type="TextureRect" parent="ClockMinigameControl/Screen" unique_id=1124995133]
+layout_mode = 2
+texture = ExtResource("1_derwk")
+
+[node name="OuterMargin" type="MarginContainer" parent="ClockMinigameControl/Screen/ClockBg" unique_id=668659062]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.026
+anchor_top = 0.1
+anchor_right = 0.98200005
+anchor_bottom = 0.96400005
+offset_left = -0.20800018
+offset_right = 0.14398193
+offset_bottom = -1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 15
+
+[node name="ClockSpace" type="HBoxContainer" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin" unique_id=1948437966]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Clock" type="Control" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace" unique_id=1725159331]
+custom_minimum_size = Vector2(186, 177)
+layout_mode = 2
+
+[node name="ClockFrame" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock" unique_id=744105436]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_6csmt")
+
+[node name="ClockContainer" type="CenterContainer" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock" unique_id=1294597107]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ClockNumbers" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock/ClockContainer" unique_id=1664674940]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 2)
+texture = ExtResource("3_e1aeb")
+
+[node name="ClockHand1" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock/ClockContainer" unique_id=1663144446]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, -30)
+offset_transform_pivot = Vector2(0, 31)
+texture = ExtResource("4_4i8yj")
+
+[node name="Margin" type="Control" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace" unique_id=419896306]
+custom_minimum_size = Vector2(30, 177)
+layout_mode = 2
+
+[node name="InputSpace" type="HBoxContainer" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace" unique_id=1614377307]
+custom_minimum_size = Vector2(186, 177)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+script = ExtResource("6_4c3m2")
+
+[node name="InputBox1" type="CenterContainer" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" unique_id=1515196094]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox1" unique_id=1922619657]
+layout_mode = 2
+texture = ExtResource("3_yhoar")
+
+[node name="TextEdit" type="LineEdit" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox1" unique_id=240431258]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.003921569, 0, 1)
+theme_override_colors/font_uneditable_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_colors/font_placeholder_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/caret_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+theme_override_colors/selection_color = Color(0.5019608, 0.5019608, 0.5019608, 0)
+theme_override_colors/clear_button_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/clear_button_color_pressed = Color(1, 1, 1, 0)
+theme_override_constants/minimum_character_width = 3
+theme_override_fonts/font = ExtResource("7_4i8yj")
+theme_override_font_sizes/font_size = 18
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+drag_and_drop_selection_enabled = false
+flat = true
+virtual_keyboard_enabled = false
+
+[node name="DouaPuncte" type="CenterContainer" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" unique_id=520926002]
+custom_minimum_size = Vector2(35, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/DouaPuncte" unique_id=757169352]
+layout_mode = 2
+texture = ExtResource("5_02e1d")
+
+[node name="InputBox2" type="CenterContainer" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" unique_id=1155250076]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox2" unique_id=1855123233]
+layout_mode = 2
+texture = ExtResource("3_yhoar")
+
+[node name="TextEdit" type="LineEdit" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox2" unique_id=2091940688]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.003921569, 0, 1)
+theme_override_colors/font_uneditable_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_colors/font_placeholder_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/caret_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+theme_override_colors/selection_color = Color(0.5019608, 0.5019608, 0.5019608, 0)
+theme_override_colors/clear_button_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/clear_button_color_pressed = Color(1, 1, 1, 0)
+theme_override_constants/minimum_character_width = 3
+theme_override_fonts/font = ExtResource("7_4i8yj")
+theme_override_font_sizes/font_size = 18
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+drag_and_drop_selection_enabled = false
+flat = true
+virtual_keyboard_enabled = false

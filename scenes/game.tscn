@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://cf3bmsen6nj0h" path="res://scenes/door_9.tscn" id="34_js0lu"]
 [ext_resource type="Script" uid="uid://buyo1y5vd85qj" path="res://scenes/door_10.gd" id="35_0sl42"]
 [ext_resource type="PackedScene" uid="uid://cyunrt25osjwx" path="res://scenes/door_10.tscn" id="35_gxtfn"]
+[ext_resource type="PackedScene" uid="uid://b0ixgpkqkpsjo" path="res://scenes/clock_minigame.tscn" id="37_0sl42"]
 [ext_resource type="PackedScene" uid="uid://n6krf57ibe8t" path="res://scenes/chair_minigame.tscn" id="45_oaba0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbhrr"]
@@ -181,6 +182,8 @@ target_position = Vector2(2.9644165, 231.01569)
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Enemy" unique_id=1069889644]
 
 [node name="HUD" parent="." unique_id=2082992269 instance=ExtResource("5_iywne")]
+
+[node name="ClockMinigame" parent="." unique_id=128066031 instance=ExtResource("37_0sl42")]
 
 [node name="Sounds" type="Node" parent="." unique_id=263239707]
 
