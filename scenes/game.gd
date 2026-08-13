@@ -38,6 +38,7 @@ var Slots: Array[String] = ["null","null","null","null","null"]
 func _ready() -> void:
 	player.Light_Toggled.connect(light_toggled)
 	enemy.Enemy_Chasing.connect(_chasing_handle)
+	#switched this in my test
 	player.Door_Opened.connect(_check_doors)
 
 func _process(_delta: float) -> void:
