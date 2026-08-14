@@ -44,16 +44,16 @@ func _handle_minigame_visibility() -> void:
 
 
 func _on_text_edit_1_text_changed(new_text: String) -> void:
-	if new_text[-1] == "e" or new_text[-1] == "E":
+	if new_text.length()>0 and ("e" in new_text or "E" in new_text):
 		clock_minigame.visible=false
 		text_edit1.text=""
-	if new_text.length()==2:
+	if new_text.length()>=2:
 		text_edit1.release_focus()
 		text_edit2.grab_focus()
 
 func _on_text_edit_2_text_changed(new_text: String) -> void:
-	if new_text[-1] == "e" or new_text[-1] == "E":
-		clock_minigame.visibale=false
+	if new_text.length()>0 and ("e" in new_text or "E" in new_text):
+		clock_minigame.visible=false
 		text_edit2.text=""
-	if new_text.length()==2:
+	if new_text.length()>=2:
 		text_edit2.release_focus()
