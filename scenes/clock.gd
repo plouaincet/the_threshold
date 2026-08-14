@@ -1,12 +1,14 @@
 extends Interactable
 @onready var line_2d: Line2D = $Line2D
 @onready var clockMinigame: CanvasLayer = $"../../ClockMinigame"
+signal ClockMinigameInteracted
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	clockMinigame.visible=false
 	line_2d.visible=false
 
 func interact(_player: Node) -> void:
+	emit_signal("ClockMinigameInteracted")
 	clockMinigame.visible=not clockMinigame.visible
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

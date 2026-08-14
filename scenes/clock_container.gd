@@ -2,6 +2,10 @@ extends CenterContainer
 @onready var clock_hand_2: TextureRect = $ClockHand1
 @onready var clock_hand_1: TextureRect = $ClockHand2
 @onready var input_space: HBoxContainer = $"../../InputSpace"
+@onready var timer: Timer = $Timer
+@onready var clock_minigame: CanvasLayer = $"../../../../../../.."
+
+
 var angles: Array[Vector2] = [
 	Vector2(0, 0),
 	Vector2(1, 40),
@@ -18,14 +22,14 @@ var angles: Array[Vector2] = [
 ]
 
 func _ready() -> void:
-	input_space.WrittenTime.connect(_handle_hands)
+	timer.start(1.0)
 
 func _process(delta: float) -> void:
 	pass
 
 func _handle_hands(time2:int, time1:int) -> void:
-	print("minute: ", time1)
-	print("hour: ", time2)
+	#print("minute: ", time1)
+	#print("hour: ", time2)
 	clock_hand_2.offset_transform_rotation = deg_to_rad(get_minute_rotation(time1))
 	clock_hand_1.offset_transform_rotation = deg_to_rad(_apply_offset(get_hour_rotation(time2, time1)))
 
@@ -53,7 +57,6 @@ func get_minute_rotation(minute: int) -> float:
 	if upper_angle <= lower_angle:
 		upper_angle += 360
 	var t: float = float(minute - lower_minute) / float(upper_minute - lower_minute)
-	print("minute :",fmod(lower_angle + (upper_angle - lower_angle) * t, 360.0)) 
 	return fmod(lower_angle + (upper_angle - lower_angle) * t, 360.0)
 
 func get_hour_rotation(hour: int, minute: int) -> float:
@@ -76,5 +79,20 @@ func get_hour_rotation(hour: int, minute: int) -> float:
 	if upper_angle <= lower_angle:
 		upper_angle += 360
 	var t: float = float(minute) / 60.0
-	print("hour: ",fmod(lower_angle + (upper_angle - lower_angle) * t, 360.0))
 	return fmod(lower_angle + (upper_angle - lower_angle) * t, 360.0)
+
+
+func _on_timer_timeout() -> void:
+	if clock_minigame.visible==true:
+		var hours:int
+		var minutes:int
+		if $"../../InputSpace/InputBox1/TextEdit1".text == null:
+			hours=0
+		else: 
+			hours=int($"../../InputSpace/InputBox1/TextEdit1".text)
+		if $"../../InputSpace/InputBox2/TextEdit2".text==null:
+			minutes=0
+		else:
+			minutes=int($"../../InputSpace/InputBox2/TextEdit2".text)
+		_handle_hands(hours,minutes)
+	timer.start()

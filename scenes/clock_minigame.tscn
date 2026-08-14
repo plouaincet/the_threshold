@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://dg48c6yjvkps6" path="res://scenes/clock_container.gd" id="6_r4fww"]
 [ext_resource type="Texture2D" uid="uid://df7p33s2wdsvf" path="res://sprites/clockhand2.png" id="6_tjvwr"]
 [ext_resource type="FontFile" uid="uid://8sth7a34psu1" path="res://assets/PressStart2P.ttf" id="7_4i8yj"]
+[ext_resource type="Script" uid="uid://vixivje6rh0r" path="res://scenes/text_edit_1.gd" id="13_4clao"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4i8yj"]
 shader = ExtResource("1_02e1d")
@@ -46,11 +47,15 @@ layout_mode = 2
 texture = ExtResource("1_derwk")
 
 [node name="SubmitButton" type="CenterContainer" parent="ClockMinigameControl/Screen/ClockBg" unique_id=2078955934]
-layout_mode = 0
-offset_left = 234.0
-offset_top = 152.0
-offset_right = 498.0
-offset_bottom = 217.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46100003
+anchor_top = 0.60800004
+anchor_right = 0.98
+anchor_bottom = 0.86800003
+offset_left = -0.1880188
+offset_top = -1.5258789e-05
+offset_right = 0.16000366
 
 [node name="TextureButton" type="TextureButton" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton" unique_id=1118512120]
 custom_minimum_size = Vector2(100, 40)
@@ -119,6 +124,9 @@ offset_transform_position = Vector2(30, 0)
 offset_transform_pivot = Vector2(-29, 0)
 texture = ExtResource("6_tjvwr")
 
+[node name="Timer" type="Timer" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock/ClockContainer" unique_id=1790049165]
+one_shot = true
+
 [node name="Margin" type="Control" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace" unique_id=419896306]
 custom_minimum_size = Vector2(30, 177)
 layout_mode = 2
@@ -146,7 +154,7 @@ theme_override_colors/font_uneditable_color = Color(0.8745098, 0.8745098, 0.8745
 theme_override_colors/font_selected_color = Color(1, 1, 1, 0)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_colors/font_placeholder_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
-theme_override_colors/caret_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+theme_override_colors/caret_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
 theme_override_colors/selection_color = Color(0.5019608, 0.5019608, 0.5019608, 0)
 theme_override_colors/clear_button_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
 theme_override_colors/clear_button_color_pressed = Color(1, 1, 1, 0)
@@ -154,7 +162,7 @@ theme_override_constants/minimum_character_width = 3
 theme_override_fonts/font = ExtResource("7_4i8yj")
 theme_override_font_sizes/font_size = 18
 alignment = 1
-max_length = 3
+max_length = 2
 context_menu_enabled = false
 emoji_menu_enabled = false
 shortcut_keys_enabled = false
@@ -163,6 +171,8 @@ selecting_enabled = false
 drag_and_drop_selection_enabled = false
 flat = true
 virtual_keyboard_enabled = false
+caret_blink = true
+script = ExtResource("13_4clao")
 
 [node name="DouaPuncte" type="CenterContainer" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" unique_id=520926002]
 custom_minimum_size = Vector2(35, 50)
@@ -186,7 +196,7 @@ theme_override_colors/font_uneditable_color = Color(0.8745098, 0.8745098, 0.8745
 theme_override_colors/font_selected_color = Color(1, 1, 1, 0)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_colors/font_placeholder_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
-theme_override_colors/caret_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+theme_override_colors/caret_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
 theme_override_colors/selection_color = Color(0.5019608, 0.5019608, 0.5019608, 0)
 theme_override_colors/clear_button_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
 theme_override_colors/clear_button_color_pressed = Color(1, 1, 1, 0)
@@ -194,7 +204,7 @@ theme_override_constants/minimum_character_width = 3
 theme_override_fonts/font = ExtResource("7_4i8yj")
 theme_override_font_sizes/font_size = 18
 alignment = 1
-max_length = 3
+max_length = 2
 context_menu_enabled = false
 emoji_menu_enabled = false
 shortcut_keys_enabled = false
@@ -202,8 +212,12 @@ selecting_enabled = false
 drag_and_drop_selection_enabled = false
 flat = true
 virtual_keyboard_enabled = false
+caret_blink = true
 
+[connection signal="timeout" from="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock/ClockContainer/Timer" to="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock/ClockContainer" method="_on_timer_timeout"]
 [connection signal="focus_entered" from="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox1/TextEdit1" to="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_1_focus_entered"]
 [connection signal="focus_exited" from="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox1/TextEdit1" to="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_1_focus_exited"]
+[connection signal="text_changed" from="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox1/TextEdit1" to="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_1_text_changed"]
 [connection signal="focus_entered" from="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox2/TextEdit2" to="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_2_focus_entered"]
 [connection signal="focus_exited" from="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox2/TextEdit2" to="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_2_focus_exited"]
+[connection signal="text_changed" from="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox2/TextEdit2" to="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_2_text_changed"]
