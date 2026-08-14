@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cftc8ehpd0vil" path="res://sprites/tablou.png" id="2_oo0fn"]
 [ext_resource type="Texture2D" uid="uid://dsll6mifrj2s6" path="res://sprites/backgrslot.png" id="4_6fi6k"]
 [ext_resource type="Texture2D" uid="uid://3kdxqn5o6lwk" path="res://sprites/slot.png" id="5_uo2fv"]
-[ext_resource type="Texture2D" uid="uid://bs58qgpjhq0eo" path="res://sprites/sprintbarbg.png" id="6_5pdws"]
-[ext_resource type="Texture2D" uid="uid://dnvmhm48ivele" path="res://sprites/sprintbar.png" id="7_hd3ao"]
+[ext_resource type="Texture2D" path="res://sprites/sprintbarbg.png" id="6_5pdws"]
+[ext_resource type="Texture2D" path="res://sprites/sprintbar.png" id="7_hd3ao"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3owqy"]
 shader = ExtResource("2_5ysmq")
