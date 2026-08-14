@@ -43,7 +43,15 @@
 [ext_resource type="Script" uid="uid://buyo1y5vd85qj" path="res://scenes/door_10.gd" id="35_0sl42"]
 [ext_resource type="PackedScene" uid="uid://cyunrt25osjwx" path="res://scenes/door_10.tscn" id="35_gxtfn"]
 [ext_resource type="PackedScene" uid="uid://b0ixgpkqkpsjo" path="res://scenes/clock_minigame.tscn" id="37_0sl42"]
+[ext_resource type="PackedScene" uid="uid://y8h05tki7d0s" path="res://scenes/piano_minigame.tscn" id="41_oaba0"]
 [ext_resource type="PackedScene" uid="uid://n6krf57ibe8t" path="res://scenes/chair_minigame.tscn" id="45_oaba0"]
+[ext_resource type="AudioStream" uid="uid://dxl87i6daeaat" path="res://assets/c4.mp3" id="46_458eo"]
+[ext_resource type="AudioStream" uid="uid://bxax1g2sll0wm" path="res://assets/re.mp3" id="47_pf7vy"]
+[ext_resource type="AudioStream" uid="uid://bdqm74yk784ps" path="res://assets/mi.mp3" id="48_o8ni1"]
+[ext_resource type="AudioStream" uid="uid://t44p47voe1ob" path="res://assets/fa.mp3" id="49_3hbvx"]
+[ext_resource type="AudioStream" uid="uid://dmdyeprgqvfc7" path="res://assets/sol.mp3" id="50_q8j3a"]
+[ext_resource type="AudioStream" uid="uid://6c3o81gfsltr" path="res://assets/la.mp3" id="51_ms3bu"]
+[ext_resource type="AudioStream" uid="uid://bhx5twvlk134" path="res://assets/si.mp3" id="52_7ixpq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbhrr"]
 radius = 2.0
@@ -157,6 +165,7 @@ position = Vector2(292, -125)
 [node name="player" parent="." unique_id=1698648380 instance=ExtResource("2_yqjtg")]
 unique_name_in_owner = true
 y_sort_enabled = true
+position = Vector2(-398, -34)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=678641909]
 offset = Vector2(0, -20)
@@ -185,6 +194,8 @@ target_position = Vector2(2.9644165, 231.01569)
 
 [node name="ClockMinigame" parent="." unique_id=128066031 instance=ExtResource("37_0sl42")]
 
+[node name="PianoMinigame" parent="." unique_id=810741825 instance=ExtResource("41_oaba0")]
+
 [node name="Sounds" type="Node" parent="." unique_id=263239707]
 
 [node name="LightOn" type="AudioStreamPlayer2D" parent="Sounds" unique_id=766249937]
@@ -200,6 +211,27 @@ max_distance = 20000.0
 [node name="Screen_Entered_By_Enemy" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1251449746]
 stream = ExtResource("12_dinhu")
 volume_db = -5.0
+
+[node name="Do" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1865211208]
+stream = ExtResource("46_458eo")
+
+[node name="Re" type="AudioStreamPlayer2D" parent="Sounds" unique_id=682732838]
+stream = ExtResource("47_pf7vy")
+
+[node name="Mi" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1644108633]
+stream = ExtResource("48_o8ni1")
+
+[node name="Fa" type="AudioStreamPlayer2D" parent="Sounds" unique_id=590806807]
+stream = ExtResource("49_3hbvx")
+
+[node name="Sol" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1752528395]
+stream = ExtResource("50_q8j3a")
+
+[node name="La" type="AudioStreamPlayer2D" parent="Sounds" unique_id=663224206]
+stream = ExtResource("51_ms3bu")
+
+[node name="Si" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1833077128]
+stream = ExtResource("52_7ixpq")
 
 [connection signal="timeout" from="player/Timer" to="player" method="_on_timer_timeout"]
 [connection signal="screen_entered" from="Enemy/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

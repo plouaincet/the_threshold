@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhcdv81ebrf2c"
-path="res://.godot/imported/sprintbarbg.png-f6ca2a1576cbb7a37f52f293d87fb6ae.ctex"
+uid="uid://g7tkmxj2upxs"
+path="res://.godot/imported/pianobg.png-962cb664d504616aec913ff4429db8dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/sprintbarbg.png"
-dest_files=["res://.godot/imported/sprintbarbg.png-f6ca2a1576cbb7a37f52f293d87fb6ae.ctex"]
+source_file="res://sprites/pianobg.png"
+dest_files=["res://.godot/imported/pianobg.png-962cb664d504616aec913ff4429db8dd.ctex"]
 
 [params]
 

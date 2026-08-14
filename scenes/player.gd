@@ -15,6 +15,7 @@ const REGEN_RATE: float = DRAIN_RATE / 3.0
 @onready var playersprite: AnimatedSprite2D = $Sprite2D
 @onready var painting_viewer: Control = $"../HUD/PaintingViewer"
 @onready var clockMinigame: CanvasLayer = $"../ClockMinigame"
+@onready var piano_minigame: CanvasLayer = $"../PianoMinigame"
 
 
 var nearby_interactables: Array[Interactable] = []
@@ -107,5 +108,7 @@ func restrained() -> bool:
 	if painting_viewer.visible:
 		return true
 	if clockMinigame.visible:
+		return true
+	if piano_minigame.visible:
 		return true
 	return false

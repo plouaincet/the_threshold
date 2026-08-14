@@ -1,0 +1,199 @@
+[gd_scene format=3 uid="uid://y8h05tki7d0s"]
+
+[ext_resource type="Texture2D" uid="uid://nbrin6oqkv7y" path="res://sprites/ppianobg.png" id="1_4rqdg"]
+[ext_resource type="Shader" uid="uid://bmdby1b74ugry" path="res://scenes/paintingbg.gdshader" id="1_xtd5b"]
+[ext_resource type="Texture2D" uid="uid://cyjic03atas4y" path="res://sprites/pianoplaybutton.png" id="2_icr33"]
+[ext_resource type="Texture2D" uid="uid://cio1dk1be5d3f" path="res://sprites/ppiano.png" id="3_tr4yx"]
+[ext_resource type="Texture2D" uid="uid://dxxji33rad3rf" path="res://sprites/pslot.png" id="4_xtd5b"]
+[ext_resource type="Script" uid="uid://deqmnlsfax2rp" path="res://scenes/ppiano.gd" id="5_vkr4q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vkr4q"]
+shader = ExtResource("1_xtd5b")
+shader_parameter/blur_amount = 4.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_of2ov"]
+
+[node name="PianoMinigame" type="CanvasLayer" unique_id=810741825]
+
+[node name="Screen" type="Control" parent="." unique_id=413296818]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Screen" unique_id=1667235748]
+material = SubResource("ShaderMaterial_vkr4q")
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Screen" unique_id=273098712]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PianoBG" type="TextureRect" parent="Screen/CenterContainer" unique_id=1696276497]
+layout_mode = 2
+texture = ExtResource("1_4rqdg")
+
+[node name="Margin" type="MarginContainer" parent="Screen/CenterContainer/PianoBG" unique_id=1716664454]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.994
+anchor_bottom = 0.98700005
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -0.05999756
+offset_bottom = 0.08099365
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 34
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 29
+
+[node name="VZones" type="VBoxContainer" parent="Screen/CenterContainer/PianoBG/Margin" unique_id=982800994]
+layout_mode = 2
+
+[node name="PianoContainer" type="CenterContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones" unique_id=488728249]
+custom_minimum_size = Vector2(430, 121)
+layout_mode = 2
+
+[node name="PianoHContainer" type="HBoxContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer" unique_id=511470123]
+custom_minimum_size = Vector2(387, 118)
+layout_mode = 2
+
+[node name="Margin" type="Control" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer" unique_id=184449660]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="ButtonCenter" type="CenterContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer" unique_id=53393027]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="PlayButton" type="TextureButton" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/ButtonCenter" unique_id=1298871782]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(20.5, 2)
+texture_normal = ExtResource("2_icr33")
+
+[node name="PianoCenter" type="CenterContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer" unique_id=1327636941]
+custom_minimum_size = Vector2(325, 0)
+layout_mode = 2
+
+[node name="Piano" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter" unique_id=2082761146]
+layout_mode = 2
+offset_transform_enabled = true
+texture = ExtResource("3_tr4yx")
+script = ExtResource("5_vkr4q")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano" unique_id=120572919]
+custom_maximum_size = Vector2(252, -1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Do" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer" unique_id=148051235]
+self_modulate = Color(0.039215688, 0.039215688, 0.039215688, 0)
+custom_minimum_size = Vector2(36, 95)
+layout_mode = 2
+offset_transform_enabled = true
+texture = SubResource("CanvasTexture_of2ov")
+
+[node name="Re" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer" unique_id=899734257]
+self_modulate = Color(0.039215688, 0.039215688, 0.039215688, 0)
+custom_minimum_size = Vector2(36, 95)
+layout_mode = 2
+offset_transform_enabled = true
+texture = SubResource("CanvasTexture_of2ov")
+
+[node name="Mi" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer" unique_id=1001491171]
+self_modulate = Color(0.039215688, 0.039215688, 0.039215688, 0)
+custom_minimum_size = Vector2(35, 95)
+layout_mode = 2
+offset_transform_enabled = true
+texture = SubResource("CanvasTexture_of2ov")
+
+[node name="Fa" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer" unique_id=2097959066]
+self_modulate = Color(0.039215688, 0.039215688, 0.039215688, 0)
+custom_minimum_size = Vector2(37, 95)
+layout_mode = 2
+offset_transform_enabled = true
+texture = SubResource("CanvasTexture_of2ov")
+
+[node name="Sol" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer" unique_id=1603516518]
+self_modulate = Color(0.039215688, 0.039215688, 0.039215688, 0)
+custom_minimum_size = Vector2(36, 95)
+layout_mode = 2
+offset_transform_enabled = true
+texture = SubResource("CanvasTexture_of2ov")
+
+[node name="La" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer" unique_id=1384400548]
+self_modulate = Color(0.039215688, 0.039215688, 0.039215688, 0)
+custom_minimum_size = Vector2(37, 95)
+layout_mode = 2
+offset_transform_enabled = true
+texture = SubResource("CanvasTexture_of2ov")
+
+[node name="Si" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer" unique_id=1880318834]
+self_modulate = Color(0.039215688, 0.039215688, 0.039215688, 0)
+custom_minimum_size = Vector2(35, 95)
+layout_mode = 2
+offset_transform_enabled = true
+texture = SubResource("CanvasTexture_of2ov")
+
+[node name="SlotZone" type="CenterContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones" unique_id=578613181]
+custom_minimum_size = Vector2(431, 52)
+layout_mode = 2
+
+[node name="SlotHContainer" type="HBoxContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones/SlotZone" unique_id=521203950]
+layout_mode = 2
+
+[node name="Slot1" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/SlotZone/SlotHContainer" unique_id=1171145708]
+layout_mode = 2
+texture = ExtResource("4_xtd5b")
+
+[node name="Slot2" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/SlotZone/SlotHContainer" unique_id=108639280]
+layout_mode = 2
+texture = ExtResource("4_xtd5b")
+
+[node name="Slot3" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/SlotZone/SlotHContainer" unique_id=1385434774]
+layout_mode = 2
+texture = ExtResource("4_xtd5b")
+
+[node name="Slot4" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/SlotZone/SlotHContainer" unique_id=1535678070]
+layout_mode = 2
+texture = ExtResource("4_xtd5b")
+
+[node name="Slot5" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/SlotZone/SlotHContainer" unique_id=1402114894]
+layout_mode = 2
+texture = ExtResource("4_xtd5b")
+
+[node name="Slot6" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/SlotZone/SlotHContainer" unique_id=641506249]
+layout_mode = 2
+texture = ExtResource("4_xtd5b")
+
+[node name="Slot7" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/SlotZone/SlotHContainer" unique_id=1358853379]
+layout_mode = 2
+texture = ExtResource("4_xtd5b")
+
+[node name="Slot8" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/SlotZone/SlotHContainer" unique_id=1633343021]
+layout_mode = 2
+texture = ExtResource("4_xtd5b")
+
+[connection signal="gui_input" from="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/ButtonCenter/PlayButton" to="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano" method="_on_play_button_gui_input"]
+[connection signal="gui_input" from="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Do" to="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano" method="_on_do_gui_input"]
+[connection signal="gui_input" from="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Re" to="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano" method="_on_re_gui_input"]
+[connection signal="gui_input" from="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Mi" to="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano" method="_on_mi_gui_input"]
+[connection signal="gui_input" from="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Fa" to="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano" method="_on_fa_gui_input"]
+[connection signal="gui_input" from="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Sol" to="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano" method="_on_sol_gui_input"]
+[connection signal="gui_input" from="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/La" to="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano" method="_on_la_gui_input"]
+[connection signal="gui_input" from="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Si" to="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano" method="_on_si_gui_input"]
