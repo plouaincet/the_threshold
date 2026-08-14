@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cio1dk1be5d3f" path="res://sprites/ppiano.png" id="3_tr4yx"]
 [ext_resource type="Texture2D" uid="uid://dxxji33rad3rf" path="res://sprites/pslot.png" id="4_xtd5b"]
 [ext_resource type="Script" uid="uid://deqmnlsfax2rp" path="res://scenes/ppiano.gd" id="5_vkr4q"]
+[ext_resource type="Texture2D" uid="uid://dwcsbmkgrkafh" path="res://sprites/tiles.png" id="6_vkr4q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vkr4q"]
 shader = ExtResource("1_xtd5b")
@@ -84,6 +85,13 @@ texture_normal = ExtResource("2_icr33")
 [node name="PianoCenter" type="CenterContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer" unique_id=1327636941]
 custom_minimum_size = Vector2(325, 0)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter" unique_id=1825792944]
+z_index = 1
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(1, -22)
+texture = ExtResource("6_vkr4q")
 
 [node name="Piano" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter" unique_id=2082761146]
 layout_mode = 2
