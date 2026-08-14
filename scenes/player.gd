@@ -10,7 +10,7 @@ const DRAIN_TIME: float = 2.0 #seconds to fully drain while sprinting
 const DRAIN_RATE: float = MAX_STAMINA / DRAIN_TIME
 const REGEN_RATE: float = DRAIN_RATE / 3.0
 
-@onready var progress: ProgressBar = $"../HUD/SpeedBar/CenterContainer/ColorRect/MarginContainer/ProgressBar"
+@onready var progress: TextureProgressBar = $"../HUD/SpeedBar/CenterContainer/ColorRect/MarginContainer/ProgressBar"
 @onready var slots: HBoxContainer = $"../HUD/PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots"
 @onready var playersprite: AnimatedSprite2D = $Sprite2D
 @onready var painting_viewer: Control = $"../HUD/PaintingViewer"

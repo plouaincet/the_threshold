@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cftc8ehpd0vil" path="res://sprites/tablou.png" id="2_oo0fn"]
 [ext_resource type="Texture2D" uid="uid://dsll6mifrj2s6" path="res://sprites/backgrslot.png" id="4_6fi6k"]
 [ext_resource type="Texture2D" uid="uid://3kdxqn5o6lwk" path="res://sprites/slot.png" id="5_uo2fv"]
+[ext_resource type="Texture2D" uid="uid://bs58qgpjhq0eo" path="res://sprites/sprintbarbg.png" id="6_5pdws"]
+[ext_resource type="Texture2D" uid="uid://dnvmhm48ivele" path="res://sprites/sprintbar.png" id="7_hd3ao"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3owqy"]
 shader = ExtResource("2_5ysmq")
@@ -305,10 +307,10 @@ offset_left = 0.28799438
 offset_top = 0.27197266
 offset_right = -0.104003906
 
-[node name="ColorRect" type="ColorRect" parent="SpeedBar/CenterContainer" unique_id=1045735025]
+[node name="ColorRect" type="TextureRect" parent="SpeedBar/CenterContainer" unique_id=770419269]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-color = Color(0.11764706, 0, 0, 1)
+texture = ExtResource("6_5pdws")
 
 [node name="MarginContainer" type="MarginContainer" parent="SpeedBar/CenterContainer/ColorRect" unique_id=479056954]
 layout_mode = 1
@@ -322,8 +324,9 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="ProgressBar" type="ProgressBar" parent="SpeedBar/CenterContainer/ColorRect/MarginContainer" unique_id=2062475683]
+[node name="ProgressBar" type="TextureProgressBar" parent="SpeedBar/CenterContainer/ColorRect/MarginContainer" unique_id=1315948275]
 layout_mode = 2
-size_flags_vertical = 1
+offset_transform_enabled = true
+offset_transform_position = Vector2(35, 1)
 value = 100.0
-show_percentage = false
+texture_progress = ExtResource("7_hd3ao")

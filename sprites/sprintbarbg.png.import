@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8rooyh0vsydh"
-path="res://.godot/imported/Sprint.png-87313e227df2b840e7aa0d683ffb807b.ctex"
+uid="uid://bs58qgpjhq0eo"
+path="res://.godot/imported/sprintbarbg.png-f6ca2a1576cbb7a37f52f293d87fb6ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Sprint.png"
-dest_files=["res://.godot/imported/Sprint.png-87313e227df2b840e7aa0d683ffb807b.ctex"]
+source_file="res://sprites/sprintbarbg.png"
+dest_files=["res://.godot/imported/sprintbarbg.png-f6ca2a1576cbb7a37f52f293d87fb6ae.ctex"]
 
 [params]
 
