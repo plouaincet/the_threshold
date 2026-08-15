@@ -9,17 +9,16 @@ func _ready() -> void:
 
 func place(_player: Node) -> void:
 	var toy_name=name.erase(0,1)
-	var cnt=0
-	for i in game.Slots:
+	var cnt=game.selected_frame
+	if cnt+1 and game.Slots[cnt]!="null":  #and game.Slots[cnt] == toy_name
 		cnt+=1
-		if i == toy_name:
-			var sprite=get_node("../../HUD/PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot" + str(cnt) + "/Sprite2D")
-			sprite.reparent(self)
-			sprite.position = Vector2.ZERO
-			sprite.scale = Vector2(0.5, 0.5)
-			game.Slots[cnt-1]="null"
-			check_for_completion()
-			return
+		var sprite=get_node("../../HUD/PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot" + str(cnt) + "/Sprite2D")
+		sprite.reparent(self)
+		sprite.position = Vector2.ZERO
+		sprite.scale = Vector2(0.5, 0.5)
+		game.Slots[cnt-1]="null"
+		check_for_completion()
+		return
 	game.slot_spaces_shake()
 	
 	
