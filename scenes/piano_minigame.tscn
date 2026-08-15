@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dxxji33rad3rf" path="res://sprites/pslot.png" id="4_xtd5b"]
 [ext_resource type="Script" uid="uid://deqmnlsfax2rp" path="res://scenes/ppiano.gd" id="5_vkr4q"]
 [ext_resource type="Texture2D" uid="uid://dwcsbmkgrkafh" path="res://sprites/tiles.png" id="6_vkr4q"]
+[ext_resource type="FontFile" uid="uid://8sth7a34psu1" path="res://assets/PressStart2P.ttf" id="7_s4dy4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vkr4q"]
 shader = ExtResource("1_xtd5b")
@@ -79,11 +80,10 @@ layout_mode = 2
 [node name="PlayButton" type="TextureButton" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/ButtonCenter" unique_id=1298871782]
 layout_mode = 2
 offset_transform_enabled = true
-offset_transform_position = Vector2(20.5, 2)
 texture_normal = ExtResource("2_icr33")
 
 [node name="PianoCenter" type="CenterContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer" unique_id=1327636941]
-custom_minimum_size = Vector2(325, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter" unique_id=1825792944]
@@ -116,12 +116,44 @@ layout_mode = 2
 offset_transform_enabled = true
 texture = SubResource("CanvasTexture_of2ov")
 
+[node name="CenterContainer" type="CenterContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Do" unique_id=488352305]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Do/CenterContainer" unique_id=1854439718]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 25)
+theme_override_fonts/font = ExtResource("7_s4dy4")
+text = "r"
+
 [node name="Re" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer" unique_id=899734257]
 self_modulate = Color(0.039215688, 0.039215688, 0.039215688, 0)
 custom_minimum_size = Vector2(36, 95)
 layout_mode = 2
 offset_transform_enabled = true
 texture = SubResource("CanvasTexture_of2ov")
+
+[node name="CenterContainer" type="CenterContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Re" unique_id=1581293877]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Re/CenterContainer" unique_id=1013546246]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 25)
+theme_override_fonts/font = ExtResource("7_s4dy4")
+text = "t"
 
 [node name="Mi" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer" unique_id=1001491171]
 self_modulate = Color(0.039215688, 0.039215688, 0.039215688, 0)
@@ -130,12 +162,44 @@ layout_mode = 2
 offset_transform_enabled = true
 texture = SubResource("CanvasTexture_of2ov")
 
+[node name="CenterContainer" type="CenterContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Mi" unique_id=1158601614]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Mi/CenterContainer" unique_id=569651372]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 25)
+theme_override_fonts/font = ExtResource("7_s4dy4")
+text = "y"
+
 [node name="Fa" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer" unique_id=2097959066]
 self_modulate = Color(0.039215688, 0.039215688, 0.039215688, 0)
 custom_minimum_size = Vector2(37, 95)
 layout_mode = 2
 offset_transform_enabled = true
 texture = SubResource("CanvasTexture_of2ov")
+
+[node name="CenterContainer" type="CenterContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Fa" unique_id=784443232]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Fa/CenterContainer" unique_id=217740510]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 25)
+theme_override_fonts/font = ExtResource("7_s4dy4")
+text = "u"
 
 [node name="Sol" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer" unique_id=1603516518]
 self_modulate = Color(0.039215688, 0.039215688, 0.039215688, 0)
@@ -144,12 +208,44 @@ layout_mode = 2
 offset_transform_enabled = true
 texture = SubResource("CanvasTexture_of2ov")
 
+[node name="CenterContainer" type="CenterContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Sol" unique_id=382073635]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Sol/CenterContainer" unique_id=1969378391]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 25)
+theme_override_fonts/font = ExtResource("7_s4dy4")
+text = "i"
+
 [node name="La" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer" unique_id=1384400548]
 self_modulate = Color(0.039215688, 0.039215688, 0.039215688, 0)
 custom_minimum_size = Vector2(37, 95)
 layout_mode = 2
 offset_transform_enabled = true
 texture = SubResource("CanvasTexture_of2ov")
+
+[node name="CenterContainer" type="CenterContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/La" unique_id=1489446001]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/La/CenterContainer" unique_id=2064021454]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 25)
+theme_override_fonts/font = ExtResource("7_s4dy4")
+text = "o"
 
 [node name="Si" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer" unique_id=1880318834]
 self_modulate = Color(0.039215688, 0.039215688, 0.039215688, 0)
@@ -158,11 +254,28 @@ layout_mode = 2
 offset_transform_enabled = true
 texture = SubResource("CanvasTexture_of2ov")
 
+[node name="CenterContainer" type="CenterContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Si" unique_id=1672136554]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Screen/CenterContainer/PianoBG/Margin/VZones/PianoContainer/PianoHContainer/PianoCenter/Piano/HBoxContainer/Si/CenterContainer" unique_id=540952043]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 25)
+theme_override_fonts/font = ExtResource("7_s4dy4")
+text = "p"
+
 [node name="SlotZone" type="CenterContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones" unique_id=578613181]
 custom_minimum_size = Vector2(431, 52)
 layout_mode = 2
 
 [node name="SlotHContainer" type="HBoxContainer" parent="Screen/CenterContainer/PianoBG/Margin/VZones/SlotZone" unique_id=521203950]
+show_behind_parent = true
 layout_mode = 2
 
 [node name="Slot1" type="TextureRect" parent="Screen/CenterContainer/PianoBG/Margin/VZones/SlotZone/SlotHContainer" unique_id=1171145708]

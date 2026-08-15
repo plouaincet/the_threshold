@@ -6,6 +6,7 @@ extends Node
 @onready var chasing_music: AudioStreamPlayer2D = $Sounds/Chasing_Music
 @onready var screenent_sound: AudioStreamPlayer2D = $Sounds/Screen_Entered_By_Enemy
 @onready var inventory: Control = $"./HUD/PlayerInventory"
+@onready var bg_music: AudioStreamPlayer2D = $Sounds/BgMusic
 
 
 const SCREEN_SIZE := Vector2(1152, 648)
@@ -36,6 +37,8 @@ var light_state: bool = true
 var Slots: Array[String] = ["null","null","null","null","null"]
 
 func _ready() -> void:
+	bg_music.volume_db=5
+	bg_music.play()
 	player.Light_Toggled.connect(light_toggled)
 	enemy.Enemy_Chasing.connect(_chasing_handle)
 	player.Door_Opened.connect(_check_doors)

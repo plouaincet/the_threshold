@@ -22,6 +22,8 @@ extends TextureRect
 @onready var slot_6: TextureRect = $"../../../../SlotZone/SlotHContainer/Slot6"
 @onready var slot_7: TextureRect = $"../../../../SlotZone/SlotHContainer/Slot7"
 @onready var slot_8: TextureRect = $"../../../../SlotZone/SlotHContainer/Slot8"
+@onready var piano_minigame: CanvasLayer = $"../../../../../../../../.."
+@onready var slot_h_container: HBoxContainer = $"../../../../SlotZone/SlotHContainer"
 
 var notes: Array[String] = ["SDo", "SRe", "SMi", "SFa", "SSol", "SLa", "SSi", "SDo"]
 var slots: Array[TextureRect] = []
@@ -37,65 +39,60 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _on_do_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		do.self_modulate.a = 160.0/255.0
-		await get_tree().create_timer(0.1).timeout
-		do.self_modulate.a = 0.0
-		Sdo.play()
-		check_note("SDo")
+		play_note(do)
 
 func _on_re_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		re.self_modulate.a = 160.0/255.0
-		await get_tree().create_timer(0.1).timeout
-		re.self_modulate.a = 0.0
-		Sre.play()
-		check_note("SRe")
+		play_note(re)
 
 func _on_mi_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		mi.self_modulate.a = 160.0/255.0
-		await get_tree().create_timer(0.1).timeout
-		mi.self_modulate.a = 0.0
-		Smi.play()
-		check_note("SMi")
+		play_note(mi)
 
 func _on_fa_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		fa.self_modulate.a = 160.0/255.0
-		await get_tree().create_timer(0.1).timeout
-		fa.self_modulate.a = 0.0
-		Sfa.play()
-		check_note("SFa")
+		play_note(fa)
 
 func _on_sol_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		sol.self_modulate.a = 160.0/255.0
-		await get_tree().create_timer(0.1).timeout
-		sol.self_modulate.a = 0.0
-		Ssol.play()
-		check_note("SSol")
+		play_note(sol)
 
 func _on_la_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		la.self_modulate.a = 160.0/255.0
-		await get_tree().create_timer(0.1).timeout
-		la.self_modulate.a = 0.0
-		Sla.play()
-		check_note("SLa")
+		play_note(la)
 
 func _on_si_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		si.self_modulate.a = 160.0/255.0
-		await get_tree().create_timer(0.1).timeout
-		si.self_modulate.a = 0.0
-		Ssi.play()
-		check_note("SSi")
+		play_note(si)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if piano_minigame.visible==true:
+		if event.is_action_pressed("do"):
+			play_note(do)
+		elif event.is_action_pressed("re"):
+			play_note(re)
+		elif event.is_action_pressed("mi"):
+			play_note(mi)
+		elif event.is_action_pressed("fa"):
+			play_note(fa)
+		elif event.is_action_pressed("sol"):
+			play_note(sol)
+		elif event.is_action_pressed("la"):
+			play_note(la)
+		elif event.is_action_pressed("si"):
+			play_note(si)
+
+func play_note(note:TextureRect) -> void:
+	note.self_modulate.a=160.0/255.0
+	await get_tree().create_timer(0.1).timeout
+	note.self_modulate.a=0.0
+	get_node("../../../../../../../../../../Sounds/" + note.name.capitalize()).play()
+	check_note("S"+note.name.capitalize())
 
 func _on_play_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -134,18 +131,37 @@ func check_note(note_name: String) -> void:
 		return
 
 	var slot = slots[current_slot_index]
-
+	slot.self_modulate=Color(140.0/255,140.0/255,140.0/255)
 	if note_name == notes[current_slot_index]:
-		slot.self_modulate = Color(0, 1, 0, 1) # green
+		#slot.self_modulate = Color(0, 1, 0, 1) # green
 		nr_correct_slots+=1
-	else:
-		slot.self_modulate = Color(1, 0, 0, 1) # red
+	#else:
+		#slot.self_modulate = Color(1, 0, 0, 1) # red
 
 	current_slot_index += 1
 
 	if current_slot_index >= notes.size():
-		await get_tree().create_timer(0.6).timeout
-		reset_slots()
+		if nr_correct_slots==8:
+			slot_h_container.modulate=Color(0,1,0,1) # green
+			await get_tree().create_timer(0.3).timeout
+			slot_h_container.modulate=Color(1,1,1,1) # normal
+			await get_tree().create_timer(0.3).timeout
+			slot_h_container.modulate=Color(0,1,0,1) # green
+			await get_tree().create_timer(0.3).timeout
+			slot_h_container.modulate=Color(1,1,1,1) #normal
+			await get_tree().create_timer(0.3).timeout
+			slot_h_container.modulate=Color(0,1,0,1) # green
+			print("you got purple key!")
+		else:
+			slot_h_container.modulate=Color(1, 0, 0, 1)# red
+			await get_tree().create_timer(0.3).timeout
+			slot_h_container.modulate=Color(1,1,1,1) # normal
+			await get_tree().create_timer(0.3).timeout
+			slot_h_container.modulate=Color(1, 0, 0, 1) # red
+			await get_tree().create_timer(0.3).timeout
+			slot_h_container.modulate=Color(1,1,1,1) #normal
+			await get_tree().create_timer(0.6).timeout
+			reset_slots()
 
 func reset_slots() -> void:
 	for slot in slots:

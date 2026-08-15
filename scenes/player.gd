@@ -64,10 +64,10 @@ func _physics_process(delta: float) -> void:
 		elif direction.x<0:
 			playersprite.play("running_left")
 
-	if Input.is_action_just_pressed("light_toggle"):
+	if Input.is_action_just_pressed("light_toggle") and not restrained():
 		emit_signal("Light_Toggled")
 		lantern_open = not lantern_open
-		
+
 	if not restrained():
 		move_and_slide()
 

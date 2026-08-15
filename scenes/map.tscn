@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bgfgk2hustmds"]
 
-[ext_resource type="Texture2D" uid="uid://dhhks4550u6e5" path="res://sprites/mapwostuff.png" id="1_4xfga"]
+[ext_resource type="Texture2D" uid="uid://cp4snha0o1uw0" path="res://sprites/mapwostuff.png" id="1_4xfga"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3owqy"]
 
@@ -28,7 +28,6 @@ position = Vector2(795, 619.6266)
 texture = ExtResource("1_4xfga")
 
 [node name="Collisions (do not open)" type="StaticBody2D" parent="." unique_id=781031164]
-visible = false
 position = Vector2(795, 620)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions (do not open)" unique_id=1432040354]
