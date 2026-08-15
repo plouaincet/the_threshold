@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("light_toggle") and not restrained():
 		emit_signal("Light_Toggled")
 		lantern_open = not lantern_open
-
+		
 	if not restrained():
 		move_and_slide()
 

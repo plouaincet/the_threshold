@@ -26,7 +26,7 @@ var SPEED :int = 30
 var current_patrol_index: int = 0
 var target: CharacterBody2D = null
 var max_view_distance := 500
-var view_angle := deg_to_rad(80.0)
+var view_angle := deg_to_rad(70.0)
 
 func _ready() -> void:
 	for cast in [vision, vision2, vision3]:
@@ -118,9 +118,12 @@ func check_for_player():
 		if to_player.length() > max_view_distance:
 			continue
 
-		target = player
-		spotted_by_enemy = true
-		return
+		var angle = facing.angle_to(to_player.normalized())
+		if abs(angle) <= view_angle / 2.0:
+			target = player
+			spotted_by_enemy = true
+			return
+
 
 func check_player_inside() -> void:
 	if area_w_o_light.check_for_player() or area_w_light.check_for_player():

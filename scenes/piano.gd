@@ -1,6 +1,7 @@
 extends Interactable
 @onready var line_2d: Line2D = $Line2D
 @onready var PianoMinigame: CanvasLayer= $"../../PianoMinigame"
+@onready var bg_music: AudioStreamPlayer2D = $"../../Sounds/BgMusic"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,6 +11,10 @@ func _ready() -> void:
 
 func interact(_player: Node) -> void:
 	PianoMinigame.visible=not PianoMinigame.visible
+	if PianoMinigame.visible:
+		bg_music.volume_db=0
+	else:
+		bg_music.volume_db=5
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

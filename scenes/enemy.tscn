@@ -48,7 +48,6 @@ path_search_max_polygons = 10000
 avoidance_enabled = true
 max_neighbors = 30
 max_speed = 500.0
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1664559223]
 wait_time = 0.1
@@ -64,7 +63,7 @@ shape = SubResource("CircleShape2D_3owqy")
 script = ExtResource("4_5uy6h")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area w light" unique_id=1053790904]
-polygon = PackedVector2Array(0, -1, -72, 235, 72, 235)
+polygon = PackedVector2Array(0, -1, -45, 145, 45, 145)
 
 [node name="Enemy is close" type="Area2D" parent="." unique_id=1544241365]
 
