@@ -5,6 +5,8 @@ extends CenterContainer
 @onready var timer: Timer = $Timer
 @onready var clock_minigame: CanvasLayer = $"../../../../../../.."
 @onready var game: Node2D = $"../../../../../../../.."
+@onready var texture_button: TextureButton = $"../../../../SubmitButton/TextureButton"
+
 var actual_hours:int=0
 var actual_minutes:int=0
 var angles: Array[Vector2] = [
@@ -112,8 +114,28 @@ func _on_texture_button_pressed() -> void:
 			minutes=int($"../../InputSpace/InputBox2/TextEdit2".text)
 			resolve_clock()
 		if hours==actual_hours and minutes==actual_minutes:
+			texture_button.modulate=Color(0,1,0,1) # green
+			await get_tree().create_timer(0.3).timeout
+			texture_button.modulate=Color(1,1,1,1) # normal
+			await get_tree().create_timer(0.3).timeout
+			texture_button.modulate=Color(0,1,0,1) # green
+			await get_tree().create_timer(0.3).timeout
+			texture_button.modulate=Color(1,1,1,1) #normal
+			await get_tree().create_timer(0.3).timeout
+			texture_button.modulate=Color(0,1,0,1) # green
 			print("you got blue key")
-
+		else:
+			texture_button.modulate=Color(1, 0, 0, 1)# red
+			await get_tree().create_timer(0.3).timeout
+			texture_button.modulate=Color(1,1,1,1) # normal
+			await get_tree().create_timer(0.3).timeout
+			texture_button.modulate=Color(1, 0, 0, 1) # red
+			await get_tree().create_timer(0.3).timeout
+			texture_button.modulate=Color(1,1,1,1) #normal
+			await get_tree().create_timer(0.6).timeout
+			$"../../InputSpace/InputBox1/TextEdit1".text=""
+			$"../../InputSpace/InputBox2/TextEdit2".text=""
+			$"../../InputSpace/InputBox1/TextEdit1".grab_focus()
 func resolve_clock() -> void:
 	actual_minutes=game.cminutes%60
 	actual_hours=(game.chours%24+game.cminutes/60)%24

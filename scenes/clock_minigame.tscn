@@ -168,12 +168,11 @@ mouse_filter = 2
 
 [node name="TextureRect1" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox1" unique_id=1922619657]
 layout_mode = 2
-mouse_filter = 2
+mouse_filter = 0
 texture = ExtResource("3_yhoar")
 
 [node name="TextEdit1" type="LineEdit" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox1" unique_id=240431258]
 layout_mode = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0, 0.003921569, 0, 1)
 theme_override_colors/font_uneditable_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 0)
@@ -215,12 +214,11 @@ mouse_filter = 2
 
 [node name="TextureRect2" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox2" unique_id=1855123233]
 layout_mode = 2
-mouse_filter = 2
+mouse_filter = 0
 texture = ExtResource("3_yhoar")
 
 [node name="TextEdit2" type="LineEdit" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox2" unique_id=2091940688]
 layout_mode = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0, 0.003921569, 0, 1)
 theme_override_colors/font_uneditable_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 0)
