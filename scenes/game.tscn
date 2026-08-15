@@ -52,9 +52,7 @@
 [ext_resource type="AudioStream" uid="uid://dmdyeprgqvfc7" path="res://assets/sol.mp3" id="50_q8j3a"]
 [ext_resource type="AudioStream" uid="uid://6c3o81gfsltr" path="res://assets/la.mp3" id="51_ms3bu"]
 [ext_resource type="AudioStream" uid="uid://bhx5twvlk134" path="res://assets/si.mp3" id="52_7ixpq"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_lbhrr"]
-radius = 2.0
+[ext_resource type="AudioStream" uid="uid://66nxoysif226" path="res://assets/bgmusic.mp3" id="53_o8ni1"]
 
 [node name="Game" type="Node2D" unique_id=285650532]
 y_sort_enabled = true
@@ -165,7 +163,6 @@ position = Vector2(292, -125)
 [node name="player" parent="." unique_id=1698648380 instance=ExtResource("2_yqjtg")]
 unique_name_in_owner = true
 y_sort_enabled = true
-position = Vector2(-398, -34)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=678641909]
 offset = Vector2(0, -20)
@@ -181,20 +178,19 @@ position_smoothing_speed = 10.0
 
 [node name="Enemy" parent="." unique_id=513737343 instance=ExtResource("4_lbhrr")]
 unique_name_in_owner = true
-position = Vector2(-568, -710.00006)
+position = Vector2(-559.99994, -717.99994)
 rotation = 0.008707285
-
-[node name="ShapeCast2D" type="ShapeCast2D" parent="Enemy" unique_id=1620613552]
-shape = SubResource("CircleShape2D_lbhrr")
-target_position = Vector2(2.9644165, 231.01569)
+collision_mask = 2
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Enemy" unique_id=1069889644]
 
 [node name="HUD" parent="." unique_id=2082992269 instance=ExtResource("5_iywne")]
 
 [node name="ClockMinigame" parent="." unique_id=128066031 instance=ExtResource("37_0sl42")]
+visible = false
 
 [node name="PianoMinigame" parent="." unique_id=810741825 instance=ExtResource("41_oaba0")]
+visible = false
 
 [node name="Sounds" type="Node" parent="." unique_id=263239707]
 
@@ -206,6 +202,7 @@ stream = ExtResource("9_vtaks")
 
 [node name="Chasing_Music" type="AudioStreamPlayer2D" parent="Sounds" unique_id=743895711]
 stream = ExtResource("11_kvuet")
+volume_db = -5.0
 max_distance = 20000.0
 
 [node name="Screen_Entered_By_Enemy" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1251449746]
@@ -232,6 +229,10 @@ stream = ExtResource("51_ms3bu")
 
 [node name="Si" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1833077128]
 stream = ExtResource("52_7ixpq")
+
+[node name="BgMusic" type="AudioStreamPlayer2D" parent="Sounds" unique_id=582956032]
+stream = ExtResource("53_o8ni1")
+volume_db = 5.0
 
 [connection signal="timeout" from="player/Timer" to="player" method="_on_timer_timeout"]
 [connection signal="screen_entered" from="Enemy/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

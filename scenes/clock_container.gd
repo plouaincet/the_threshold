@@ -4,8 +4,11 @@ extends CenterContainer
 @onready var input_space: HBoxContainer = $"../../InputSpace"
 @onready var timer: Timer = $Timer
 @onready var clock_minigame: CanvasLayer = $"../../../../../../.."
+@onready var game: Node2D = $"../../../../../../../.."
+@onready var texture_button: TextureButton = $"../../../../SubmitButton/TextureButton"
 
-
+var actual_hours:int=0
+var actual_minutes:int=0
 var angles: Array[Vector2] = [
 	Vector2(0, 0),
 	Vector2(1, 40),
@@ -23,7 +26,6 @@ var angles: Array[Vector2] = [
 
 func _ready() -> void:
 	timer.start(1.0)
-
 func _process(delta: float) -> void:
 	pass
 
@@ -96,3 +98,46 @@ func _on_timer_timeout() -> void:
 			minutes=int($"../../InputSpace/InputBox2/TextEdit2".text)
 		_handle_hands(hours,minutes)
 	timer.start()
+
+
+func _on_texture_button_pressed() -> void:
+	if clock_minigame.visible==true:
+		var hours:int
+		var minutes:int
+		if $"../../InputSpace/InputBox1/TextEdit1".text == null:
+			hours=0
+		else: 
+			hours=int($"../../InputSpace/InputBox1/TextEdit1".text)
+		if $"../../InputSpace/InputBox2/TextEdit2".text==null:
+			minutes=0
+		else:
+			minutes=int($"../../InputSpace/InputBox2/TextEdit2".text)
+			resolve_clock()
+		if hours==actual_hours and minutes==actual_minutes:
+			texture_button.modulate=Color(0,1,0,1) # green
+			await get_tree().create_timer(0.3).timeout
+			texture_button.modulate=Color(1,1,1,1) # normal
+			await get_tree().create_timer(0.3).timeout
+			texture_button.modulate=Color(0,1,0,1) # green
+			await get_tree().create_timer(0.3).timeout
+			texture_button.modulate=Color(1,1,1,1) #normal
+			await get_tree().create_timer(0.3).timeout
+			texture_button.modulate=Color(0,1,0,1) # green
+			print("you got blue key")
+		else:
+			texture_button.modulate=Color(1, 0, 0, 1)# red
+			await get_tree().create_timer(0.3).timeout
+			texture_button.modulate=Color(1,1,1,1) # normal
+			await get_tree().create_timer(0.3).timeout
+			texture_button.modulate=Color(1, 0, 0, 1) # red
+			await get_tree().create_timer(0.3).timeout
+			texture_button.modulate=Color(1,1,1,1) #normal
+			await get_tree().create_timer(0.6).timeout
+			$"../../InputSpace/InputBox1/TextEdit1".text=""
+			$"../../InputSpace/InputBox2/TextEdit2".text=""
+			$"../../InputSpace/InputBox1/TextEdit1".grab_focus()
+func resolve_clock() -> void:
+	actual_minutes=game.cminutes%60
+	actual_hours=(game.chours%24+game.cminutes/60)%24
+	print("actual hours: ",actual_hours)
+	print("actual minutes: ",actual_minutes)

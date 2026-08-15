@@ -6,8 +6,10 @@ extends Node
 @onready var chasing_music: AudioStreamPlayer2D = $Sounds/Chasing_Music
 @onready var screenent_sound: AudioStreamPlayer2D = $Sounds/Screen_Entered_By_Enemy
 @onready var inventory: Control = $"./HUD/PlayerInventory"
+@onready var bg_music: AudioStreamPlayer2D = $Sounds/BgMusic
 
-
+var chours: int = 0
+var cminutes: int = 0
 const SCREEN_SIZE := Vector2(1152, 648)
 const INDICATOR_SPEED := 500.0
 const INDICATOR_MARGIN := 0
@@ -36,9 +38,12 @@ var light_state: bool = true
 var Slots: Array[String] = ["null","null","null","null","null"]
 
 func _ready() -> void:
+	bg_music.volume_db=5
+	bg_music.play()
 	player.Light_Toggled.connect(light_toggled)
 	enemy.Enemy_Chasing.connect(_chasing_handle)
 	player.Door_Opened.connect(_check_doors)
+	randomise_clock()
 
 func _process(_delta: float) -> void:
 	if !enemy.is_chasing() and is_chasing and (abs(enemy.global_position.y - player.global_position.y) >= 200 or abs(enemy.global_position.x - player.global_position.x) >= 200):
@@ -125,3 +130,9 @@ func slot_spaces_shake() -> void:
 	tween.tween_property(inventory, "position:x", original_pos.x + shake_amount, shake_time)
 	tween.tween_property(inventory, "position:x", original_pos.x - shake_amount, shake_time)
 	tween.tween_property(inventory, "position:x", original_pos.x, shake_time)
+
+func randomise_clock() -> void:
+	chours = randi_range(0, 300)
+	cminutes = randi_range(0, 1000)
+	print("hours: ",chours)
+	print("minutes: ",cminutes)
