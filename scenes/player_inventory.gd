@@ -15,7 +15,6 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	for i in range(frames.size()):
 		if event.is_action_pressed("slot" + str(i + 1)):
-			print(i)
 			select_frame(i)
 			game.selected_frame=i
 			break

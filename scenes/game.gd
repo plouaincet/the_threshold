@@ -38,6 +38,7 @@ var light_state: bool = true
 var selected_frame:int=-1
 
 var Slots: Array[String] = ["null","null","null","null","null"]
+var Chairs: Array[String] = ["null","null","null","null","null","null","null","null"]
 
 func _ready() -> void:
 	bg_music.volume_db=5
