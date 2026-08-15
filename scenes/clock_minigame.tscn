@@ -58,7 +58,6 @@ offset_right = -0.120025635
 offset_bottom = -1.5258789e-05
 
 [node name="TextureButton" type="TextureButton" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton" unique_id=1118512120]
-z_index = 1
 custom_minimum_size = Vector2(130, 45)
 layout_mode = 2
 texture_normal = ExtResource("3_4clao")
@@ -71,6 +70,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/CenterContainer" unique_id=31512378]
 self_modulate = Color(0, 0, 0, 1)
@@ -80,93 +80,100 @@ theme_override_fonts/font = ExtResource("7_4i8yj")
 theme_override_font_sizes/font_size = 14
 text = "Set time"
 
-[node name="OuterMargin" type="MarginContainer" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton" unique_id=668659062]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.026
-anchor_top = 0.1
-anchor_right = 0.98200005
-anchor_bottom = 0.96400005
-offset_left = -302.38
-offset_top = -153.5
-offset_right = 83.34003
-offset_bottom = 14.619999
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 15
-
-[node name="ClockSpace" type="HBoxContainer" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin" unique_id=1948437966]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="Clock" type="Control" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace" unique_id=1725159331]
-custom_minimum_size = Vector2(186, 177)
-layout_mode = 2
-
-[node name="ClockFrame" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/Clock" unique_id=744105436]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_6csmt")
-
-[node name="ClockContainer" type="CenterContainer" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/Clock" unique_id=1294597107]
+[node name="OuterMargin" type="MarginContainer" parent="ClockMinigameControl/Screen/ClockBg" unique_id=668659062]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 15
+
+[node name="ClockSpace" type="HBoxContainer" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin" unique_id=1948437966]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Clock" type="Control" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace" unique_id=1725159331]
+custom_minimum_size = Vector2(186, 177)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ClockFrame" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock" unique_id=744105436]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("2_6csmt")
+
+[node name="ClockContainer" type="CenterContainer" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock" unique_id=1294597107]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("6_r4fww")
 
-[node name="ClockNumbers" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/Clock/ClockContainer" unique_id=1664674940]
+[node name="ClockNumbers" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock/ClockContainer" unique_id=1664674940]
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(1, 2)
+mouse_filter = 2
 texture = ExtResource("3_e1aeb")
 
-[node name="ClockHand1" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/Clock/ClockContainer" unique_id=1663144446]
+[node name="ClockHand1" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock/ClockContainer" unique_id=1663144446]
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(2, -30)
 offset_transform_rotation = 1.134464
 offset_transform_pivot = Vector2(0, 31)
+mouse_filter = 2
 texture = ExtResource("4_4i8yj")
 
-[node name="ClockHand2" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/Clock/ClockContainer" unique_id=1360180733]
+[node name="ClockHand2" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock/ClockContainer" unique_id=1360180733]
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(30, 0)
 offset_transform_pivot = Vector2(-29, 0)
+mouse_filter = 2
 texture = ExtResource("6_tjvwr")
 
-[node name="Timer" type="Timer" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/Clock/ClockContainer" unique_id=1790049165]
+[node name="Timer" type="Timer" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock/ClockContainer" unique_id=1790049165]
 one_shot = true
 
-[node name="Margin" type="Control" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace" unique_id=419896306]
+[node name="Margin" type="Control" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace" unique_id=419896306]
 custom_minimum_size = Vector2(30, 177)
 layout_mode = 2
+mouse_filter = 2
 
-[node name="InputSpace" type="HBoxContainer" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace" unique_id=1614377307]
+[node name="InputSpace" type="HBoxContainer" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace" unique_id=1614377307]
 custom_minimum_size = Vector2(186, 177)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
+mouse_filter = 2
 script = ExtResource("6_4c3m2")
 
-[node name="InputBox1" type="CenterContainer" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace" unique_id=1515196094]
+[node name="InputBox1" type="CenterContainer" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" unique_id=1515196094]
 custom_minimum_size = Vector2(70, 50)
 layout_mode = 2
+mouse_filter = 2
 
-[node name="TextureRect1" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace/InputBox1" unique_id=1922619657]
+[node name="TextureRect1" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox1" unique_id=1922619657]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("3_yhoar")
 
-[node name="TextEdit1" type="LineEdit" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace/InputBox1" unique_id=240431258]
+[node name="TextEdit1" type="LineEdit" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox1" unique_id=240431258]
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(0, 0.003921569, 0, 1)
 theme_override_colors/font_uneditable_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 0)
@@ -192,23 +199,28 @@ virtual_keyboard_enabled = false
 caret_blink = true
 script = ExtResource("13_4clao")
 
-[node name="DouaPuncte" type="CenterContainer" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace" unique_id=520926002]
+[node name="DouaPuncte" type="CenterContainer" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" unique_id=520926002]
 custom_minimum_size = Vector2(35, 50)
 layout_mode = 2
+mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace/DouaPuncte" unique_id=757169352]
+[node name="TextureRect" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/DouaPuncte" unique_id=757169352]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("5_02e1d")
 
-[node name="InputBox2" type="CenterContainer" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace" unique_id=1155250076]
+[node name="InputBox2" type="CenterContainer" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" unique_id=1155250076]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="TextureRect2" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace/InputBox2" unique_id=1855123233]
+[node name="TextureRect2" type="TextureRect" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox2" unique_id=1855123233]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("3_yhoar")
 
-[node name="TextEdit2" type="LineEdit" parent="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace/InputBox2" unique_id=2091940688]
+[node name="TextEdit2" type="LineEdit" parent="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox2" unique_id=2091940688]
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(0, 0.003921569, 0, 1)
 theme_override_colors/font_uneditable_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 0)
@@ -232,11 +244,11 @@ flat = true
 virtual_keyboard_enabled = false
 caret_blink = true
 
-[connection signal="pressed" from="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton" to="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/Clock/ClockContainer" method="_on_texture_button_pressed"]
-[connection signal="timeout" from="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/Clock/ClockContainer/Timer" to="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/Clock/ClockContainer" method="_on_timer_timeout"]
-[connection signal="focus_entered" from="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace/InputBox1/TextEdit1" to="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_1_focus_entered"]
-[connection signal="focus_exited" from="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace/InputBox1/TextEdit1" to="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_1_focus_exited"]
-[connection signal="text_changed" from="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace/InputBox1/TextEdit1" to="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_1_text_changed"]
-[connection signal="focus_entered" from="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace/InputBox2/TextEdit2" to="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_2_focus_entered"]
-[connection signal="focus_exited" from="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace/InputBox2/TextEdit2" to="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_2_focus_exited"]
-[connection signal="text_changed" from="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace/InputBox2/TextEdit2" to="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_2_text_changed"]
+[connection signal="pressed" from="ClockMinigameControl/Screen/ClockBg/SubmitButton/TextureButton" to="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock/ClockContainer" method="_on_texture_button_pressed"]
+[connection signal="timeout" from="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock/ClockContainer/Timer" to="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/Clock/ClockContainer" method="_on_timer_timeout"]
+[connection signal="focus_entered" from="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox1/TextEdit1" to="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_1_focus_entered"]
+[connection signal="focus_exited" from="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox1/TextEdit1" to="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_1_focus_exited"]
+[connection signal="text_changed" from="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox1/TextEdit1" to="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_1_text_changed"]
+[connection signal="focus_entered" from="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox2/TextEdit2" to="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_2_focus_entered"]
+[connection signal="focus_exited" from="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox2/TextEdit2" to="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_2_focus_exited"]
+[connection signal="text_changed" from="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace/InputBox2/TextEdit2" to="ClockMinigameControl/Screen/ClockBg/OuterMargin/ClockSpace/InputSpace" method="_on_text_edit_2_text_changed"]

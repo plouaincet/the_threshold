@@ -99,11 +99,10 @@ func _on_timer_timeout() -> void:
 
 
 func _on_texture_button_pressed() -> void:
-	print("hi")
 	if clock_minigame.visible==true:
 		var hours:int
 		var minutes:int
-		if $"../../InputSpace/InputBox1/Textdit1".text == null:
+		if $"../../InputSpace/InputBox1/TextEdit1".text == null:
 			hours=0
 		else: 
 			hours=int($"../../InputSpace/InputBox1/TextEdit1".text)
