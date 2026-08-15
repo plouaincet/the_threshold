@@ -27,6 +27,8 @@ var notes: Array[String] = ["SDo", "SRe", "SMi", "SFa", "SSol", "SLa", "SSi", "S
 var slots: Array[TextureRect] = []
 var current_slot_index := 0
 
+var nr_correct_slots:int=0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	notes.shuffle()
@@ -135,6 +137,7 @@ func check_note(note_name: String) -> void:
 
 	if note_name == notes[current_slot_index]:
 		slot.self_modulate = Color(0, 1, 0, 1) # green
+		nr_correct_slots+=1
 	else:
 		slot.self_modulate = Color(1, 0, 0, 1) # red
 
@@ -148,3 +151,4 @@ func reset_slots() -> void:
 	for slot in slots:
 		slot.self_modulate = Color(1, 1, 1, 1) # back to default/idle appearance
 	current_slot_index = 0
+	nr_correct_slots = 0
