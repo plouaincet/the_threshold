@@ -7,6 +7,8 @@ extends Node
 @onready var screenent_sound: AudioStreamPlayer2D = $Sounds/Screen_Entered_By_Enemy
 @onready var inventory: Control = $"./HUD/PlayerInventory"
 @onready var bg_music: AudioStreamPlayer2D = $Sounds/BgMusic
+@onready var objects_node: Node2D = $Objects
+
 
 var chours: int = 0
 var cminutes: int = 0
@@ -111,7 +113,7 @@ func _check_doors() -> void:
 		enemy.patrol_points.insert(5,Vector2(407, -20))
 		flg=0
 
-func add_object(img: Sprite2D, sname: String) -> bool:
+func add_object(img: Sprite2D, sname: String,pos:Vector2) -> bool:
 	for i in range(Slots.size()):
 		if Slots[i] == "null":
 			Slots[i] = sname
@@ -119,9 +121,44 @@ func add_object(img: Sprite2D, sname: String) -> bool:
 			img.reparent(slot)
 			img.position = slot.size / 2
 			img.scale = Vector2(1.3, 1.3)
+			inventory.frames[i].visible = false
 			return true
-	slot_spaces_shake()
-	return false
+
+	if selected_frame < 0:
+		slot_spaces_shake()
+		return false
+	if Slots[selected_frame] == "null":
+		return false
+
+	#drop the old item into the maps
+	var item_name: String = Slots[selected_frame]
+	var scene_name := get_scene_name_for_item(item_name)
+	var scene_path := "res://scenes/" + scene_name + ".tscn"  # adjust folder to your actual path
+
+	if not ResourceLoader.exists(scene_path):
+		print("No scene found at: ", scene_path)
+		return false
+
+	var packed: PackedScene = load(scene_path)
+	var instance := packed.instantiate()
+	instance.name = item_name
+	objects_node.add_child(instance)
+	instance.global_position = pos
+
+	#remove the old items leftover sprite from the slot
+	var slott := get_node("./HUD/PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot" + str(selected_frame + 1))
+	for child in slott.get_children():
+		if child is Sprite2D:
+			child.queue_free()
+
+	#put the new pickedup item into the now empty slot
+	Slots[selected_frame] = sname
+	img.reparent(slott)
+	img.position = slott.size / 2
+	img.scale = Vector2(1.3, 1.3)
+	inventory.frames[selected_frame].visible = true
+
+	return true
 
 func slot_spaces_shake() -> void:
 	var original_pos: Vector2 = inventory.position
@@ -139,3 +176,18 @@ func randomise_clock() -> void:
 	cminutes = randi_range(0, 1000)
 	print("hours: ",chours)
 	print("minutes: ",cminutes)
+
+func get_scene_name_for_item(item_name: String) -> String:
+	var regex := RegEx.new()
+	regex.compile("^([A-Za-z]+)(\\d*)$")
+	var result := regex.search(item_name)
+	if result == null:
+		return item_name.to_lower()
+
+	var letters := result.get_string(1)
+	var digits := result.get_string(2)
+
+	if digits != "":
+		return letters.to_lower() + "_" + digits
+	else:
+		return letters[0].to_lower() + letters.substr(1)

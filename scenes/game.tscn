@@ -88,7 +88,7 @@ position = Vector2(400, -322)
 position = Vector2(-158, 6)
 
 [node name="Toy2" parent="Objects" unique_id=725107376 instance=ExtResource("8_ssvqc")]
-position = Vector2(90, -629)
+position = Vector2(91, -630)
 
 [node name="Toy3" parent="Objects" unique_id=2140941126 instance=ExtResource("9_264po")]
 position = Vector2(353, -215)
@@ -100,10 +100,10 @@ position = Vector2(609, -292)
 position = Vector2(547, -381)
 
 [node name="Toy6" parent="Objects" unique_id=1279865778 instance=ExtResource("12_37s47")]
-position = Vector2(-127, -573)
+position = Vector2(-120, -575)
 
 [node name="Toy7" parent="Objects" unique_id=2134750043 instance=ExtResource("13_bt5mj")]
-position = Vector2(-643, -295)
+position = Vector2(-651, -300)
 
 [node name="Toy8" parent="Objects" unique_id=37846185 instance=ExtResource("14_e1j6l")]
 position = Vector2(-578, -686)

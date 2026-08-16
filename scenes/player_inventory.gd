@@ -23,5 +23,5 @@ func select_frame(index: int) -> void:
 	for i in range(frames.size()):
 		frames[i].visible = (i == index)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

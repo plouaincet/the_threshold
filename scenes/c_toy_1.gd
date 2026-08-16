@@ -8,7 +8,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func place(_player: Node) -> void:
-	if self.get_child_count() and self.get_child(1) is Sprite2D:
+	if self.get_child_count()>1 and self.get_child(1) is Sprite2D:
 		pick_up()
 		return
 	#var toy_name=name.erase(0,1)
