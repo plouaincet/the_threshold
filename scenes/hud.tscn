@@ -11,6 +11,12 @@
 [ext_resource type="Shader" uid="uid://bxqc7htxk4a82" path="res://scenes/text.gdshader" id="7_0i1j5"]
 [ext_resource type="Texture2D" uid="uid://crpl00orqgs1" path="res://sprites/sprintbar.png" id="7_hd3ao"]
 [ext_resource type="FontFile" uid="uid://8sth7a34psu1" path="res://assets/PressStart2P.ttf" id="8_mphia"]
+[ext_resource type="Texture2D" uid="uid://dxvr5g8js00og" path="res://sprites/key_white.png" id="10_apjy4"]
+[ext_resource type="Script" uid="uid://b0ahhanyjnv8w" path="res://scenes/notfication.gd" id="10_uxdf7"]
+[ext_resource type="Texture2D" uid="uid://bveilkhh4i26j" path="res://sprites/key_blue.png" id="11_qkknv"]
+[ext_resource type="Texture2D" uid="uid://bo71gbkytcb6j" path="res://sprites/key_pink.png" id="12_uxdf7"]
+[ext_resource type="Texture2D" uid="uid://cdf3otbexxmt3" path="res://sprites/key_orange.png" id="13_5357l"]
+[ext_resource type="Texture2D" uid="uid://nx3wtar17u15" path="res://sprites/key_purple.png" id="14_iypfu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3owqy"]
 shader = ExtResource("2_5ysmq")
@@ -293,50 +299,6 @@ theme_override_fonts/font = ExtResource("8_mphia")
 theme_override_font_sizes/font_size = 12
 text = "5"
 
-[node name="Notfication" type="Control" parent="." unique_id=801133820]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="Notfication" unique_id=746513032]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.29500002
-anchor_right = 1.0
-anchor_bottom = 0.26900002
-offset_left = 0.15997314
-offset_bottom = -0.31201172
-
-[node name="ColorRect" type="ColorRect" parent="Notfication/CenterContainer" unique_id=160331127]
-custom_minimum_size = Vector2(500, 100)
-layout_mode = 2
-color = Color(1, 1, 1, 0.13333334)
-
-[node name="MarginContainer" type="MarginContainer" parent="Notfication/CenterContainer/ColorRect" unique_id=2134013935]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 10
-
-[node name="Label" type="Label" parent="Notfication/CenterContainer/ColorRect/MarginContainer" unique_id=922841634]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_ahhtf")
-theme_override_font_sizes/font_size = 32
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
 [node name="PlayerKeys" type="Control" parent="." unique_id=462477186]
 layout_mode = 3
 anchors_preset = 15
@@ -378,25 +340,65 @@ theme_override_constants/margin_bottom = 5
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerKeys/CenterContainer/Control/MarginContainer" unique_id=547312044]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer" unique_id=2048487752]
+[node name="Kslot1" type="Control" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer" unique_id=2048487752]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 
-[node name="Control2" type="Control" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer" unique_id=1619825921]
+[node name="TextureRect" type="TextureRect" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot1" unique_id=945175399]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_apjy4")
+expand_mode = 1
+
+[node name="Kslot2" type="Control" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer" unique_id=1619825921]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 
-[node name="Control3" type="Control" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer" unique_id=1332710946]
+[node name="TextureRect" type="TextureRect" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot2" unique_id=231226473]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("11_qkknv")
+expand_mode = 1
+
+[node name="Kslot3" type="Control" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer" unique_id=1332710946]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 
-[node name="Control4" type="Control" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer" unique_id=1187981605]
+[node name="TextureRect" type="TextureRect" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot3" unique_id=714292687]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("12_uxdf7")
+expand_mode = 1
+
+[node name="Kslot4" type="Control" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer" unique_id=1187981605]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 
-[node name="Control5" type="Control" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer" unique_id=1125030035]
+[node name="TextureRect" type="TextureRect" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot4" unique_id=255366722]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("13_5357l")
+expand_mode = 1
+
+[node name="Kslot5" type="Control" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer" unique_id=1125030035]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot5" unique_id=638577478]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("14_iypfu")
+expand_mode = 1
 
 [node name="SpeedBar" type="Control" parent="." unique_id=633186520]
 layout_mode = 3
@@ -442,3 +444,49 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(35, 1)
 value = 100.0
 texture_progress = ExtResource("7_hd3ao")
+
+[node name="Notfication" type="Control" parent="." unique_id=801133820]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_uxdf7")
+
+[node name="CenterContainer" type="CenterContainer" parent="Notfication" unique_id=746513032]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29500002
+anchor_top = -0.26900002
+anchor_right = 1.0
+offset_left = 0.15997314
+offset_top = 0.31201172
+offset_transform_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="Notfication/CenterContainer" unique_id=160331127]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+color = Color(1, 1, 1, 0.13333334)
+
+[node name="MarginContainer" type="MarginContainer" parent="Notfication/CenterContainer/ColorRect" unique_id=2134013935]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Notfication/CenterContainer/ColorRect/MarginContainer" unique_id=922841634]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_mphia")
+theme_override_font_sizes/font_size = 20
+text = "You got the WHITE key!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

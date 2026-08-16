@@ -8,6 +8,12 @@ extends Node
 @onready var inventory: Control = $"./HUD/PlayerInventory"
 @onready var bg_music: AudioStreamPlayer2D = $Sounds/BgMusic
 @onready var objects_node: Node2D = $Objects
+@onready var kslot_1: Control = $HUD/PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot1/TextureRect
+@onready var kslot_2: Control = $HUD/PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot2/TextureRect
+@onready var kslot_3: Control = $HUD/PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot3/TextureRect
+@onready var kslot_4: Control = $HUD/PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot4/TextureRect
+@onready var kslot_5: Control = $HUD/PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot5/TextureRect
+@onready var notfication: Control = $HUD/Notfication
 
 
 var chours: int = 0
@@ -41,6 +47,12 @@ var selected_frame:int=-1
 
 var Slots: Array[String] = ["null","null","null","null","null"]
 var Chairs: Array[String] = ["null","null","null","null","null","null","null","null"]
+
+var whitekey:bool=false
+var bluekey:bool=false
+var pinkkey:bool=false
+var orangekey:bool=false
+var purplekey:bool=false
 
 func _ready() -> void:
 	bg_music.volume_db=5
@@ -191,3 +203,35 @@ func get_scene_name_for_item(item_name: String) -> String:
 		return letters.to_lower() + "_" + digits
 	else:
 		return letters[0].to_lower() + letters.substr(1)
+
+	
+func get_white_key() -> void:
+	if not whitekey:
+		whitekey=true
+		kslot_1.visible=true
+		notfication.show_notification("You got WHITE key!")
+
+func get_blue_key() -> void:
+	if not bluekey:
+		bluekey=true
+		kslot_2.visible=true
+		notfication.show_notification("You got BLUE key!")
+
+func get_pink_key() -> void:
+	if not pinkkey:
+		pinkkey=true
+		kslot_3.visible=true
+		notfication.show_notification("You got PINK key!")
+		enemy.spawn_enemy_chase()
+
+func get_orange_key() -> void:
+	if not orangekey:
+		orangekey=true
+		kslot_4.visible=true
+		notfication.show_notification("You got ORANGE key!")
+
+func get_purple_key() -> void:
+	if not purplekey:
+		purplekey=true
+		kslot_5.visible=true
+		notfication.show_notification("You got PURPLE key!")

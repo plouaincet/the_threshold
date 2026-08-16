@@ -13,6 +13,8 @@ var map_synced: bool = false
 @onready var bg_music: AudioStreamPlayer2D = $"../Sounds/BgMusic"
 var spotted_by_enemy: bool = false
 var spotted_by_enemy_forced: bool = false
+var forced_chase: bool = false
+var forced_chase_lose_distance: float = 200.0
 var patrol_points: Array[Vector2] = [
 	 Vector2(-584, -721),
 	 Vector2(-400, -677),
@@ -41,6 +43,10 @@ func _ready() -> void:
 func _on_map_changed(_map_rid: RID) -> void:
 	map_synced = true
 
+func spawn_enemy_chase() -> void:
+	global_position = Vector2(470, -430)
+	forced_chase = true
+
 func _physics_process(_delta):
 	for cast in [vision, vision2, vision3]:
 		cast.shape.radius += 3.0
@@ -48,7 +54,17 @@ func _physics_process(_delta):
 			cast.shape.radius = 2.0
 
 	check_player_inside()
-	if spotted_by_enemy or spotted_by_enemy_forced: 
+	check_for_player()
+
+	if forced_chase:
+		# Only allow dropping forced chase once Pink_Doors is fully cleared
+		if game.Pink_Doors == 0:
+			if not spotted_by_enemy and not spotted_by_enemy_forced:
+				var diff = global_position - player.global_position
+				if abs(diff.x) >= forced_chase_lose_distance or abs(diff.y) >= forced_chase_lose_distance:
+					forced_chase = false
+
+	if spotted_by_enemy or spotted_by_enemy_forced or forced_chase:
 		SPEED=60
 		emit_signal("Enemy_Chasing")
 		nav.target_position = player.global_position 
@@ -69,7 +85,6 @@ func _physics_process(_delta):
 		velocity = Vector2.ZERO
 	move_and_slide()
 	update_vision()
-	check_for_player()
 
 func set_next_patrol_point() -> void:
 	if patrol_points.is_empty():
@@ -132,7 +147,7 @@ func check_player_inside() -> void:
 		spotted_by_enemy_forced=false
 
 func is_chasing() -> bool:
-	return spotted_by_enemy or spotted_by_enemy_forced
+	return spotted_by_enemy or spotted_by_enemy_forced or forced_chase
 
 func is_position_navigable(pos: Vector2, tolerance: float = 16.0) -> bool:
 	if not map_synced:

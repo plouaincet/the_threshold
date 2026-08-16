@@ -125,7 +125,8 @@ func _on_texture_button_pressed() -> void:
 			texture_button.modulate=Color(1,1,1,1) #normal
 			await get_tree().create_timer(0.3).timeout
 			texture_button.modulate=Color(0,1,0,1) # green
-			print("you got blue key")
+			clock_minigame.visible=false
+			game.get_blue_key()
 		else:
 			texture_button.modulate=Color(1, 0, 0, 1)# red
 			await get_tree().create_timer(0.3).timeout

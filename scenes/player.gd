@@ -18,6 +18,9 @@ const REGEN_RATE: float = DRAIN_RATE / 3.0
 @onready var piano_minigame: CanvasLayer = $"../PianoMinigame"
 @onready var game: Node2D = $".."
 @onready var walking: AudioStreamPlayer2D = $"../Sounds/Walking"
+var in_music_box_area:bool=false
+@onready var music_box: StaticBody2D = $"../Objects/music_box"
+
 
 
 var nearby_interactables: Array[Interactable] = []
@@ -29,6 +32,9 @@ var stamina: float = MAX_STAMINA
 var is_sprinting: bool = false
 var lantern_open: bool = true
 var exhausted: bool = false
+
+func _ready() -> void:
+	get_key_temporary()
 
 func _physics_process(delta: float) -> void:
 	var wants_to_sprint := Input.is_action_pressed("sprint")
@@ -85,10 +91,15 @@ func _physics_process(delta: float) -> void:
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Interactable:
 		nearby_interactables.append(area.get_parent())
+		return
 	if area.get_parent() is Doors:
 		nearby_doors.append(area.get_parent())
+		return
 	if area is Chair:
 		nearby_chairs.append(area)
+		return
+	if area.get_parent().name=="music_box":
+		in_music_box_area=true
 
 func _on_interaction_area_area_exited(area: Area2D) -> void:
 	if area.get_parent() is Interactable:
@@ -97,6 +108,8 @@ func _on_interaction_area_area_exited(area: Area2D) -> void:
 		nearby_doors.erase(area.get_parent())
 	if area is Chair:
 		nearby_chairs.erase(area)
+	if area.get_parent().name=="music_box":
+		in_music_box_area=false
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
@@ -107,6 +120,8 @@ func _unhandled_input(event):
 func try_interact():
 	if not lantern_open:
 		return
+	if in_music_box_area:
+		music_box.insert_clank()
 	if nearby_interactables.is_empty() and nearby_doors.is_empty() and nearby_chairs.is_empty():
 		return
 	if !nearby_interactables.is_empty():
@@ -125,3 +140,7 @@ func restrained() -> bool:
 	if piano_minigame.visible:
 		return true
 	return false
+
+func get_key_temporary() -> void:
+	await get_tree().create_timer(5.0).timeout
+	game.get_white_key()
