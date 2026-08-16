@@ -53,6 +53,7 @@
 [ext_resource type="AudioStream" uid="uid://6c3o81gfsltr" path="res://assets/la.mp3" id="51_ms3bu"]
 [ext_resource type="AudioStream" uid="uid://bhx5twvlk134" path="res://assets/si.mp3" id="52_7ixpq"]
 [ext_resource type="AudioStream" uid="uid://66nxoysif226" path="res://assets/bgmusic.mp3" id="53_o8ni1"]
+[ext_resource type="AudioStream" uid="uid://ldhlxrw0tht8" path="res://assets/stepping.mp3" id="54_3hbvx"]
 
 [node name="Game" type="Node2D" unique_id=285650532]
 y_sort_enabled = true
@@ -233,6 +234,11 @@ stream = ExtResource("52_7ixpq")
 [node name="BgMusic" type="AudioStreamPlayer2D" parent="Sounds" unique_id=582956032]
 stream = ExtResource("53_o8ni1")
 volume_db = 5.0
+
+[node name="Walking" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1502968714]
+stream = ExtResource("54_3hbvx")
+volume_db = 3.0
+autoplay = true
 
 [connection signal="timeout" from="player/Timer" to="player" method="_on_timer_timeout"]
 [connection signal="screen_entered" from="Enemy/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

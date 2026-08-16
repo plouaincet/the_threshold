@@ -122,7 +122,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"running_left",
-"speed": 13.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -151,7 +151,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"running_right",
-"speed": 13.0
+"speed": 10.0
 }]
 
 [sub_resource type="Gradient" id="Gradient_g2els"]
@@ -176,7 +176,7 @@ script = ExtResource("1_g2els")
 position = Vector2(0, -14.000001)
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_3owqy")
-animation = &"running_right"
+animation = &"running_left"
 autoplay = "idleeee_left"
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1534804153]

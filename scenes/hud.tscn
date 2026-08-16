@@ -348,13 +348,12 @@ grow_vertical = 2
 [node name="CenterContainer" type="CenterContainer" parent="PlayerKeys" unique_id=18371750]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.597
+anchor_left = 0.73
 anchor_top = 0.88100004
-anchor_right = 0.85800004
+anchor_right = 1.0
 anchor_bottom = 0.95800006
-offset_left = 0.25598145
+offset_left = 0.039978027
 offset_top = 0.11199951
-offset_right = -0.41601563
 offset_bottom = 0.21594238
 
 [node name="Control" type="ColorRect" parent="PlayerKeys/CenterContainer" unique_id=416181822]
@@ -412,13 +411,13 @@ grow_vertical = 2
 [node name="CenterContainer" type="CenterContainer" parent="SpeedBar" unique_id=1374477176]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.156
+anchor_left = -0.002
 anchor_top = 0.836
-anchor_right = 0.402
+anchor_right = 0.24800001
 anchor_bottom = 1.0
-offset_left = 0.28799438
+offset_left = 0.30400014
 offset_top = 0.27197266
-offset_right = -0.104003906
+offset_right = 0.3039856
 
 [node name="ColorRect" type="TextureRect" parent="SpeedBar/CenterContainer" unique_id=770419269]
 custom_minimum_size = Vector2(200, 40)
