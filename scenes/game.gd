@@ -136,7 +136,7 @@ func add_object(img: Sprite2D, sname: String,pos:Vector2) -> bool:
 	var scene_path := "res://scenes/" + scene_name + ".tscn"  # adjust folder to your actual path
 
 	if not ResourceLoader.exists(scene_path):
-		print("No scene found at: ", scene_path)
+		print("no scene found at: ", scene_path)
 		return false
 
 	var packed: PackedScene = load(scene_path)

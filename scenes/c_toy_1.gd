@@ -21,8 +21,8 @@ func place(_player: Node) -> void:
 		sprite.position = Vector2.ZERO
 		sprite.scale = Vector2(0.5, 0.5)
 		game.Slots[cnt-1]="null"
-		print("slots: ",game.Slots)
-		print("chairs: ",game.Chairs)
+		#print("slots: ",game.Slots)
+		#print("chairs: ",game.Chairs)
 		check_for_completion()
 		return
 	game.slot_spaces_shake()
@@ -41,7 +41,7 @@ func check_for_completion() -> void:
 
 func pick_up() -> void:
 	var chair_nr=int(name.erase(0,3))
-	print("chair nr: ",chair_nr)
+	#print("chair nr: ",chair_nr)
 	#game.Slots[cnt] == toy_name
 	var j:int=0
 	for i in game.Slots:
@@ -54,7 +54,7 @@ func pick_up() -> void:
 			sprite.reparent(slot)
 			sprite.position = slot.size/2
 			sprite.scale = Vector2(1.3, 1.3)
-			print("slots: ",game.Slots)
-			print("chairs: ",game.Chairs)
+			#print("slots: ",game.Slots)
+			#print("chairs: ",game.Chairs)
 			return
 	game.slot_spaces_shake()
