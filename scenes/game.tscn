@@ -110,7 +110,7 @@ position = Vector2(-651, -300)
 position = Vector2(-578, -686)
 
 [node name="Clank" parent="Objects" unique_id=1497044883 instance=ExtResource("15_ir15t")]
-position = Vector2(-502, -721)
+position = Vector2(-505, -721)
 
 [node name="Painting" parent="Objects" unique_id=2024703500 instance=ExtResource("16_pl11u")]
 position = Vector2(425, -157)

@@ -7,9 +7,10 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func open(_player: Node) -> void:
-	game.Orange_Doors-=1
-	game.Orange_Door2=false
-	fade_out_door()
+	if game.orangekey:
+		game.Orange_Doors-=1
+		game.Orange_Door2=false
+		fade_out_door()
 
 func fade_out_door() -> void:
 	fade_tween = create_tween()

@@ -24,6 +24,7 @@ extends TextureRect
 @onready var slot_8: TextureRect = $"../../../../SlotZone/SlotHContainer/Slot8"
 @onready var piano_minigame: CanvasLayer = $"../../../../../../../../.."
 @onready var slot_h_container: HBoxContainer = $"../../../../SlotZone/SlotHContainer"
+@onready var game: Node2D = $"../../../../../../../../../.."
 
 var notes: Array[String] = ["SDo", "SRe", "SMi", "SFa", "SSol", "SLa", "SSi", "SDo"]
 var slots: Array[TextureRect] = []
@@ -151,7 +152,7 @@ func check_note(note_name: String) -> void:
 			slot_h_container.modulate=Color(1,1,1,1) #normal
 			await get_tree().create_timer(0.3).timeout
 			slot_h_container.modulate=Color(0,1,0,1) # green
-			print("you got purple key!")
+			game.get_purple_key()
 		else:
 			slot_h_container.modulate=Color(1, 0, 0, 1)# red
 			await get_tree().create_timer(0.3).timeout

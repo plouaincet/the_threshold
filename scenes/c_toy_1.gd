@@ -37,7 +37,7 @@ func check_for_completion() -> void:
 		if game.Chairs[i] != chair_minigame.get_child(i).name.erase(0,1):
 			#print("completion chair check: ",chair_minigame.get_child(i).name.erase(0,1))
 			return
-	print("you got orange key")
+	game.get_orange_key()
 
 func pick_up() -> void:
 	var chair_nr=int(name.erase(0,3))
