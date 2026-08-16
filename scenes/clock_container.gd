@@ -26,7 +26,7 @@ var angles: Array[Vector2] = [
 
 func _ready() -> void:
 	timer.start(1.0)
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _handle_hands(time2:int, time1:int) -> void:
@@ -43,6 +43,7 @@ func get_minute_rotation(minute: int) -> float:
 	var lo := 0
 	var hi := angles.size() - 1
 	while lo < hi:
+		@warning_ignore("integer_division")
 		var mid := (lo + hi + 1) / 2
 		if angles[mid].x * 5 <= minute:
 			lo = mid
@@ -66,6 +67,7 @@ func get_hour_rotation(hour: int, minute: int) -> float:
 	var lo := 0
 	var hi := angles.size() - 1
 	while lo < hi:
+		@warning_ignore("integer_division")
 		var mid := (lo + hi) / 2
 		if int(angles[mid].x) == search_hour:
 			lo = mid

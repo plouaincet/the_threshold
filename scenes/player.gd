@@ -16,6 +16,7 @@ const REGEN_RATE: float = DRAIN_RATE / 3.0
 @onready var painting_viewer: Control = $"../HUD/PaintingViewer"
 @onready var clockMinigame: CanvasLayer = $"../ClockMinigame"
 @onready var piano_minigame: CanvasLayer = $"../PianoMinigame"
+@onready var game: Node2D = $".."
 
 
 var nearby_interactables: Array[Interactable] = []
@@ -89,6 +90,8 @@ func _on_interaction_area_area_exited(area: Area2D) -> void:
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
+		print("slots: ",game.Slots)
+		print("chairs: ",game.Chairs)
 		try_interact()
 
 func try_interact():
