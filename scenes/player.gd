@@ -17,6 +17,7 @@ const REGEN_RATE: float = DRAIN_RATE / 3.0
 @onready var clockMinigame: CanvasLayer = $"../ClockMinigame"
 @onready var piano_minigame: CanvasLayer = $"../PianoMinigame"
 @onready var game: Node2D = $".."
+@onready var walking: AudioStreamPlayer2D = $"../Sounds/Walking"
 
 
 var nearby_interactables: Array[Interactable] = []
@@ -39,10 +40,14 @@ func _physics_process(delta: float) -> void:
 	is_sprinting = wants_to_sprint and not exhausted and stamina > 0.0
 
 	if is_sprinting:
+		playersprite.speed_scale=1.3
+		walking.pitch_scale = 1
 		stamina = max(0.0, stamina - DRAIN_RATE * delta)
 		if stamina == 0.0:
 			exhausted = true
 	else:
+		playersprite.speed_scale=1
+		walking.pitch_scale = 0.8
 		stamina = min(MAX_STAMINA, stamina + REGEN_RATE * delta)
 
 	progress.value = stamina
@@ -50,20 +55,25 @@ func _physics_process(delta: float) -> void:
 	#print(is_sprinting, " ", stamina)
 	var direction := Input.get_vector("left","right","up","down")
 	velocity = direction * current_speed
+	if velocity==Vector2.ZERO:
+		walking.stop()
+	elif not walking.is_playing():
+		walking.play()
 
 	if direction == Vector2(0,0):
 		anim=playersprite.animation.erase(0,8)
 		anim="idleeee_"+anim
 		playersprite.play(anim)
-	elif direction.x==0 and direction.y!=0:
-		anim=playersprite.animation.erase(0,8)
-		anim="running_"+anim
-		playersprite.play(anim)
 	else:
-		if direction.x>0:
-			playersprite.play("running_right")
-		elif direction.x<0:
-			playersprite.play("running_left")
+		if direction.x==0 and direction.y!=0:
+			anim=playersprite.animation.erase(0,8)
+			anim="running_"+anim
+			playersprite.play(anim)
+		else:
+			if direction.x>0:
+				playersprite.play("running_right")
+			elif direction.x<0:
+				playersprite.play("running_left")
 
 	if Input.is_action_just_pressed("light_toggle") and not restrained():
 		emit_signal("Light_Toggled")
