@@ -16,11 +16,11 @@ func _ready() -> void:
 func _on_text_edit_1_focus_entered() -> void:
 	texture_rect1.self_modulate=Color(140.0/255.0, 140.0/255.0, 140.0/255.0)
 
-'''func _on_text_edit_1_focus_exited() -> void:
-	var time1 = text_edit1.text
-	var time2 = text_edit2.text
+func _on_text_edit_1_focus_exited() -> void:
+	'''var time1 = text_edit1.text
+	var time2 = text_edit2.text'''
 	texture_rect1.self_modulate=Color(1, 1, 1)
-	if text_edit1.text==null:
+	'''if text_edit1.text==null:
 		time1=0
 	if text_edit2.text==null:
 		time2=0
@@ -29,9 +29,9 @@ func _on_text_edit_1_focus_entered() -> void:
 func _on_text_edit_2_focus_entered() -> void:
 	texture_rect2.self_modulate=Color(140.0/255.0, 140.0/255.0, 140.0/255.0)
 
-'''func _on_text_edit_2_focus_exited() -> void:
+func _on_text_edit_2_focus_exited() -> void:
 	texture_rect2.self_modulate=Color(1, 1, 1)
-	var time1 = text_edit1.text
+	'''var time1 = text_edit1.text
 	var time2 = text_edit2.text
 	if text_edit1.text==null:
 		time1=0
