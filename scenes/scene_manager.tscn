@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cm6slt3kfu5mn"]
+
+[ext_resource type="Script" uid="uid://c0tbvcnsrdvwg" path="res://scenes/scene_manager.gd" id="1_65mdo"]
+[ext_resource type="PackedScene" uid="uid://cd8jlihcd7xw" path="res://scenes/starting_screen.tscn" id="1_we8k5"]
+
+[node name="SceneManager" type="Node" unique_id=1397617138]
+script = ExtResource("1_65mdo")
+
+[node name="StartingScreen" parent="." unique_id=142385921 instance=ExtResource("1_we8k5")]
