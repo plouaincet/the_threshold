@@ -10,6 +10,8 @@ func open(_player: Node) -> void:
 	if game.whitekey:
 		game.White_Doors-=1
 		fade_out_door()
+		return
+	game.playerkeys_spaces_shake()
 
 func fade_out_door() -> void:
 	fade_tween = create_tween()

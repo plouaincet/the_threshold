@@ -2,15 +2,26 @@ extends Doors
 var fade_tween: Tween
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var game: Node2D = $"../.."
+@onready var player: CharacterBody2D = %player
+@warning_ignore("shadowed_variable_base_class")
+@onready var notification: Control = $"../../HUD/Notfication"
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 func open(_player: Node) -> void:
 	if game.purplekey:
-		game.Purple_Doors-=1
-		game.Purple_Door1=false
-		fade_out_door()
+		if player.global_position.y < global_position.y:
+			game.Purple_Doors-=1
+			game.Purple_Door1=false
+			fade_out_door()
+			return
+		else:
+			notification.show_notification("This door opens only from INSIDE.")
+			return
+	game.playerkeys_spaces_shake()
 
 func fade_out_door() -> void:
 	fade_tween = create_tween()

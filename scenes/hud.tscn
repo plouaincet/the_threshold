@@ -490,3 +490,8 @@ text = "You got the WHITE key!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="Notfication" unique_id=114935786]
+one_shot = true
+
+[connection signal="timeout" from="Notfication/Timer" to="Notfication" method="_on_timer_timeout"]

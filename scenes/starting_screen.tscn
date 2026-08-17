@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://cd8jlihcd7xw"]
+
+[ext_resource type="Script" uid="uid://21itxmt8qs1o" path="res://scenes/starting_screen.gd" id="1_0g0qd"]
+[ext_resource type="Texture2D" uid="uid://bn7eju456txec" path="res://sprites/light.png" id="1_l0vbx"]
+[ext_resource type="Texture2D" uid="uid://cram0lgtihcag" path="res://sprites/nolight.png" id="2_0g0qd"]
+[ext_resource type="AudioStream" uid="uid://b66cx5xdyq7av" path="res://assets/startscreen.mp3" id="4_ihen6"]
+[ext_resource type="Texture2D" uid="uid://b500adm35mwb" path="res://sprites/title.png" id="5_l1ni3"]
+[ext_resource type="Texture2D" uid="uid://d03k4arlmp66n" path="res://sprites/startgame.png" id="6_ih3ue"]
+[ext_resource type="Texture2D" uid="uid://idethwj7256m" path="res://sprites/instructions.png" id="7_d085l"]
+[ext_resource type="Texture2D" uid="uid://bqqtrsrp55wbs" path="res://sprites/quit.png" id="8_jtkxu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8upip"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("1_l0vbx")
+}, {
+"duration": 0.2,
+"texture": ExtResource("2_0g0qd")
+}, {
+"duration": 0.5,
+"texture": ExtResource("1_l0vbx")
+}, {
+"duration": 0.2,
+"texture": ExtResource("2_0g0qd")
+}, {
+"duration": 0.1,
+"texture": ExtResource("1_l0vbx")
+}, {
+"duration": 0.4,
+"texture": ExtResource("2_0g0qd")
+}, {
+"duration": 0.1,
+"texture": ExtResource("1_l0vbx")
+}, {
+"duration": 0.4,
+"texture": ExtResource("2_0g0qd")
+}, {
+"duration": 0.5,
+"texture": ExtResource("1_l0vbx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0g0qd")
+}, {
+"duration": 0.5,
+"texture": ExtResource("1_l0vbx")
+}, {
+"duration": 0.2,
+"texture": ExtResource("2_0g0qd")
+}, {
+"duration": 0.5,
+"texture": ExtResource("1_l0vbx")
+}, {
+"duration": 0.2,
+"texture": ExtResource("2_0g0qd")
+}, {
+"duration": 0.5,
+"texture": ExtResource("1_l0vbx")
+}, {
+"duration": 0.4,
+"texture": ExtResource("2_0g0qd")
+}, {
+"duration": 0.1,
+"texture": ExtResource("1_l0vbx")
+}, {
+"duration": 0.2,
+"texture": ExtResource("2_0g0qd")
+}, {
+"duration": 0.1,
+"texture": ExtResource("1_l0vbx")
+}, {
+"duration": 0.2,
+"texture": ExtResource("2_0g0qd")
+}, {
+"duration": 0.5,
+"texture": ExtResource("1_l0vbx")
+}, {
+"duration": 0.4,
+"texture": ExtResource("2_0g0qd")
+}, {
+"duration": 0.5,
+"texture": ExtResource("1_l0vbx")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_0g0qd")
+}],
+"loop": 1,
+"name": &"flickering",
+"speed": 1.0
+}]
+
+[node name="StartingScreen" type="Control" unique_id=1130661874]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0g0qd")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1013343908]
+position = Vector2(576, 324.00003)
+scale = Vector2(1.8, 1.8000002)
+sprite_frames = SubResource("SpriteFrames_8upip")
+animation = &"flickering"
+autoplay = "flickering"
+frame = 5
+frame_progress = 0.9648618
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=948801815]
+stream = ExtResource("4_ihen6")
+autoplay = true
+
+[node name="TitleSpace" type="CenterContainer" parent="." unique_id=725801795]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.261
+anchor_top = 0.09
+anchor_right = 1.0
+anchor_bottom = 0.29200003
+offset_left = 0.32800293
+offset_top = -0.3200035
+offset_bottom = -0.21601868
+
+[node name="TextureRect" type="TextureRect" parent="TitleSpace" unique_id=542106200]
+custom_minimum_size = Vector2(700, 100)
+layout_mode = 2
+texture = ExtResource("5_l1ni3")
+expand_mode = 1
+
+[node name="ButtonsSpace" type="CenterContainer" parent="." unique_id=548448036]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42200002
+anchor_top = 0.287
+anchor_right = 1.0
+anchor_bottom = 0.90400004
+offset_left = -0.14401245
+offset_top = 0.024002075
+offset_bottom = 0.20794678
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ButtonsSpace" unique_id=1071721081]
+custom_minimum_size = Vector2(570, 330)
+layout_mode = 2
+
+[node name="StartGameContainer" type="CenterContainer" parent="ButtonsSpace/VBoxContainer" unique_id=286055806]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="StartGame" type="TextureButton" parent="ButtonsSpace/VBoxContainer/StartGameContainer" unique_id=1356643359]
+custom_minimum_size = Vector2(400, 70)
+layout_mode = 2
+texture_normal = ExtResource("6_ih3ue")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="InstructionsContainer" type="CenterContainer" parent="ButtonsSpace/VBoxContainer" unique_id=813116055]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Instructions" type="TextureButton" parent="ButtonsSpace/VBoxContainer/InstructionsContainer" unique_id=866733279]
+custom_minimum_size = Vector2(400, 70)
+layout_mode = 2
+texture_normal = ExtResource("7_d085l")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="QuitContainer" type="CenterContainer" parent="ButtonsSpace/VBoxContainer" unique_id=528262402]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Quit" type="TextureButton" parent="ButtonsSpace/VBoxContainer/QuitContainer" unique_id=2010962375]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+texture_normal = ExtResource("8_jtkxu")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="ButtonsSpace/VBoxContainer/StartGameContainer/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="ButtonsSpace/VBoxContainer/QuitContainer/Quit" to="." method="_on_quit_pressed"]

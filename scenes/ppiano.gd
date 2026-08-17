@@ -153,6 +153,7 @@ func check_note(note_name: String) -> void:
 			await get_tree().create_timer(0.3).timeout
 			slot_h_container.modulate=Color(0,1,0,1) # green
 			game.get_purple_key()
+			piano_minigame.visible=false
 		else:
 			slot_h_container.modulate=Color(1, 0, 0, 1)# red
 			await get_tree().create_timer(0.3).timeout
