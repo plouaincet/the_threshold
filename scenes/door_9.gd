@@ -11,6 +11,8 @@ func open(_player: Node) -> void:
 		game.Purple_Doors-=1
 		game.Purple_Door2=false
 		fade_out_door()
+		return
+	game.playerkeys_spaces_shake()
 
 func fade_out_door() -> void:
 	fade_tween = create_tween()

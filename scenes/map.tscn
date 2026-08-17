@@ -65,7 +65,7 @@ polygon = PackedVector2Array(14, 271, 14, 247, 24, 247, 23, 237, 9, 238, 9, 247,
 polygon = PackedVector2Array(-290, 229, -286, 227, -275, 227, -274, 218, -270, 218, -271, 234, -273, 235, -270, 247, -273, 248, -275, 241, -286, 241, -286, 246, -289, 247, -290, 244, -288, 239, -290, 233, -298, 234, -298, 240, -301, 243, -302, 269, -307, 269, -307, 264, -312, 264, -313, 269, -319, 269, -317, 263, -319, 252, -319, 249, -327, 247, -326, 254, -328, 255, -331, 252, -333, 247, -334, 241, -336, 236, -332, 232, -325, 227, -316, 227, -307, 228, -300, 232)
 
 [node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="Collisions (do not open)" unique_id=1262272723]
-polygon = PackedVector2Array(140, -222, 142, -227, 140, -233, 142, -238, 140, -247, 148, -251, 157, -249, 158, -245, 156, -236, 158, -233, 158, -225, 159, -221, 153, -222, 153, -227, 145, -226, 145, -221, 140, -215, 149, -211, 158, -202, 158, -182, 167, -181, 170, -185, 168, -191, 169, -198, 178, -199, 183, -206, 184, -210, 187, -208, 185, -194, 186, -186, 183, -187, 173, -185, 169, -179, 157, -180, 157, -175, 146, -172, 139, -171, 102, -170, 93, -173, 87, -178, 82, -182, 84, -203, 92, -212, 105, -216, 137, -215)
+polygon = PackedVector2Array(140, -215, 149, -211, 158, -202, 158, -182, 157, -180, 157, -175, 146, -172, 139, -171, 102, -170, 93, -173, 87, -178, 82, -182, 84, -203, 92, -212, 105, -216, 137, -215)
 
 [node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="Collisions (do not open)" unique_id=283719538]
 polygon = PackedVector2Array(-170, 65, -160, 54, -158, 39, -158, 31, -175, 30, -184, 29, -184, 36, -184, 41, -183, 54, -175, 66)
@@ -138,7 +138,7 @@ polygon = PackedVector2Array(35, 266, 38, 265, 42, 269, 39, 273, 37, 276, 31, 27
 polygon = PackedVector2Array(-435, -344, -432, -345, -426, -344, -424, -344, -422, -356, -397, -356, -396, -337, -383, -337, -383, -356, -361, -355, -359, -344, -347, -344, -346, -355, -322, -355, -319, -343, -307, -343, -306, -355, -292, -353, -291, -364, -285, -364, -285, -387, -461, -385, -460, -364, -452, -363, -452, -355, -437, -355)
 
 [node name="CollisionPolygon2D36" type="CollisionPolygon2D" parent="Collisions (do not open)" unique_id=2096974825]
-polygon = PackedVector2Array(68, -137, 75, -137, 73, -141, 80, -142, 80, -137, 86, -138, 84, -143, 86, -146, 84, -152, 86, -163, 76, -169, 68, -163, 68, -153, 69, -148)
+polygon = PackedVector2Array(73, -141, 80, -142, 84, -143, 86, -146, 84, -152, 86, -163, 76, -169, 68, -163, 68, -153, 69, -148, 69, -142)
 
 [node name="CollisionPolygon2D37" type="CollisionPolygon2D" parent="Collisions (do not open)" unique_id=1469847998]
 polygon = PackedVector2Array(32, 129, 45, 129, 41, 110, 54, 105, 54, 95, 52, 89, 39, 91, 23, 89, 23, 100, 34, 109)
@@ -148,6 +148,12 @@ polygon = PackedVector2Array(114, 128, 124, 128, 122, 109, 134, 103, 135, 88, 12
 
 [node name="CollisionPolygon2D39" type="CollisionPolygon2D" parent="Collisions (do not open)" unique_id=370949030]
 polygon = PackedVector2Array(-517, 41, -517, 58, -510, 58, -510, 41)
+
+[node name="CollisionPolygon2D40" type="CollisionPolygon2D" parent="Collisions (do not open)" unique_id=1604999757]
+polygon = PackedVector2Array(168, -184, 171, -184, 172, -187, 181, -187, 183, -184, 186, -184, 187, -211, 183, -208, 182, -200, 168, -198, 168, -187)
+
+[node name="CollisionPolygon2D41" type="CollisionPolygon2D" parent="Collisions (do not open)" unique_id=1869998300]
+polygon = PackedVector2Array(142, -226, 146, -225, 147, -228, 152, -227, 156, -226, 158, -237, 157, -251, 148, -253, 141, -248, 141, -238)
 
 [node name="Lights" type="Node2D" parent="." unique_id=115204424]
 position = Vector2(795, 619.6266)
@@ -211,3 +217,33 @@ self_modulate = Color(1, 1, 0.22745098, 1)
 position = Vector2(392, -65)
 color = Color(1, 1, 0.27058825, 1)
 texture = SubResource("GradientTexture2D_dpga7")
+
+[node name="HiddenAreas" type="Node2D" parent="." unique_id=37341254]
+
+[node name="OrangeDoor1" type="Polygon2D" parent="HiddenAreas" unique_id=1805119983]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(230, 773, 578, 773, 578, 985, 536, 985, 536, 1021, 230, 1021)
+
+[node name="OrangeDoor2" type="Polygon2D" parent="HiddenAreas" unique_id=988659487]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(242, 709, 577, 709, 577, 755, 242, 755)
+
+[node name="PinkDoor2" type="Polygon2D" parent="HiddenAreas" unique_id=1420057687]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(996, 782, 1072, 782, 1107, 782, 1107, 788, 1427, 788, 1462, 788, 1520, 788, 1520, 811, 1561, 811, 1645, 865, 1645, 931, 1560, 984, 1517, 984, 1517, 1036, 1181, 1036, 1181, 1001, 1181, 1001, 997, 1001)
+
+[node name="BlueDoor" type="Polygon2D" parent="HiddenAreas" unique_id=839392652]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(1169, 526, 1520, 526, 1520, 771, 1169, 771)
+
+[node name="PurpleDoorLeft" type="Polygon2D" parent="HiddenAreas" unique_id=17699744]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(248, 509, 450, 509, 450, 401, 248, 401)
+
+[node name="PurpleDoor2" type="Polygon2D" parent="HiddenAreas" unique_id=1065844054]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(617, 439, 768, 439, 768, 469, 617, 469)
+
+[node name="HiddenCorridor" type="Polygon2D" parent="HiddenAreas" unique_id=338457780]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(614, 225, 793, 225, 793, 98, 148, 98, 148, 516, 238, 516, 238, 484, 248, 484, 248, 419, 231, 419, 231, 157, 614, 157)

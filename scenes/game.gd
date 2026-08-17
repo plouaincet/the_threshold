@@ -6,6 +6,7 @@ extends Node
 @onready var chasing_music: AudioStreamPlayer2D = $Sounds/Chasing_Music
 @onready var screenent_sound: AudioStreamPlayer2D = $Sounds/Screen_Entered_By_Enemy
 @onready var inventory: Control = $"./HUD/PlayerInventory"
+@onready var playerkeys: Control = $"./HUD/PlayerKeys"
 @onready var bg_music: AudioStreamPlayer2D = $Sounds/BgMusic
 @onready var objects_node: Node2D = $Objects
 @onready var kslot_1: Control = $HUD/PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot1/TextureRect
@@ -14,6 +15,7 @@ extends Node
 @onready var kslot_4: Control = $HUD/PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot4/TextureRect
 @onready var kslot_5: Control = $HUD/PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot5/TextureRect
 @onready var notfication: Control = $HUD/Notfication
+@onready var map: Node2D = $Map/HiddenAreas
 
 
 var chours: int = 0
@@ -31,6 +33,8 @@ var Orange_Door1: bool=true
 var Orange_Door2: bool =true
 var Purple_Door1: bool=true
 var Purple_Door2: bool =true
+var Purple_Door3:bool=true
+var Purple_Door4:bool=true
 
 var Purple_Doors: int = 4
 var Orange_Doors: int = 2
@@ -109,17 +113,26 @@ func _check_doors() -> void:
 		%TileMap/PinkDoor1.navigation_enabled=true
 	if Pink_Door2==false:
 		%TileMap/PinkDoor2.navigation_enabled=true
+		map.get_node("PinkDoor2").visible=false
 	if Blue_Door==false:
 		%TileMap/BlueDoor.navigation_enabled=true
+		map.get_node("BlueDoor").visible=false
 	if Orange_Door1==false:
 		%TileMap/OrangeDoor1.navigation_enabled=true
+		map.get_node("OrangeDoor1").visible=false
 	if Orange_Door2==false:
 		%TileMap/OrangeDoor2.navigation_enabled=true
+		map.get_node("OrangeDoor2").visible=false
 	if Purple_Door1==false:
 		%TileMap/PurpleDoor1.navigation_enabled=true
 	if Purple_Door2==false:
 		%TileMap/PurpleDoor2.navigation_enabled=true
-
+		map.get_node("PurpleDoor2").visible=false
+	if Purple_Door3==false:
+		map.get_node("PurpleDoorleft").visible=false
+	if Purple_Door4==false:
+		map.get_node("HiddenCorridor").visible=false
+	
 	if !Pink_Doors and !Blue_Doors and flg:
 		enemy.patrol_points.insert(4,Vector2(539, -307))
 		enemy.patrol_points.insert(5,Vector2(407, -20))
@@ -182,6 +195,17 @@ func slot_spaces_shake() -> void:
 	tween.tween_property(inventory, "position:x", original_pos.x + shake_amount, shake_time)
 	tween.tween_property(inventory, "position:x", original_pos.x - shake_amount, shake_time)
 	tween.tween_property(inventory, "position:x", original_pos.x, shake_time)
+
+func playerkeys_spaces_shake() -> void:
+	var original_pos: Vector2 = playerkeys.position
+	var shake_amount: float = 6.0
+	var shake_time: float = 0.0625
+
+	var tween := create_tween()
+	tween.tween_property(playerkeys, "position:x", original_pos.x - shake_amount, shake_time)
+	tween.tween_property(playerkeys, "position:x", original_pos.x + shake_amount, shake_time)
+	tween.tween_property(playerkeys, "position:x", original_pos.x - shake_amount, shake_time)
+	tween.tween_property(playerkeys, "position:x", original_pos.x, shake_time)
 
 func randomise_clock() -> void:
 	chours = randi_range(0, 300)

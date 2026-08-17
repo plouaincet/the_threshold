@@ -9,7 +9,10 @@ func _ready() -> void:
 func open(_player: Node) -> void:
 	if game.purplekey:
 		game.Purple_Doors-=1
+		game.Purple_Door3=false
 		fade_out_door()
+		return
+	game.playerkeys_spaces_shake()
 
 func fade_out_door() -> void:
 	fade_tween = create_tween()
