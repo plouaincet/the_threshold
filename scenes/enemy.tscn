@@ -24,9 +24,6 @@ fill = 1
 fill_from = Vector2(0.49565217, 0.5173913)
 fill_to = Vector2(0.87391305, 0.14782609)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5uy6h"]
-radius = 2.0
-
 [node name="Enemy" type="CharacterBody2D" unique_id=513737343]
 script = ExtResource("1_md0e3")
 
@@ -48,24 +45,28 @@ path_search_max_polygons = 10000
 avoidance_enabled = true
 max_neighbors = 30
 max_speed = 500.0
+debug_enabled = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1664559223]
 wait_time = 0.1
 one_shot = true
 
 [node name="Area w_o light" type="Area2D" parent="." unique_id=1172928723]
+collision_layer = 2
 script = ExtResource("3_4ra3w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area w_o light" unique_id=2078240769]
 shape = SubResource("CircleShape2D_3owqy")
 
 [node name="Area w light" type="Area2D" parent="." unique_id=261377323]
+collision_layer = 2
 script = ExtResource("4_5uy6h")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area w light" unique_id=1053790904]
 polygon = PackedVector2Array(0, -1, -45, 145, 45, 145)
 
 [node name="Enemy is close" type="Area2D" parent="." unique_id=1544241365]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy is close" unique_id=1468685826]
 shape = SubResource("CircleShape2D_of2ov")
@@ -75,18 +76,6 @@ visible = false
 color = Color(1, 0.12156863, 1, 1)
 energy = 1.5
 texture = SubResource("GradientTexture2D_8upip")
-
-[node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=1775094672]
-shape = SubResource("CircleShape2D_5uy6h")
-target_position = Vector2(2.9644165, 231.01569)
-
-[node name="ShapeCast2" type="ShapeCast2D" parent="." unique_id=1893658440]
-shape = SubResource("CircleShape2D_5uy6h")
-target_position = Vector2(2.9644165, 231.01569)
-
-[node name="ShapeCast3" type="ShapeCast2D" parent="." unique_id=176007799]
-shape = SubResource("CircleShape2D_5uy6h")
-target_position = Vector2(2.9644165, 231.01569)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Enemy is close" to="." method="_on_enemy_is_close_body_entered"]

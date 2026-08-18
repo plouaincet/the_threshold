@@ -67,6 +67,7 @@ func _ready() -> void:
 	randomise_clock()
 
 func _process(_delta: float) -> void:
+	#print(Engine.get_frames_per_second())
 	if !enemy.is_chasing() and is_chasing and (abs(enemy.global_position.y - player.global_position.y) >= 200 or abs(enemy.global_position.x - player.global_position.x) >= 200):
 		player.BASE_SPEED=75
 		_fade_out_chase_music()
@@ -113,30 +114,36 @@ func _check_doors() -> void:
 		%TileMap/PinkDoor1.navigation_enabled=true
 	if Pink_Door2==false:
 		%TileMap/PinkDoor2.navigation_enabled=true
-		map.get_node("PinkDoor2").visible=false
+		fade_out_black(map.get_node("PinkDoor2"))
 	if Blue_Door==false:
 		%TileMap/BlueDoor.navigation_enabled=true
-		map.get_node("BlueDoor").visible=false
+		fade_out_black(map.get_node("BlueDoor"))
 	if Orange_Door1==false:
 		%TileMap/OrangeDoor1.navigation_enabled=true
-		map.get_node("OrangeDoor1").visible=false
+		fade_out_black(map.get_node("OrangeDoor1"))
 	if Orange_Door2==false:
 		%TileMap/OrangeDoor2.navigation_enabled=true
-		map.get_node("OrangeDoor2").visible=false
+		fade_out_black(map.get_node("OrangeDoor2"))
 	if Purple_Door1==false:
 		%TileMap/PurpleDoor1.navigation_enabled=true
 	if Purple_Door2==false:
 		%TileMap/PurpleDoor2.navigation_enabled=true
-		map.get_node("PurpleDoor2").visible=false
+		fade_out_black(map.get_node("PurpleDoor2"))
 	if Purple_Door3==false:
-		map.get_node("PurpleDoorleft").visible=false
+		fade_out_black(map.get_node("PurpleDoorLeft"))
+
 	if Purple_Door4==false:
-		map.get_node("HiddenCorridor").visible=false
-	
+		fade_out_black(map.get_node("HiddenCorridor"))
+
 	if !Pink_Doors and !Blue_Doors and flg:
 		enemy.patrol_points.insert(4,Vector2(539, -307))
 		enemy.patrol_points.insert(5,Vector2(407, -20))
 		flg=0
+
+func fade_out_black(room:Polygon2D) -> void:
+	fade_tween = create_tween()
+	fade_tween.tween_property(room, "modulate:a", 0.0, 0.5)
+	fade_tween.tween_callback(func(): room.visible = false)
 
 func add_object(img: Sprite2D, sname: String,pos:Vector2) -> bool:
 	for i in range(Slots.size()):

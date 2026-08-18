@@ -70,7 +70,7 @@ position = Vector2(-866, -966)
 [node name="TileMap" parent="." unique_id=395610868 instance=ExtResource("3_p57ef")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(-709, -869)
+position = Vector2(-714, -868)
 
 [node name="Objects" type="Node2D" parent="." unique_id=1576869208]
 y_sort_enabled = true
@@ -167,7 +167,7 @@ y_sort_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=678641909]
 offset = Vector2(0, -20)
-zoom = Vector2(4, 4)
+zoom = Vector2(0.7, 0.7)
 limit_left = -855
 limit_top = -959
 limit_right = 892
