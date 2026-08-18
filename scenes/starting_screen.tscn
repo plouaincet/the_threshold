@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b66cx5xdyq7av" path="res://assets/startscreen.mp3" id="4_ihen6"]
 [ext_resource type="Texture2D" uid="uid://b500adm35mwb" path="res://sprites/title.png" id="5_l1ni3"]
 [ext_resource type="Texture2D" uid="uid://d03k4arlmp66n" path="res://sprites/startgame.png" id="6_ih3ue"]
+[ext_resource type="Texture2D" uid="uid://dpat5raneba37" path="res://sprites/arrow.png" id="6_q2wq7"]
 [ext_resource type="Texture2D" uid="uid://idethwj7256m" path="res://sprites/instructions.png" id="7_d085l"]
 [ext_resource type="Texture2D" uid="uid://bqqtrsrp55wbs" path="res://sprites/quit.png" id="8_jtkxu"]
 
@@ -147,34 +148,100 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
-[node name="StartGame" type="TextureButton" parent="ButtonsSpace/VBoxContainer/StartGameContainer" unique_id=1356643359]
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonsSpace/VBoxContainer/StartGameContainer" unique_id=955664727]
+layout_mode = 2
+
+[node name="Control" type="TextureRect" parent="ButtonsSpace/VBoxContainer/StartGameContainer/HBoxContainer" unique_id=1932775617]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture = ExtResource("6_q2wq7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StartGame" type="TextureButton" parent="ButtonsSpace/VBoxContainer/StartGameContainer/HBoxContainer" unique_id=1356643359]
 custom_minimum_size = Vector2(400, 70)
 layout_mode = 2
 texture_normal = ExtResource("6_ih3ue")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="Control2" type="TextureRect" parent="ButtonsSpace/VBoxContainer/StartGameContainer/HBoxContainer" unique_id=1968413961]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture = ExtResource("6_q2wq7")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
 [node name="InstructionsContainer" type="CenterContainer" parent="ButtonsSpace/VBoxContainer" unique_id=813116055]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
-[node name="Instructions" type="TextureButton" parent="ButtonsSpace/VBoxContainer/InstructionsContainer" unique_id=866733279]
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonsSpace/VBoxContainer/InstructionsContainer" unique_id=1612881041]
+layout_mode = 2
+
+[node name="Control" type="TextureRect" parent="ButtonsSpace/VBoxContainer/InstructionsContainer/HBoxContainer" unique_id=2126220916]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture = ExtResource("6_q2wq7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Instructions" type="TextureButton" parent="ButtonsSpace/VBoxContainer/InstructionsContainer/HBoxContainer" unique_id=866733279]
 custom_minimum_size = Vector2(400, 70)
 layout_mode = 2
 texture_normal = ExtResource("7_d085l")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="Control2" type="TextureRect" parent="ButtonsSpace/VBoxContainer/InstructionsContainer/HBoxContainer" unique_id=777465335]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture = ExtResource("6_q2wq7")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
 [node name="QuitContainer" type="CenterContainer" parent="ButtonsSpace/VBoxContainer" unique_id=528262402]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
-[node name="Quit" type="TextureButton" parent="ButtonsSpace/VBoxContainer/QuitContainer" unique_id=2010962375]
-custom_minimum_size = Vector2(180, 70)
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonsSpace/VBoxContainer/QuitContainer" unique_id=1880928990]
+layout_mode = 2
+
+[node name="Control" type="TextureRect" parent="ButtonsSpace/VBoxContainer/QuitContainer/HBoxContainer" unique_id=1412212007]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture = ExtResource("6_q2wq7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Quit" type="TextureButton" parent="ButtonsSpace/VBoxContainer/QuitContainer/HBoxContainer" unique_id=2010962375]
+custom_minimum_size = Vector2(170, 70)
 layout_mode = 2
 texture_normal = ExtResource("8_jtkxu")
 ignore_texture_size = true
 stretch_mode = 0
 
-[connection signal="pressed" from="ButtonsSpace/VBoxContainer/StartGameContainer/StartGame" to="." method="_on_start_game_pressed"]
-[connection signal="pressed" from="ButtonsSpace/VBoxContainer/QuitContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Control2" type="TextureRect" parent="ButtonsSpace/VBoxContainer/QuitContainer/HBoxContainer" unique_id=372474924]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture = ExtResource("6_q2wq7")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[connection signal="mouse_entered" from="ButtonsSpace/VBoxContainer/StartGameContainer/HBoxContainer/StartGame" to="." method="_on_start_game_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonsSpace/VBoxContainer/StartGameContainer/HBoxContainer/StartGame" to="." method="_on_start_game_mouse_exited"]
+[connection signal="pressed" from="ButtonsSpace/VBoxContainer/StartGameContainer/HBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="mouse_entered" from="ButtonsSpace/VBoxContainer/InstructionsContainer/HBoxContainer/Instructions" to="." method="_on_instructions_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonsSpace/VBoxContainer/InstructionsContainer/HBoxContainer/Instructions" to="." method="_on_instructions_mouse_exited"]
+[connection signal="mouse_entered" from="ButtonsSpace/VBoxContainer/QuitContainer/HBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonsSpace/VBoxContainer/QuitContainer/HBoxContainer/Quit" to="." method="_on_quit_mouse_exited"]
+[connection signal="pressed" from="ButtonsSpace/VBoxContainer/QuitContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
