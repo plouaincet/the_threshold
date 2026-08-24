@@ -167,7 +167,7 @@ y_sort_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=678641909]
 offset = Vector2(0, -20)
-zoom = Vector2(4, 4)
+zoom = Vector2(3, 3)
 limit_left = -855
 limit_top = -959
 limit_right = 892
