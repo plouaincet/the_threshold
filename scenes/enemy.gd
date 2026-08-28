@@ -133,6 +133,8 @@ func check_for_player():
 		var collider = ray.get_collider()
 		'''if collider.name!="Collisions (do not open)":
 			print(collider)'''
+		if collider==null:
+			continue
 		var hit_player: bool = (collider == player) or (collider.get_parent() == player)
 		if not hit_player:
 			continue
