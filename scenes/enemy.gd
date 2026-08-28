@@ -30,6 +30,10 @@ var view_angle := deg_to_rad(70.0)
 var ray_count: int = 15
 var vision_rays: Array[RayCast2D] = []
 
+var anim :String
+@onready var enemysprite: AnimatedSprite2D = $Sprite2D
+
+
 func _ready() -> void:
 	vision_rays.clear()
 	for i in range(ray_count):
@@ -85,6 +89,13 @@ func _physics_process(_delta):
 		velocity = dir * SPEED
 	else:
 		velocity = Vector2.ZERO
+	var direction := Input.get_vector("left","right","up","down")
+	if direction.x>0:
+		enemysprite.play("Walk_right")
+		enemysprite.flip_h=false
+	elif direction.x<0:
+		enemysprite.play("Walk_left")
+		enemysprite.flip_h=true
 	move_and_slide()
 	update_vision()
 
@@ -133,6 +144,8 @@ func check_for_player():
 		var collider = ray.get_collider()
 		'''if collider.name!="Collisions (do not open)":
 			print(collider)'''
+		if collider==null:
+			continue
 		var hit_player: bool = (collider == player) or (collider.get_parent() == player)
 		if not hit_player:
 			continue
