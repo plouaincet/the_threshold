@@ -221,29 +221,36 @@ texture = SubResource("GradientTexture2D_dpga7")
 [node name="HiddenAreas" type="Node2D" parent="." unique_id=37341254]
 
 [node name="OrangeDoor1" type="Polygon2D" parent="HiddenAreas" unique_id=1805119983]
+z_index = 1
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(230, 773, 578, 773, 578, 985, 536, 985, 536, 1021, 230, 1021)
 
 [node name="OrangeDoor2" type="Polygon2D" parent="HiddenAreas" unique_id=988659487]
+z_index = 1
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(242, 709, 577, 709, 577, 755, 242, 755)
+polygon = PackedVector2Array(242, 709, 317, 709, 317, 728, 345, 728, 345, 709, 577, 709, 577, 755, 242, 755)
 
 [node name="PinkDoor2" type="Polygon2D" parent="HiddenAreas" unique_id=1420057687]
+z_index = 1
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(996, 782, 1072, 782, 1107, 782, 1107, 788, 1427, 788, 1462, 788, 1520, 788, 1520, 811, 1561, 811, 1645, 865, 1645, 931, 1560, 984, 1517, 984, 1517, 1036, 1181, 1036, 1181, 1001, 1181, 1001, 997, 1001)
+polygon = PackedVector2Array(996, 782, 1072, 782, 1072, 818, 1105, 818, 1105, 788, 1105, 782, 1107, 782, 1107, 790, 1430, 788, 1430, 826, 1460, 826, 1460, 788, 1520, 788, 1520, 811, 1561, 811, 1645, 865, 1645, 931, 1560, 984, 1517, 984, 1517, 1036, 1181, 1036, 1181, 1001, 1181, 1001, 997, 1001)
 
 [node name="BlueDoor" type="Polygon2D" parent="HiddenAreas" unique_id=839392652]
+z_index = 1
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(1169, 526, 1520, 526, 1520, 771, 1169, 771)
+polygon = PackedVector2Array(1169, 526, 1324, 526, 1324, 564, 1354, 564, 1354, 526, 1520, 526, 1520, 771, 1169, 771)
 
 [node name="PurpleDoorLeft" type="Polygon2D" parent="HiddenAreas" unique_id=17699744]
+z_index = 1
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(248, 509, 450, 509, 450, 401, 248, 401)
 
 [node name="PurpleDoor2" type="Polygon2D" parent="HiddenAreas" unique_id=1065844054]
+z_index = 1
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(617, 439, 768, 439, 768, 469, 617, 469)
 
 [node name="HiddenCorridor" type="Polygon2D" parent="HiddenAreas" unique_id=338457780]
+z_index = 1
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(614, 225, 793, 225, 793, 98, 148, 98, 148, 516, 238, 516, 238, 484, 248, 484, 248, 419, 231, 419, 231, 157, 614, 157)
