@@ -60,6 +60,7 @@ y_sort_enabled = true
 script = ExtResource("1_lnu2h")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=32945564]
+visible = false
 energy = 0.92
 blend_mode = 1
 range_z_max = 0
@@ -167,7 +168,7 @@ y_sort_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=678641909]
 offset = Vector2(0, -20)
-zoom = Vector2(3, 3)
+zoom = Vector2(0.7, 0.7)
 limit_left = -855
 limit_top = -959
 limit_right = 892
