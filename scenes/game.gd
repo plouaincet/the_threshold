@@ -95,6 +95,7 @@ func _chasing_handle() -> void:
 			fade_tween.kill()
 		chasing_music.volume_db = CHASE_MUSIC_VOLUME
 		chasing_music.play()
+		print("trying to play")
 
 
 func _fade_out_chase_music() -> void:

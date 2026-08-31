@@ -70,7 +70,7 @@ position = Vector2(-866, -966)
 [node name="TileMap" parent="." unique_id=395610868 instance=ExtResource("3_p57ef")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(-714, -870)
+position = Vector2(-714, -868)
 
 [node name="Objects" type="Node2D" parent="." unique_id=1576869208]
 y_sort_enabled = true

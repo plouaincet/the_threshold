@@ -11,6 +11,7 @@ var map_synced: bool = false
 var spotted_by_enemy: bool = false
 var spotted_by_enemy_forced: bool = false
 var forced_chase: bool = false
+var stop_chase:bool=false
 var forced_chase_lose_distance: float = 200.0
 var patrol_points: Array[Vector2] = [
 	 Vector2(-584, -721),
@@ -44,13 +45,17 @@ func _ready() -> void:
 	timer.start()
 	NavigationServer2D.map_changed.connect(_on_map_changed)
 
+func _change_vision_ray(state:bool) -> void:
+	for ray in vision_rays:
+		ray.enabled=state
+
 func _make_vision_ray() -> RayCast2D:
 	var ray := RayCast2D.new()
 	ray.enabled = true
 	ray.collide_with_bodies = true
 	ray.collide_with_areas = true
 	ray.exclude_parent = true
-	ray.collision_mask = 1 | (1 << 4)  # layer 1 (walls) + layer 5 (PlayerVision) — adjust bits as needed
+	ray.collision_mask = 1 | (1 << 4)
 	add_child(ray)
 	return ray
 
@@ -70,7 +75,7 @@ func _physics_process(_delta):
 				var diff = global_position - player.global_position
 				if abs(diff.x) >= forced_chase_lose_distance or abs(diff.y) >= forced_chase_lose_distance:
 					forced_chase = false
-	if spotted_by_enemy or spotted_by_enemy_forced or forced_chase:
+	if (spotted_by_enemy or spotted_by_enemy_forced or forced_chase) and !stop_chase:
 		SPEED=60
 		emit_signal("Enemy_Chasing")
 		nav.target_position = player.global_position 
@@ -79,23 +84,21 @@ func _physics_process(_delta):
 			return
 	else:
 		SPEED = 30
-		if not is_position_navigable(nav.target_position):
-			set_next_patrol_point()
-		elif nav.is_target_reached():
-			set_next_patrol_point()
+		if map_synced:
+			if not is_position_navigable(nav.target_position):
+				set_next_patrol_point()
+			elif nav.is_target_reached():
+				set_next_patrol_point()
 	
 	if !nav.is_target_reached():
 		var dir = (nav.get_next_path_position() - global_position).normalized()
 		velocity = dir * SPEED
 	else:
 		velocity = Vector2.ZERO
-	var direction := Input.get_vector("left","right","up","down")
-	if direction.x>0:
+	if velocity.x>0:
 		enemysprite.play("Walk_right")
-		enemysprite.flip_h=false
-	elif direction.x<0:
+	elif velocity.x<0:
 		enemysprite.play("Walk_left")
-		enemysprite.flip_h=true
 	move_and_slide()
 	update_vision()
 
@@ -103,6 +106,7 @@ func set_next_patrol_point() -> void:
 	if patrol_points.is_empty():
 		velocity = Vector2.ZERO
 		return
+	print("im changing it")
 	nav.target_position = patrol_points[current_patrol_index]
 	current_patrol_index += 1
 	if current_patrol_index >= patrol_points.size():
