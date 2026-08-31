@@ -14,10 +14,13 @@ extends Node
 @onready var kslot_3: Control = $HUD/PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot3/TextureRect
 @onready var kslot_4: Control = $HUD/PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot4/TextureRect
 @onready var kslot_5: Control = $HUD/PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot5/TextureRect
+@onready var glabel: Label = $HUD/GraffitiCounter/CenterContainer/Label
 @onready var notfication: Control = $HUD/Notfication
 @onready var map: Node2D = $Map/HiddenAreas
+@onready var door8Area: Area2D = $Doors/Door8/Area2D
+@onready var door8Collision: CollisionShape2D = $Doors/Door8/Area2D/CollisionShape2D
 
-
+var graffities: float = 0
 var chours: int = 0
 var cminutes: int = 0
 const SCREEN_SIZE := Vector2(1152, 648)
@@ -52,6 +55,7 @@ var selected_frame:int=-1
 var Slots: Array[String] = ["null","null","null","null","null"]
 var Chairs: Array[String] = ["null","null","null","null","null","null","null","null"]
 
+var gmask:float=0.0
 var whitekey:bool=false
 var bluekey:bool=false
 var pinkkey:bool=false
@@ -241,29 +245,41 @@ func get_white_key() -> void:
 	if not whitekey:
 		whitekey=true
 		kslot_1.visible=true
-		notfication.show_notification("You got WHITE key!")
+		notfication.show_notification("You got the WHITE key!")
 
 func get_blue_key() -> void:
 	if not bluekey:
 		bluekey=true
 		kslot_2.visible=true
-		notfication.show_notification("You got BLUE key!")
+		notfication.show_notification("You got the BLUE key!")
 
 func get_pink_key() -> void:
 	if not pinkkey:
 		pinkkey=true
 		kslot_3.visible=true
-		notfication.show_notification("You got PINK key!")
+		notfication.show_notification("You got the PINK key!")
 		enemy.spawn_enemy_chase()
 
 func get_orange_key() -> void:
 	if not orangekey:
 		orangekey=true
 		kslot_4.visible=true
-		notfication.show_notification("You got ORANGE key!")
+		notfication.show_notification("You got the ORANGE key!")
 
 func get_purple_key() -> void:
 	if not purplekey:
 		purplekey=true
 		kslot_5.visible=true
-		notfication.show_notification("You got PURPLE key!")
+		notfication.show_notification("You got the PURPLE key!")
+
+func add_graffities(GName:String,value:float) -> void:
+	if GName=="GMask":
+		gmask+=value
+		if int(gmask)==1:
+			door8Area.monitorable=true
+			door8Collision.disabled=false
+	graffities+=value
+	if abs(graffities - round(graffities)) < 0.001:
+		glabel.text=str(int(round(graffities))) + "/5 Graffities"
+	else:
+		glabel.text=str(graffities) + "/5 Graffities"

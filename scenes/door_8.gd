@@ -2,9 +2,13 @@ extends Doors
 var fade_tween: Tween
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var game: Node2D = $"../.."
+@onready var area_2d: Area2D = $Area2D
+@onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	area_2d.monitorable=false
+	collision_shape_2d.disabled=true
 
 func open(_player: Node) -> void:
 	if game.purplekey:

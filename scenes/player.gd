@@ -24,6 +24,7 @@ var in_music_box_area:bool=false
 
 
 var nearby_interactables: Array[Interactable] = []
+var nearby_graffities: Array[Graffiti] =[]
 var nearby_doors: Array[Doors] = []
 var nearby_chairs: Array[Chair] = []
 var anim
@@ -95,6 +96,9 @@ func _on_interaction_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Doors:
 		nearby_doors.append(area.get_parent())
 		return
+	if area.get_parent() is Graffiti:
+		nearby_graffities.append(area.get_parent())
+		return
 	if area is Chair:
 		nearby_chairs.append(area)
 		return
@@ -106,6 +110,8 @@ func _on_interaction_area_area_exited(area: Area2D) -> void:
 		nearby_interactables.erase(area.get_parent())
 	if area.get_parent() is Doors:
 		nearby_doors.erase(area.get_parent())
+	if area.get_parent() is Graffiti:
+		nearby_graffities.erase(area.get_parent())
 	if area is Chair:
 		nearby_chairs.erase(area)
 	if area.get_parent().name=="music_box":
@@ -122,7 +128,7 @@ func try_interact():
 		return
 	if in_music_box_area:
 		music_box.insert_clank()
-	if nearby_interactables.is_empty() and nearby_doors.is_empty() and nearby_chairs.is_empty():
+	if nearby_interactables.is_empty() and nearby_doors.is_empty() and nearby_chairs.is_empty() and nearby_graffities.is_empty():
 		return
 	if !nearby_interactables.is_empty():
 		nearby_interactables[0].interact(self)
@@ -131,6 +137,8 @@ func try_interact():
 		emit_signal("Door_Opened")
 	if !nearby_chairs.is_empty():
 		nearby_chairs[0].place(self)
+	if !nearby_graffities.is_empty():
+		nearby_graffities[0].wipe(self)
 	
 func restrained() -> bool:
 	if painting_viewer.visible:
@@ -142,5 +150,8 @@ func restrained() -> bool:
 	return false
 
 func get_key_temporary() -> void:
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	game.get_white_key()
+	'''game.get_blue_key()
+	game.get_orange_key()
+	game.get_purple_key()'''
