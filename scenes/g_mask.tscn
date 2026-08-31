@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://kfvpqc65jqmm"]
+
+[ext_resource type="Script" uid="uid://kqyvvg7ukbdy" path="res://scenes/g_boot.gd" id="1_fbe5i"]
+[ext_resource type="Shader" uid="uid://b4lmxx2iryfv4" path="res://scenes/graffiti.gdshader" id="2_sqk2o"]
+[ext_resource type="Texture2D" uid="uid://b48f2w6csqheo" path="res://sprites/gmask.png" id="3_hfmnn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8upip"]
+
+[sub_resource type="Gradient" id="Gradient_n5bnu"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3owqy"]
+gradient = SubResource("Gradient_n5bnu")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8717949, 0.14102565)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fbe5i"]
+shader = ExtResource("2_sqk2o")
+shader_parameter/bite_count = 0
+shader_parameter/bites = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0rxn"]
+shader = ExtResource("2_sqk2o")
+shader_parameter/bite_count = 0
+shader_parameter/bites = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p6042"]
+radius = 26.076809
+
+[node name="GMask" type="StaticBody2D" unique_id=1690860637]
+script = ExtResource("1_fbe5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1335092371]
+position = Vector2(0, 42)
+shape = SubResource("CircleShape2D_8upip")
+disabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1770442821]
+position = Vector2(0, 42)
+color = Color(1, 0.15686275, 0.69411767, 1)
+texture = SubResource("GradientTexture2D_3owqy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1386874755]
+material = SubResource("ShaderMaterial_fbe5i")
+position = Vector2(0, 42)
+texture = ExtResource("3_hfmnn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1894471259]
+material = SubResource("ShaderMaterial_s0rxn")
+position = Vector2(0, 42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=879089886]
+shape = SubResource("CircleShape2D_p6042")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

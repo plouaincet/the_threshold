@@ -247,6 +247,7 @@ color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(248, 509, 450, 509, 450, 401, 248, 401)
 
 [node name="PurpleDoor2" type="Polygon2D" parent="HiddenAreas" unique_id=1065844054]
+visible = false
 z_index = 1
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(617, 439, 768, 439, 768, 469, 617, 469)

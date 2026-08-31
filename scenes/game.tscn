@@ -43,6 +43,11 @@
 [ext_resource type="Script" uid="uid://buyo1y5vd85qj" path="res://scenes/door_10.gd" id="35_0sl42"]
 [ext_resource type="PackedScene" uid="uid://cyunrt25osjwx" path="res://scenes/door_10.tscn" id="35_gxtfn"]
 [ext_resource type="PackedScene" uid="uid://b0ixgpkqkpsjo" path="res://scenes/clock_minigame.tscn" id="37_0sl42"]
+[ext_resource type="PackedScene" uid="uid://bcgnaa760fdb3" path="res://scenes/g_boot.tscn" id="37_q8j3a"]
+[ext_resource type="PackedScene" uid="uid://b6bidqk5uan06" path="res://scenes/g_scut.tscn" id="38_ms3bu"]
+[ext_resource type="PackedScene" uid="uid://bwt5vix14jwuo" path="res://scenes/g_armor.tscn" id="39_7ixpq"]
+[ext_resource type="PackedScene" uid="uid://8mlaol35wdj0" path="res://scenes/g_glove.tscn" id="40_bk1p3"]
+[ext_resource type="PackedScene" uid="uid://kfvpqc65jqmm" path="res://scenes/g_mask.tscn" id="41_n8ral"]
 [ext_resource type="PackedScene" uid="uid://y8h05tki7d0s" path="res://scenes/piano_minigame.tscn" id="41_oaba0"]
 [ext_resource type="PackedScene" uid="uid://n6krf57ibe8t" path="res://scenes/chair_minigame.tscn" id="45_oaba0"]
 [ext_resource type="AudioStream" uid="uid://dxl87i6daeaat" path="res://assets/c4.mp3" id="46_458eo"]
@@ -72,6 +77,24 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(-714, -868)
 
+[node name="Graffities" type="Node2D" parent="." unique_id=1158566748]
+y_sort_enabled = true
+
+[node name="GArmor" parent="Graffities" unique_id=1690860637 instance=ExtResource("39_7ixpq")]
+position = Vector2(-368, -270)
+
+[node name="GGlove" parent="Graffities" unique_id=943695893 instance=ExtResource("40_bk1p3")]
+position = Vector2(-239, -67)
+
+[node name="GBoot" parent="Graffities" unique_id=921013457 instance=ExtResource("37_q8j3a")]
+position = Vector2(-141, -551)
+
+[node name="GMask" parent="Graffities" unique_id=1941367797 instance=ExtResource("41_n8ral")]
+position = Vector2(-686, -567)
+
+[node name="GScut" parent="Graffities" unique_id=1365421989 instance=ExtResource("38_ms3bu")]
+position = Vector2(-6, -630)
+
 [node name="Objects" type="Node2D" parent="." unique_id=1576869208]
 y_sort_enabled = true
 
@@ -85,7 +108,7 @@ position = Vector2(-468, -103)
 [node name="music_box" parent="Objects" unique_id=1317212613 instance=ExtResource("16_ca42v")]
 position = Vector2(400, -322)
 
-[node name="Toy1" parent="Objects" unique_id=1661247524 instance=ExtResource("17_rysoc")]
+[node name="Toy1" parent="Objects" unique_id=902649657 instance=ExtResource("17_rysoc")]
 position = Vector2(-158, 6)
 
 [node name="Toy2" parent="Objects" unique_id=725107376 instance=ExtResource("8_ssvqc")]
@@ -169,9 +192,10 @@ y_sort_enabled = true
 offset = Vector2(0, -20)
 zoom = Vector2(3, 3)
 limit_left = -855
-limit_top = -959
+limit_top = -937
 limit_right = 892
 limit_bottom = 197
+limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
@@ -179,7 +203,7 @@ position_smoothing_speed = 10.0
 
 [node name="Enemy" parent="." unique_id=513737343 instance=ExtResource("4_lbhrr")]
 unique_name_in_owner = true
-position = Vector2(-563.00006, -720.00006)
+position = Vector2(-580, -715.99994)
 rotation = 0.008707285
 collision_mask = 2
 
