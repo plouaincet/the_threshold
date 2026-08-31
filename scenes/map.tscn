@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bgfgk2hustmds"]
 
 [ext_resource type="Texture2D" uid="uid://cp4snha0o1uw0" path="res://sprites/mapwostuff.png" id="1_4xfga"]
+[ext_resource type="Script" uid="uid://c1tuv7q5fjptd" path="res://scenes/map.gd" id="1_paxxb"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3owqy"]
 
@@ -15,6 +16,7 @@ fill_from = Vector2(0.517094, 0.517094)
 fill_to = Vector2(0.9273504, 0.051282052)
 
 [node name="Map" type="Node2D" unique_id=515555644]
+script = ExtResource("1_paxxb")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=747287080]
 self_modulate = Color(0, 0, 0, 1)
@@ -28,7 +30,6 @@ position = Vector2(795, 619.6266)
 texture = ExtResource("1_4xfga")
 
 [node name="Collisions (do not open)" type="StaticBody2D" parent="." unique_id=781031164]
-visible = false
 position = Vector2(795, 620)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions (do not open)" unique_id=1432040354]
@@ -254,3 +255,16 @@ polygon = PackedVector2Array(617, 439, 768, 439, 768, 469, 617, 469)
 z_index = 1
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(614, 225, 793, 225, 793, 98, 148, 98, 148, 516, 238, 516, 238, 484, 248, 484, 248, 419, 231, 419, 231, 157, 614, 157)
+
+[node name="CorridorEntrance" type="Area2D" parent="." unique_id=1691350229]
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="CorridorEntrance" unique_id=170613831]
+polygon = PackedVector2Array(621, 150, 786, 150, 786, 218, 621, 218)
+
+[node name="CorridorExit" type="Area2D" parent="." unique_id=1309399021]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CorridorExit" unique_id=538560543]
+polygon = PackedVector2Array(254, 421, 282, 421, 282, 494, 254, 494)
+
+[connection signal="body_entered" from="CorridorEntrance" to="." method="_on_corridor_entrance_body_entered"]
+[connection signal="body_entered" from="CorridorExit" to="." method="_on_corridor_exit_body_entered"]

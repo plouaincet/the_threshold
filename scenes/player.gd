@@ -144,3 +144,4 @@ func restrained() -> bool:
 func get_key_temporary() -> void:
 	await get_tree().create_timer(5.0).timeout
 	game.get_white_key()
+	game.get_purple_key()

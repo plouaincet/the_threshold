@@ -2,39 +2,40 @@
 
 [ext_resource type="Script" uid="uid://bec63vkjupu5d" path="res://scenes/enemy.gd" id="1_md0e3"]
 [ext_resource type="Texture2D" uid="uid://x23s4qpq10x0" path="res://sprites/enemyright.png" id="2_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://d1tqhruj3jaap" path="res://sprites/enemyleft.png" id="2_c4w8v"]
 [ext_resource type="Script" uid="uid://djslwasj401a3" path="res://scenes/area_w_o_light.gd" id="3_4ra3w"]
 [ext_resource type="Script" uid="uid://qsjiln88154c" path="res://scenes/area_w_light.gd" id="4_5uy6h"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
-atlas = ExtResource("2_5uy6h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtq4b"]
+atlas = ExtResource("2_c4w8v")
 region = Rect2(0, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wtq4b"]
-atlas = ExtResource("2_5uy6h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0cyh"]
+atlas = ExtResource("2_c4w8v")
 region = Rect2(64, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j0cyh"]
-atlas = ExtResource("2_5uy6h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0wcc"]
+atlas = ExtResource("2_c4w8v")
 region = Rect2(128, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g0wcc"]
-atlas = ExtResource("2_5uy6h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1ycm"]
+atlas = ExtResource("2_c4w8v")
 region = Rect2(192, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s1ycm"]
-atlas = ExtResource("2_5uy6h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_shcg2"]
+atlas = ExtResource("2_c4w8v")
 region = Rect2(256, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_shcg2"]
-atlas = ExtResource("2_5uy6h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ile5s"]
+atlas = ExtResource("2_c4w8v")
 region = Rect2(320, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ile5s"]
-atlas = ExtResource("2_5uy6h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x4g4"]
+atlas = ExtResource("2_c4w8v")
 region = Rect2(384, 0, 64, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1x4g4"]
-atlas = ExtResource("2_5uy6h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pwtc"]
+atlas = ExtResource("2_c4w8v")
 region = Rect2(448, 0, 64, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
@@ -73,9 +74,6 @@ region = Rect2(448, 0, 64, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5uy6h")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_wtq4b")
 }, {
 "duration": 1.0,
@@ -95,6 +93,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1x4g4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pwtc")
 }],
 "loop": 1,
 "name": &"Walk_left",
@@ -177,7 +178,6 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Area w_o light" type="Area2D" parent="." unique_id=1172928723]
-visible = false
 collision_layer = 2
 script = ExtResource("3_4ra3w")
 
@@ -185,7 +185,6 @@ script = ExtResource("3_4ra3w")
 shape = SubResource("CircleShape2D_3owqy")
 
 [node name="Area w light" type="Area2D" parent="." unique_id=261377323]
-visible = false
 collision_layer = 2
 script = ExtResource("4_5uy6h")
 
@@ -193,7 +192,6 @@ script = ExtResource("4_5uy6h")
 polygon = PackedVector2Array(0, -1, -45, 145, 45, 145)
 
 [node name="Enemy is close" type="Area2D" parent="." unique_id=1544241365]
-visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy is close" unique_id=1468685826]
