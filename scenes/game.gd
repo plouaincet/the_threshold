@@ -19,6 +19,7 @@ extends Node
 @onready var map: Node2D = $Map/HiddenAreas
 @onready var door8Area: Area2D = $Doors/Door8/Area2D
 @onready var door8Collision: CollisionShape2D = $Doors/Door8/Area2D/CollisionShape2D
+@onready var music_box: StaticBody2D = $Objects/music_box
 
 var graffities: float = 0
 var chours: int = 0
@@ -65,6 +66,8 @@ var purplekey:bool=false
 func _ready() -> void:
 	bg_music.volume_db=5
 	bg_music.play()
+	
+	music_box.quietdown.connect(_handle_bgmusic)
 	player.Light_Toggled.connect(light_toggled)
 	enemy.Enemy_Chasing.connect(_chasing_handle)
 	player.Door_Opened.connect(_check_doors)
@@ -259,6 +262,8 @@ func get_pink_key() -> void:
 		kslot_3.visible=true
 		notfication.show_notification("You got the PINK key!")
 		enemy.spawn_enemy_chase()
+	elif pinkkey and !is_chasing:
+		enemy.spawn_enemy_chase()
 
 func get_orange_key() -> void:
 	if not orangekey:
@@ -283,3 +288,11 @@ func add_graffities(GName:String,value:float) -> void:
 		glabel.text=str(int(round(graffities))) + "/5 Graffities"
 	else:
 		glabel.text=str(graffities) + "/5 Graffities"
+
+func _handle_bgmusic(state:bool) -> void:
+	if state:
+		bg_music.volume_db=-3
+		print("down")
+	else:
+		bg_music.volume_db=5
+		print("up")

@@ -1,7 +1,57 @@
 [gd_scene format=3 uid="uid://cd43s7fbl0hrb"]
 
 [ext_resource type="Script" uid="uid://cuutf4vhmwc7m" path="res://scenes/music_box.gd" id="1_hi8iv"]
-[ext_resource type="Texture2D" uid="uid://foa3cetomhnt" path="res://sprites/objectsinteract.png" id="1_ovloa"]
+[ext_resource type="Texture2D" uid="uid://bc0d0p2i50y8o" path="res://sprites/musicbox.png" id="2_s2ri5"]
+[ext_resource type="Texture2D" uid="uid://babau18ktvcic" path="res://sprites/musicboxanimation.png" id="3_qy88r"]
+[ext_resource type="AudioStream" uid="uid://uyvxh6lv6h85" path="res://assets/music-box.mp3" id="4_qy88r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vo15w"]
+atlas = ExtResource("2_s2ri5")
+region = Rect2(0, 0, 72, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l3tg"]
+atlas = ExtResource("3_qy88r")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx7ee"]
+atlas = ExtResource("3_qy88r")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36p8k"]
+atlas = ExtResource("3_qy88r")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8vft"]
+atlas = ExtResource("3_qy88r")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3owqy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vo15w")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l3tg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx7ee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36p8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8vft")
+}],
+"loop": 1,
+"name": &"playing",
+"speed": 3.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3owqy"]
 radius = 31.0
@@ -10,23 +60,33 @@ radius = 31.0
 script = ExtResource("1_hi8iv")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=238317980]
+position = Vector2(-1, 5)
 points = PackedVector2Array(-5, 18, -14, 18, -15, 17, -15, 0, -19, -2, -15, -4, 15, -4, 16, -3, 16, 17.139372, 15, 18, -14, 18)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=200689767]
-position = Vector2(0, 7)
-texture = ExtResource("1_ovloa")
-region_enabled = true
-region_rect = Rect2(581, 34, 39, 28)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1198925131]
+position = Vector2(-1, 12)
+sprite_frames = SubResource("SpriteFrames_3owqy")
+animation = &"idle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=370903653]
-position = Vector2(0, 2)
+position = Vector2(-2, 7)
 polygon = PackedVector2Array(-16, 14, 19, 14, 19, 2, 20, -2, -19, -2, -16, 1)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1787844758]
+position = Vector2(6, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1935610282]
-position = Vector2(1, 4)
+position = Vector2(-6, 15)
 shape = SubResource("CircleShape2D_3owqy")
+
+[node name="Timer" type="Timer" parent="." unique_id=786279841]
+wait_time = 30.0
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1758358562]
+stream = ExtResource("4_qy88r")
+max_distance = 300.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
