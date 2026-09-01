@@ -5,7 +5,7 @@ var fade_tween: Tween
 @onready var player: CharacterBody2D = %player
 @warning_ignore("shadowed_variable_base_class")
 @onready var notification: Control = $"../../HUD/Notfication"
-
+@onready var door_opening: AudioStreamPlayer2D = $"../DoorOpening"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +16,7 @@ func open(_player: Node) -> void:
 		if player.global_position.y < global_position.y:
 			game.Purple_Doors-=1
 			game.Purple_Door1=false
+			door_opening.play()
 			fade_out_door()
 			return
 		else:

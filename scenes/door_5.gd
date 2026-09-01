@@ -2,6 +2,7 @@ extends Doors
 var fade_tween: Tween
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var game: Node2D = $"../.."
+@onready var door_opening: AudioStreamPlayer2D = $"../DoorOpening"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -10,6 +11,7 @@ func open(_player: Node) -> void:
 	if game.orangekey:
 		game.Orange_Doors-=1
 		game.Orange_Door1=false
+		door_opening.play()
 		fade_out_door()
 		return
 	game.playerkeys_spaces_shake()

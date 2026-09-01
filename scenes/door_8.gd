@@ -4,6 +4,7 @@ var fade_tween: Tween
 @onready var game: Node2D = $"../.."
 @onready var area_2d: Area2D = $Area2D
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
+@onready var door_opening: AudioStreamPlayer2D = $"../DoorOpening"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +15,7 @@ func open(_player: Node) -> void:
 	if game.purplekey:
 		game.Purple_Doors-=1
 		game.Purple_Door3=false
+		door_opening.play()
 		fade_out_door()
 		return
 	game.playerkeys_spaces_shake()
