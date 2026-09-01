@@ -67,7 +67,7 @@ var orangekey:bool=false
 var purplekey:bool=false
 
 func _ready() -> void:
-	graffities=4.8
+	#graffities=4.8
 	bg_music.volume_db=5
 	bg_music.play()
 	

@@ -88,7 +88,7 @@ y_sort_enabled = true
 position = Vector2(-368, -270)
 
 [node name="GGlove" parent="Graffities" unique_id=943695893 instance=ExtResource("40_bk1p3")]
-position = Vector2(-494, -377)
+position = Vector2(-236, -73)
 
 [node name="GBoot" parent="Graffities" unique_id=921013457 instance=ExtResource("37_q8j3a")]
 position = Vector2(-141, -551)
@@ -198,7 +198,6 @@ position = Vector2(292, -125)
 [node name="player" parent="." unique_id=1698648380 instance=ExtResource("2_yqjtg")]
 unique_name_in_owner = true
 y_sort_enabled = true
-position = Vector2(-451, -324)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=678641909]
 offset = Vector2(0, -20)
