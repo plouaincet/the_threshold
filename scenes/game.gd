@@ -20,6 +20,7 @@ extends Node
 @onready var door8Area: Area2D = $Doors/Door8/Area2D
 @onready var door8Collision: CollisionShape2D = $Doors/Door8/Area2D/CollisionShape2D
 @onready var music_box: StaticBody2D = $Objects/music_box
+@onready var spider: StaticBody2D = $Spider
 
 var graffities: float = 0
 var chours: int = 0
@@ -284,10 +285,13 @@ func add_graffities(GName:String,value:float) -> void:
 			door8Area.monitorable=true
 			door8Collision.disabled=false
 	graffities+=value
+	print(round(graffities))
 	if abs(graffities - round(graffities)) < 0.001:
 		glabel.text=str(int(round(graffities))) + "/5 Graffities"
 	else:
 		glabel.text=str(graffities) + "/5 Graffities"
+	if abs(graffities - 5.0) < 0.001:
+		spider.fade_out_spider()
 
 func _handle_bgmusic(state:bool) -> void:
 	if state:

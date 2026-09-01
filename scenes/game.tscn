@@ -215,6 +215,9 @@ collision_mask = 2
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Enemy" unique_id=1069889644]
 
+[node name="Spider" parent="." unique_id=1398797356 instance=ExtResource("61_66xif")]
+position = Vector2(-638, -295)
+
 [node name="HUD" parent="." unique_id=2082992269 instance=ExtResource("5_iywne")]
 unique_name_in_owner = true
 
@@ -270,9 +273,6 @@ volume_db = 5.0
 stream = ExtResource("54_3hbvx")
 volume_db = 3.0
 autoplay = true
-
-[node name="Spider" parent="." unique_id=1398797356 instance=ExtResource("61_66xif")]
-position = Vector2(-638, -295)
 
 [connection signal="timeout" from="player/Timer" to="player" method="_on_timer_timeout"]
 [connection signal="screen_entered" from="Enemy/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
