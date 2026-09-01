@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://cbdiha3uopthl"]
+
+[ext_resource type="PackedScene" uid="uid://ebkuajd5sso1" path="res://scenes/enemy.tscn" id="1_7nkkk"]
+[ext_resource type="Script" uid="uid://cpkyvabwa646t" path="res://scenes/etajul_2.gd" id="1_lm0ro"]
+[ext_resource type="PackedScene" uid="uid://dtpksqljcnd38" path="res://scenes/player.tscn" id="2_lm0ro"]
+[ext_resource type="PackedScene" uid="uid://dg7iptembi1dn" path="res://scenes/map_2.tscn" id="2_ls3pw"]
+[ext_resource type="PackedScene" uid="uid://b0kjmffq45ij4" path="res://scenes/mirror.tscn" id="3_6h70o"]
+[ext_resource type="PackedScene" uid="uid://bjct38qg8h6or" path="res://scenes/fuse_spaces.tscn" id="3_10lsg"]
+[ext_resource type="PackedScene" uid="uid://u1rmbnc7yi3c" path="res://scenes/enemy_map_2.tscn" id="3_doteo"]
+[ext_resource type="AudioStream" uid="uid://clk5752h0onii" path="res://assets/lightswitch_on.mp3" id="3_gckgg"]
+[ext_resource type="PackedScene" uid="uid://cst5f05lhcihn" path="res://scenes/clips.tscn" id="3_ijk3n"]
+[ext_resource type="Script" uid="uid://d1slun465dlql" path="res://scenes/enemy2.gd" id="3_qb7bv"]
+[ext_resource type="PackedScene" uid="uid://ch8oo3tyvcrc6" path="res://scenes/safe.tscn" id="4_18evh"]
+[ext_resource type="Script" uid="uid://d2vopnb8q0uhv" path="res://scenes/player2.gd" id="4_gckgg"]
+[ext_resource type="AudioStream" uid="uid://cbwtrp6kmsxe8" path="res://assets/lightswitch_off.mp3" id="4_qb7bv"]
+[ext_resource type="PackedScene" uid="uid://bf1hgbc85w07f" path="res://scenes/carpa.tscn" id="5_jjt76"]
+[ext_resource type="AudioStream" uid="uid://b7gj1nq6rkmxf" path="res://assets/chase_music3.mp3" id="5_ls3pw"]
+[ext_resource type="PackedScene" uid="uid://cpl3wr8nsupuk" path="res://scenes/fuse.tscn" id="6_j7ri5"]
+[ext_resource type="AudioStream" uid="uid://b3536kp7080yr" path="res://assets/screen_notifier.mp3" id="6_qx7mg"]
+[ext_resource type="AudioStream" uid="uid://66nxoysif226" path="res://assets/bgmusic.mp3" id="7_6h70o"]
+[ext_resource type="AudioStream" uid="uid://ldhlxrw0tht8" path="res://assets/stepping.mp3" id="8_18evh"]
+[ext_resource type="PackedScene" uid="uid://durw0q4kti5pt" path="res://scenes/vent.tscn" id="8_q8xdp"]
+[ext_resource type="PackedScene" uid="uid://cj7ykerlxa6v5" path="res://scenes/green_door.tscn" id="11_lut51"]
+[ext_resource type="PackedScene" uid="uid://b15moaojenl7f" path="res://scenes/green_door_2.tscn" id="12_7d3fj"]
+[ext_resource type="PackedScene" uid="uid://bhfqioifnvq0a" path="res://scenes/red_door.tscn" id="13_08lq5"]
+[ext_resource type="PackedScene" uid="uid://5ywne437pulm" path="res://scenes/hud.tscn" id="13_qx7mg"]
+[ext_resource type="PackedScene" uid="uid://cchesdpk8xgrk" path="res://scenes/white_door.tscn" id="14_gbhml"]
+[ext_resource type="PackedScene" uid="uid://4j360eaiy6st" path="res://scenes/red_door_2.tscn" id="15_ikpmf"]
+[ext_resource type="PackedScene" uid="uid://deqjsqk8v6nl1" path="res://scenes/blue_door.tscn" id="16_4g53l"]
+[ext_resource type="AudioStream" uid="uid://bnu32r6ng1j5g" path="res://assets/dooropening.mp3" id="17_7d3fj"]
+
+[node name="Etajul2" type="Node2D" unique_id=53355192]
+script = ExtResource("1_lm0ro")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1827632471]
+energy = 0.92
+blend_mode = 1
+range_z_max = 0
+
+[node name="Map2" parent="." unique_id=2100989850 instance=ExtResource("2_ls3pw")]
+position = Vector2(-1565, -602)
+
+[node name="EnemyMap2" parent="." unique_id=1642985135 instance=ExtResource("3_doteo")]
+visible = false
+position = Vector2(-722, -28)
+
+[node name="Objects" type="Node2D" parent="." unique_id=1800302934]
+
+[node name="FuseSpaces" parent="Objects" unique_id=408204674 instance=ExtResource("3_10lsg")]
+position = Vector2(-1027, -461)
+
+[node name="Clips" parent="Objects" unique_id=1469938794 instance=ExtResource("3_ijk3n")]
+position = Vector2(-1029, -179)
+
+[node name="Mirror" parent="Objects" unique_id=1836923732 instance=ExtResource("3_6h70o")]
+position = Vector2(-733, 234)
+
+[node name="Safe" parent="Objects" unique_id=200680521 instance=ExtResource("4_18evh")]
+position = Vector2(-51, 146)
+
+[node name="Carpa" parent="Objects" unique_id=267220598 instance=ExtResource("5_jjt76")]
+position = Vector2(-187, 359)
+
+[node name="Fuse1" parent="Objects" unique_id=1849172015 instance=ExtResource("6_j7ri5")]
+position = Vector2(-409, 329)
+
+[node name="Fuse2" parent="Objects" unique_id=2048649622 instance=ExtResource("6_j7ri5")]
+position = Vector2(-1213, -327)
+
+[node name="Fuse3" parent="Objects" unique_id=637070099 instance=ExtResource("6_j7ri5")]
+position = Vector2(-692, -319)
+
+[node name="Vent" parent="Objects" unique_id=2038043436 instance=ExtResource("8_q8xdp")]
+position = Vector2(-603, -316)
+
+[node name="Doors" type="Node2D" parent="." unique_id=1921059150]
+
+[node name="GreenDoor" parent="Doors" unique_id=280161838 instance=ExtResource("11_lut51")]
+position = Vector2(-822, 117)
+script = null
+
+[node name="GreenDoor2" parent="Doors" unique_id=1911269476 instance=ExtResource("12_7d3fj")]
+position = Vector2(-352, 117)
+script = null
+
+[node name="RedDoor" parent="Doors" unique_id=80931816 instance=ExtResource("13_08lq5")]
+position = Vector2(-1190, -110)
+script = null
+
+[node name="WhiteDoor" parent="Doors" unique_id=85725081 instance=ExtResource("14_gbhml")]
+position = Vector2(-820, -346)
+script = null
+
+[node name="RedDoor2" parent="Doors" unique_id=1413851237 instance=ExtResource("15_ikpmf")]
+position = Vector2(-603, 118)
+script = null
+
+[node name="BlueDoor" parent="Doors" unique_id=1967050757 instance=ExtResource("16_4g53l")]
+position = Vector2(-1182, 167)
+script = null
+
+[node name="DoorOpening" type="AudioStreamPlayer2D" parent="Doors" unique_id=813549264]
+stream = ExtResource("17_7d3fj")
+volume_db = 2.0
+
+[node name="player" parent="." unique_id=1698648380 instance=ExtResource("2_lm0ro")]
+unique_name_in_owner = true
+script = ExtResource("4_gckgg")
+
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=655284431]
+offset = Vector2(0, -20)
+zoom = Vector2(3, 3)
+limit_left = -1554
+limit_top = -587
+limit_right = 240
+limit_bottom = 492
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="Enemy" parent="." unique_id=513737343 instance=ExtResource("1_7nkkk")]
+unique_name_in_owner = true
+collision_mask = 2
+script = ExtResource("3_qb7bv")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Enemy" unique_id=566355764]
+
+[node name="Sounds" type="Node" parent="." unique_id=1758402640]
+
+[node name="LightOn" type="AudioStreamPlayer2D" parent="Sounds" unique_id=784515484]
+stream = ExtResource("3_gckgg")
+
+[node name="LightOff" type="AudioStreamPlayer2D" parent="Sounds" unique_id=660096421]
+stream = ExtResource("4_qb7bv")
+
+[node name="Chasing_Music" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1173548605]
+stream = ExtResource("5_ls3pw")
+volume_db = -5.0
+max_distance = 20000.0
+
+[node name="Screen_Entered_By_Enemy" type="AudioStreamPlayer2D" parent="Sounds" unique_id=849443728]
+stream = ExtResource("6_qx7mg")
+volume_db = -5.0
+
+[node name="BgMusic" type="AudioStreamPlayer2D" parent="Sounds" unique_id=50873505]
+stream = ExtResource("7_6h70o")
+volume_db = 5.0
+
+[node name="Walking" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1118238312]
+stream = ExtResource("8_18evh")
+volume_db = 3.0
+autoplay = true
+
+[node name="HUD" parent="." unique_id=1381510903 instance=ExtResource("13_qx7mg")]

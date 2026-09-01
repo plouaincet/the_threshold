@@ -15,6 +15,9 @@ fill = 1
 fill_from = Vector2(0.517094, 0.517094)
 fill_to = Vector2(0.9273504, 0.051282052)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
+size = Vector2(12, 45)
+
 [node name="Map" type="Node2D" unique_id=515555644]
 script = ExtResource("1_paxxb")
 
@@ -267,5 +270,12 @@ polygon = PackedVector2Array(621, 150, 786, 150, 786, 218, 621, 218)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CorridorExit" unique_id=538560543]
 polygon = PackedVector2Array(254, 421, 282, 421, 282, 494, 254, 494)
 
+[node name="Map exit" type="Area2D" parent="." unique_id=311986063]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map exit" unique_id=1836981738]
+position = Vector2(180, 586.5)
+shape = SubResource("RectangleShape2D_3owqy")
+
 [connection signal="body_entered" from="CorridorEntrance" to="." method="_on_corridor_entrance_body_entered"]
 [connection signal="body_entered" from="CorridorExit" to="." method="_on_corridor_exit_body_entered"]
+[connection signal="body_entered" from="Map exit" to="." method="_on_map_exit_body_entered"]

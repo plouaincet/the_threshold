@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cpl3wr8nsupuk"]
+
+[ext_resource type="Script" uid="uid://141rfes6jh2k" path="res://scenes/fuse.gd" id="1_fa2da"]
+[ext_resource type="Texture2D" uid="uid://crb12l20iewnu" path="res://sprites/obiecte-et2.png" id="1_k3e4o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_no4i6"]
+radius = 47.010635
+
+[node name="Fuse" type="StaticBody2D" unique_id=408204674]
+script = ExtResource("1_fa2da")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1371692652]
+visible = false
+points = PackedVector2Array(0, -9, 0, 9)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=925389554]
+texture = ExtResource("1_k3e4o")
+region_enabled = true
+region_rect = Rect2(69, 25, 6, 15)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=369653831]
+polygon = PackedVector2Array(-3, -8, 3, -8, 3, 8, -3, 8)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1487548620]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=469961628]
+shape = SubResource("CircleShape2D_no4i6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

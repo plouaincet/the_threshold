@@ -20,6 +20,7 @@ const REGEN_RATE: float = DRAIN_RATE / 3.0
 @onready var walking: AudioStreamPlayer2D = $"../Sounds/Walking"
 var in_music_box_area:bool=false
 @onready var music_box: StaticBody2D = $"../Objects/music_box"
+@onready var intro_letter: CanvasLayer = $"../IntroLetter"
 
 
 
@@ -62,10 +63,11 @@ func _physics_process(delta: float) -> void:
 	#print(is_sprinting, " ", stamina)
 	var direction := Input.get_vector("left","right","up","down")
 	velocity = direction * current_speed
-	if velocity==Vector2.ZERO:
-		walking.stop()
-	elif not walking.is_playing():
-		walking.play()
+	if not restrained():
+		if velocity==Vector2.ZERO:
+			walking.stop()
+		elif not walking.is_playing():
+			walking.play()
 
 	if direction == Vector2(0,0):
 		anim=playersprite.animation.erase(0,8)
@@ -141,6 +143,8 @@ func try_interact():
 		nearby_graffities[0].wipe(self)
 	
 func restrained() -> bool:
+	if intro_letter.visible:
+		return true
 	if painting_viewer.visible:
 		return true
 	if clockMinigame.visible:
@@ -151,7 +155,7 @@ func restrained() -> bool:
 
 func get_key_temporary() -> void:
 	await get_tree().create_timer(2.0).timeout
-	game.get_white_key()
-	'''game.get_blue_key()
+	'''game.get_white_key()
+	game.get_blue_key()
 	game.get_orange_key()
 	game.get_purple_key()'''

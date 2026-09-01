@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://ca2jwhvv3x4ot" path="res://scenes/toy_1.tscn" id="17_rysoc"]
 [ext_resource type="Script" uid="uid://05r6t0h3nefo" path="res://scenes/door_2.gd" id="19_twgab"]
 [ext_resource type="Script" uid="uid://byau5mpaa0fbn" path="res://scenes/door_3.gd" id="21_02fa5"]
+[ext_resource type="PackedScene" uid="uid://cocagheo358rt" path="res://scenes/letter.tscn" id="22_bnuda"]
 [ext_resource type="Script" uid="uid://creyik4p5ca1y" path="res://scenes/door_4.gd" id="23_nepv3"]
 [ext_resource type="Script" uid="uid://o8uxg3irbt7n" path="res://scenes/door_5.gd" id="25_7025r"]
 [ext_resource type="PackedScene" uid="uid://bkabtpdx6whca" path="res://scenes/door_1.tscn" id="26_bhx41"]
@@ -49,6 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://8mlaol35wdj0" path="res://scenes/g_glove.tscn" id="40_bk1p3"]
 [ext_resource type="PackedScene" uid="uid://kfvpqc65jqmm" path="res://scenes/g_mask.tscn" id="41_n8ral"]
 [ext_resource type="PackedScene" uid="uid://y8h05tki7d0s" path="res://scenes/piano_minigame.tscn" id="41_oaba0"]
+[ext_resource type="AudioStream" uid="uid://bnu32r6ng1j5g" path="res://assets/dooropening.mp3" id="41_yd4ix"]
 [ext_resource type="PackedScene" uid="uid://n6krf57ibe8t" path="res://scenes/chair_minigame.tscn" id="45_oaba0"]
 [ext_resource type="AudioStream" uid="uid://dxl87i6daeaat" path="res://assets/c4.mp3" id="46_458eo"]
 [ext_resource type="AudioStream" uid="uid://bxax1g2sll0wm" path="res://assets/re.mp3" id="47_pf7vy"]
@@ -59,6 +61,8 @@
 [ext_resource type="AudioStream" uid="uid://bhx5twvlk134" path="res://assets/si.mp3" id="52_7ixpq"]
 [ext_resource type="AudioStream" uid="uid://66nxoysif226" path="res://assets/bgmusic.mp3" id="53_o8ni1"]
 [ext_resource type="AudioStream" uid="uid://ldhlxrw0tht8" path="res://assets/stepping.mp3" id="54_3hbvx"]
+[ext_resource type="PackedScene" uid="uid://d1uv1fxpvex6d" path="res://scenes/spider.tscn" id="61_66xif"]
+[ext_resource type="PackedScene" uid="uid://be7l22jvaxwct" path="res://scenes/intro_letter.tscn" id="63_0rmfi"]
 
 [node name="Game" type="Node2D" unique_id=285650532]
 y_sort_enabled = true
@@ -84,7 +88,7 @@ y_sort_enabled = true
 position = Vector2(-368, -270)
 
 [node name="GGlove" parent="Graffities" unique_id=943695893 instance=ExtResource("40_bk1p3")]
-position = Vector2(-239, -67)
+position = Vector2(-236, -73)
 
 [node name="GBoot" parent="Graffities" unique_id=921013457 instance=ExtResource("37_q8j3a")]
 position = Vector2(-141, -551)
@@ -106,7 +110,7 @@ position = Vector2(413, -703)
 position = Vector2(-468, -103)
 
 [node name="music_box" parent="Objects" unique_id=1317212613 instance=ExtResource("16_ca42v")]
-position = Vector2(400, -322)
+position = Vector2(399, -338)
 
 [node name="Toy1" parent="Objects" unique_id=902649657 instance=ExtResource("17_rysoc")]
 position = Vector2(-158, 6)
@@ -133,10 +137,13 @@ position = Vector2(-651, -300)
 position = Vector2(-578, -686)
 
 [node name="Clank" parent="Objects" unique_id=1497044883 instance=ExtResource("15_ir15t")]
-position = Vector2(-505, -721)
+position = Vector2(-501, -721)
 
 [node name="Painting" parent="Objects" unique_id=2024703500 instance=ExtResource("16_pl11u")]
 position = Vector2(425, -157)
+
+[node name="Letter" parent="Objects" unique_id=1365671390 instance=ExtResource("22_bnuda")]
+position = Vector2(65, -150)
 
 [node name="Doors" type="Node2D" parent="." unique_id=1970429183]
 y_sort_enabled = true
@@ -181,6 +188,10 @@ script = ExtResource("33_05nbr")
 position = Vector2(-171, -719)
 script = ExtResource("35_0sl42")
 
+[node name="DoorOpening" type="AudioStreamPlayer2D" parent="Doors" unique_id=1958004011]
+stream = ExtResource("41_yd4ix")
+volume_db = 2.0
+
 [node name="ChairMinigame" parent="." unique_id=2057355413 instance=ExtResource("45_oaba0")]
 position = Vector2(292, -125)
 
@@ -209,7 +220,11 @@ collision_mask = 2
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Enemy" unique_id=1069889644]
 
+[node name="Spider" parent="." unique_id=1398797356 instance=ExtResource("61_66xif")]
+position = Vector2(-638, -295)
+
 [node name="HUD" parent="." unique_id=2082992269 instance=ExtResource("5_iywne")]
+unique_name_in_owner = true
 
 [node name="ClockMinigame" parent="." unique_id=128066031 instance=ExtResource("37_0sl42")]
 visible = false
@@ -263,6 +278,8 @@ volume_db = 5.0
 stream = ExtResource("54_3hbvx")
 volume_db = 3.0
 autoplay = true
+
+[node name="IntroLetter" parent="." unique_id=221618598 instance=ExtResource("63_0rmfi")]
 
 [connection signal="timeout" from="player/Timer" to="player" method="_on_timer_timeout"]
 [connection signal="screen_entered" from="Enemy/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

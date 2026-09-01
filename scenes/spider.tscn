@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://d1uv1fxpvex6d"]
+
+[ext_resource type="Script" uid="uid://davurggctdvm4" path="res://scenes/spider.gd" id="1_algeo"]
+[ext_resource type="Texture2D" uid="uid://b0y43ijsyx463" path="res://sprites/spider.png" id="1_c7em6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_algeo"]
+radius = 23.61873
+height = 88.24286
+
+[sub_resource type="Gradient" id="Gradient_5uy6h"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c7em6"]
+gradient = SubResource("Gradient_5uy6h")
+fill = 1
+fill_from = Vector2(0.49565217, 0.5173913)
+fill_to = Vector2(0.87391305, 0.14782609)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c7em6"]
+radius = 30.673988
+height = 130.90283
+
+[node name="Spider" type="StaticBody2D" unique_id=1398797356]
+script = ExtResource("1_algeo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=663559276]
+position = Vector2(0, -69)
+texture = ExtResource("1_c7em6")
+region_enabled = true
+region_rect = Rect2(202, 45, 84, 93)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2090701465]
+position = Vector2(-19.000002, -68)
+rotation = 0.23928142
+shape = SubResource("CapsuleShape2D_algeo")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1541203740]
+position = Vector2(0, -69)
+energy = 1.5
+texture = SubResource("GradientTexture2D_c7em6")
+texture_scale = 2.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1411251801]
+position = Vector2(0, -69)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1110482247]
+position = Vector2(39, 25)
+rotation = -1.2281035
+shape = SubResource("CapsuleShape2D_c7em6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

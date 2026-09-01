@@ -19,6 +19,10 @@ extends Node
 @onready var map: Node2D = $Map/HiddenAreas
 @onready var door8Area: Area2D = $Doors/Door8/Area2D
 @onready var door8Collision: CollisionShape2D = $Doors/Door8/Area2D/CollisionShape2D
+@onready var music_box: StaticBody2D = $Objects/music_box
+@onready var spider: StaticBody2D = $Spider
+@onready var scene_manager: Node = $".."
+@onready var intro_letter: Label = $IntroLetter/CenterContainer2/Label
 
 var graffities: float = 0
 var chours: int = 0
@@ -63,8 +67,11 @@ var orangekey:bool=false
 var purplekey:bool=false
 
 func _ready() -> void:
+	#graffities=4.8
 	bg_music.volume_db=5
 	bg_music.play()
+	
+	music_box.quietdown.connect(_handle_bgmusic)
 	player.Light_Toggled.connect(light_toggled)
 	enemy.Enemy_Chasing.connect(_chasing_handle)
 	player.Door_Opened.connect(_check_doors)
@@ -222,6 +229,7 @@ func playerkeys_spaces_shake() -> void:
 func randomise_clock() -> void:
 	chours = randi_range(0, 300)
 	cminutes = randi_range(0, 1000)
+	intro_letter.text=str(chours) + ":" + str(cminutes)
 	print("hours: ",chours)
 	print("minutes: ",cminutes)
 
@@ -259,6 +267,8 @@ func get_pink_key() -> void:
 		kslot_3.visible=true
 		notfication.show_notification("You got the PINK key!")
 		enemy.spawn_enemy_chase()
+	elif pinkkey and !is_chasing:
+		enemy.spawn_enemy_chase()
 
 func get_orange_key() -> void:
 	if not orangekey:
@@ -279,7 +289,22 @@ func add_graffities(GName:String,value:float) -> void:
 			door8Area.monitorable=true
 			door8Collision.disabled=false
 	graffities+=value
+	print(round(graffities))
 	if abs(graffities - round(graffities)) < 0.001:
 		glabel.text=str(int(round(graffities))) + "/5 Graffities"
 	else:
 		glabel.text=str(graffities) + "/5 Graffities"
+	if abs(graffities - 5.0) < 0.001:
+		spider.fade_out_spider()
+
+func _handle_bgmusic(state:bool) -> void:
+	if state:
+		bg_music.volume_db=-3
+		print("down")
+	else:
+		bg_music.volume_db=5
+		print("up")
+
+func won() -> void:
+	scene_manager.music_position=bg_music.get_playback_position()
+	scene_manager.second_floor()
