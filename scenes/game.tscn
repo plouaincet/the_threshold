@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://ca2jwhvv3x4ot" path="res://scenes/toy_1.tscn" id="17_rysoc"]
 [ext_resource type="Script" uid="uid://05r6t0h3nefo" path="res://scenes/door_2.gd" id="19_twgab"]
 [ext_resource type="Script" uid="uid://byau5mpaa0fbn" path="res://scenes/door_3.gd" id="21_02fa5"]
+[ext_resource type="PackedScene" uid="uid://cocagheo358rt" path="res://scenes/letter.tscn" id="22_bnuda"]
 [ext_resource type="Script" uid="uid://creyik4p5ca1y" path="res://scenes/door_4.gd" id="23_nepv3"]
 [ext_resource type="Script" uid="uid://o8uxg3irbt7n" path="res://scenes/door_5.gd" id="25_7025r"]
 [ext_resource type="PackedScene" uid="uid://bkabtpdx6whca" path="res://scenes/door_1.tscn" id="26_bhx41"]
@@ -61,6 +62,7 @@
 [ext_resource type="AudioStream" uid="uid://66nxoysif226" path="res://assets/bgmusic.mp3" id="53_o8ni1"]
 [ext_resource type="AudioStream" uid="uid://ldhlxrw0tht8" path="res://assets/stepping.mp3" id="54_3hbvx"]
 [ext_resource type="PackedScene" uid="uid://d1uv1fxpvex6d" path="res://scenes/spider.tscn" id="61_66xif"]
+[ext_resource type="PackedScene" uid="uid://be7l22jvaxwct" path="res://scenes/intro_letter.tscn" id="63_0rmfi"]
 
 [node name="Game" type="Node2D" unique_id=285650532]
 y_sort_enabled = true
@@ -86,7 +88,7 @@ y_sort_enabled = true
 position = Vector2(-368, -270)
 
 [node name="GGlove" parent="Graffities" unique_id=943695893 instance=ExtResource("40_bk1p3")]
-position = Vector2(-239, -67)
+position = Vector2(-494, -377)
 
 [node name="GBoot" parent="Graffities" unique_id=921013457 instance=ExtResource("37_q8j3a")]
 position = Vector2(-141, -551)
@@ -139,6 +141,9 @@ position = Vector2(-501, -721)
 
 [node name="Painting" parent="Objects" unique_id=2024703500 instance=ExtResource("16_pl11u")]
 position = Vector2(425, -157)
+
+[node name="Letter" parent="Objects" unique_id=1365671390 instance=ExtResource("22_bnuda")]
+position = Vector2(65, -150)
 
 [node name="Doors" type="Node2D" parent="." unique_id=1970429183]
 y_sort_enabled = true
@@ -193,6 +198,7 @@ position = Vector2(292, -125)
 [node name="player" parent="." unique_id=1698648380 instance=ExtResource("2_yqjtg")]
 unique_name_in_owner = true
 y_sort_enabled = true
+position = Vector2(-451, -324)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=678641909]
 offset = Vector2(0, -20)
@@ -273,6 +279,8 @@ volume_db = 5.0
 stream = ExtResource("54_3hbvx")
 volume_db = 3.0
 autoplay = true
+
+[node name="IntroLetter" parent="." unique_id=221618598 instance=ExtResource("63_0rmfi")]
 
 [connection signal="timeout" from="player/Timer" to="player" method="_on_timer_timeout"]
 [connection signal="screen_entered" from="Enemy/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

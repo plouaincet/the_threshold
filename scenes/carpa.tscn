@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bf1hgbc85w07f"]
+
+[ext_resource type="Texture2D" uid="uid://crb12l20iewnu" path="res://sprites/obiecte-et2.png" id="1_umcqu"]
+[ext_resource type="Script" uid="uid://cc0b73pcl1cyc" path="res://scenes/carpa.gd" id="1_unurl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_no4i6"]
+radius = 47.010635
+
+[node name="Carpa" type="StaticBody2D" unique_id=408204674]
+script = ExtResource("1_unurl")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=445211175]
+visible = false
+points = PackedVector2Array(-9, -4, 3, -4, 3, 4, -4, 4, -4, -7)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=925389554]
+texture = ExtResource("1_umcqu")
+region_enabled = true
+region_rect = Rect2(168, 27, 14, 16)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=369653831]
+polygon = PackedVector2Array(-7, -8, 6, -8, 6, 8, -7, 8)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1487548620]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=469961628]
+shape = SubResource("CircleShape2D_no4i6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

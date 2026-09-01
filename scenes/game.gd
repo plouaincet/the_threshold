@@ -21,6 +21,8 @@ extends Node
 @onready var door8Collision: CollisionShape2D = $Doors/Door8/Area2D/CollisionShape2D
 @onready var music_box: StaticBody2D = $Objects/music_box
 @onready var spider: StaticBody2D = $Spider
+@onready var scene_manager: Node = $".."
+@onready var intro_letter: Label = $IntroLetter/CenterContainer2/Label
 
 var graffities: float = 0
 var chours: int = 0
@@ -65,6 +67,7 @@ var orangekey:bool=false
 var purplekey:bool=false
 
 func _ready() -> void:
+	graffities=4.8
 	bg_music.volume_db=5
 	bg_music.play()
 	
@@ -226,6 +229,7 @@ func playerkeys_spaces_shake() -> void:
 func randomise_clock() -> void:
 	chours = randi_range(0, 300)
 	cminutes = randi_range(0, 1000)
+	intro_letter.text=str(chours) + ":" + str(cminutes)
 	print("hours: ",chours)
 	print("minutes: ",cminutes)
 
@@ -300,3 +304,7 @@ func _handle_bgmusic(state:bool) -> void:
 	else:
 		bg_music.volume_db=5
 		print("up")
+
+func won() -> void:
+	scene_manager.music_position=bg_music.get_playback_position()
+	scene_manager.second_floor()
