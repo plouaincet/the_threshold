@@ -22,12 +22,14 @@
 [ext_resource type="PackedScene" uid="uid://durw0q4kti5pt" path="res://scenes/vent.tscn" id="8_q8xdp"]
 [ext_resource type="PackedScene" uid="uid://cj7ykerlxa6v5" path="res://scenes/green_door.tscn" id="11_lut51"]
 [ext_resource type="PackedScene" uid="uid://b15moaojenl7f" path="res://scenes/green_door_2.tscn" id="12_7d3fj"]
+[ext_resource type="Script" uid="uid://d3mswpfnkcr78" path="res://scenes/door.gd" id="12_08lq5"]
 [ext_resource type="PackedScene" uid="uid://bhfqioifnvq0a" path="res://scenes/red_door.tscn" id="13_08lq5"]
-[ext_resource type="PackedScene" uid="uid://5ywne437pulm" path="res://scenes/hud.tscn" id="13_qx7mg"]
 [ext_resource type="PackedScene" uid="uid://cchesdpk8xgrk" path="res://scenes/white_door.tscn" id="14_gbhml"]
 [ext_resource type="PackedScene" uid="uid://4j360eaiy6st" path="res://scenes/red_door_2.tscn" id="15_ikpmf"]
 [ext_resource type="PackedScene" uid="uid://deqjsqk8v6nl1" path="res://scenes/blue_door.tscn" id="16_4g53l"]
 [ext_resource type="AudioStream" uid="uid://bnu32r6ng1j5g" path="res://assets/dooropening.mp3" id="17_7d3fj"]
+[ext_resource type="PackedScene" uid="uid://c575pacxry2r8" path="res://scenes/vent_minigame.tscn" id="22_gbhml"]
+[ext_resource type="PackedScene" uid="uid://ueb0nw881uo3" path="res://scenes/hud_2.tscn" id="30_gbhml"]
 
 [node name="Etajul2" type="Node2D" unique_id=53355192]
 script = ExtResource("1_lm0ro")
@@ -41,6 +43,7 @@ range_z_max = 0
 position = Vector2(-1565, -602)
 
 [node name="EnemyMap2" parent="." unique_id=1642985135 instance=ExtResource("3_doteo")]
+unique_name_in_owner = true
 visible = false
 position = Vector2(-722, -28)
 
@@ -77,31 +80,33 @@ position = Vector2(-603, -316)
 
 [node name="GreenDoor" parent="Doors" unique_id=280161838 instance=ExtResource("11_lut51")]
 position = Vector2(-822, 117)
-script = null
+script = ExtResource("12_08lq5")
+door_nr = 1
 
 [node name="GreenDoor2" parent="Doors" unique_id=1911269476 instance=ExtResource("12_7d3fj")]
 position = Vector2(-352, 117)
-script = null
+script = ExtResource("12_08lq5")
+door_nr = 2
 
 [node name="RedDoor" parent="Doors" unique_id=80931816 instance=ExtResource("13_08lq5")]
 position = Vector2(-1190, -110)
-script = null
-
-[node name="WhiteDoor" parent="Doors" unique_id=85725081 instance=ExtResource("14_gbhml")]
-position = Vector2(-820, -346)
-script = null
+script = ExtResource("12_08lq5")
+door_nr = 3
 
 [node name="RedDoor2" parent="Doors" unique_id=1413851237 instance=ExtResource("15_ikpmf")]
 position = Vector2(-603, 118)
-script = null
+script = ExtResource("12_08lq5")
+door_nr = 4
 
 [node name="BlueDoor" parent="Doors" unique_id=1967050757 instance=ExtResource("16_4g53l")]
 position = Vector2(-1182, 167)
-script = null
+script = ExtResource("12_08lq5")
+door_nr = 5
 
-[node name="DoorOpening" type="AudioStreamPlayer2D" parent="Doors" unique_id=813549264]
-stream = ExtResource("17_7d3fj")
-volume_db = 2.0
+[node name="WhiteDoor" parent="Doors" unique_id=85725081 instance=ExtResource("14_gbhml")]
+position = Vector2(-820, -346)
+script = ExtResource("12_08lq5")
+door_nr = 6
 
 [node name="player" parent="." unique_id=1698648380 instance=ExtResource("2_lm0ro")]
 unique_name_in_owner = true
@@ -151,4 +156,10 @@ stream = ExtResource("8_18evh")
 volume_db = 3.0
 autoplay = true
 
-[node name="HUD" parent="." unique_id=1381510903 instance=ExtResource("13_qx7mg")]
+[node name="DoorOpening" type="AudioStreamPlayer2D" parent="Sounds" unique_id=813549264]
+stream = ExtResource("17_7d3fj")
+volume_db = 2.0
+
+[node name="VentMinigame" parent="." unique_id=2143224959 instance=ExtResource("22_gbhml")]
+
+[node name="HUD2" parent="." unique_id=1381510903 instance=ExtResource("30_gbhml")]

@@ -1,0 +1,523 @@
+[gd_scene format=3 uid="uid://ueb0nw881uo3"]
+
+[ext_resource type="Shader" uid="uid://bmdby1b74ugry" path="res://scenes/paintingbg.gdshader" id="1_5dnht"]
+[ext_resource type="Texture2D" uid="uid://cftc8ehpd0vil" path="res://sprites/tablou.png" id="2_x6bx4"]
+[ext_resource type="FontFile" uid="uid://ctc05h4iw85k6" path="res://assets/PixelOperator.ttf" id="3_7aq4m"]
+[ext_resource type="Script" uid="uid://ru7ehvs7426l" path="res://scenes/player_inventory.gd" id="4_gtl8o"]
+[ext_resource type="Texture2D" uid="uid://dsll6mifrj2s6" path="res://sprites/backgrslot.png" id="5_4j7n3"]
+[ext_resource type="Texture2D" uid="uid://3kdxqn5o6lwk" path="res://sprites/slot.png" id="6_pgcmc"]
+[ext_resource type="Texture2D" uid="uid://b76t2n7eu2n3u" path="res://sprites/slot_frame.png" id="7_k35d6"]
+[ext_resource type="Shader" uid="uid://bxqc7htxk4a82" path="res://scenes/text.gdshader" id="8_5yogv"]
+[ext_resource type="FontFile" uid="uid://8sth7a34psu1" path="res://assets/PressStart2P.ttf" id="9_76t6r"]
+[ext_resource type="Texture2D" uid="uid://dxvr5g8js00og" path="res://sprites/key_white.png" id="10_1ara4"]
+[ext_resource type="Texture2D" uid="uid://b4mwf4nfngf2p" path="res://sprites/et2_greenkey.png" id="10_gcllk"]
+[ext_resource type="Texture2D" uid="uid://d1an54woqgvnl" path="res://sprites/et2_redkey.png" id="11_5dnht"]
+[ext_resource type="Texture2D" uid="uid://b2yb3mh5vrox7" path="res://sprites/et2_bluekey.png" id="12_x6bx4"]
+[ext_resource type="Texture2D" uid="uid://dhcdv81ebrf2c" path="res://sprites/sprintbarbg.png" id="15_mb82k"]
+[ext_resource type="Texture2D" uid="uid://crpl00orqgs1" path="res://sprites/sprintbar.png" id="16_tnwcg"]
+[ext_resource type="Script" uid="uid://b0ahhanyjnv8w" path="res://scenes/notfication.gd" id="17_yldgq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3owqy"]
+shader = ExtResource("1_5dnht")
+shader_parameter/blur_amount = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iwiun"]
+shader = ExtResource("8_5yogv")
+
+[node name="HUD2" type="CanvasLayer" unique_id=1381510903]
+
+[node name="PaintingViewer" type="Control" parent="." unique_id=41867143]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PaintingViewer" unique_id=1045622032]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="PaintingViewer/CenterContainer" unique_id=956846693]
+material = SubResource("ShaderMaterial_3owqy")
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PaintingViewer/CenterContainer" unique_id=1159662759]
+layout_mode = 2
+texture = ExtResource("2_x6bx4")
+
+[node name="Text" type="Control" parent="." unique_id=2082992269]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Text" unique_id=652382042]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.326
+anchor_bottom = 0.105000004
+offset_right = -0.55200195
+offset_bottom = -0.040000916
+
+[node name="Label" type="Label" parent="Text/CenterContainer" unique_id=674296624]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7aq4m")
+theme_override_font_sizes/font_size = 32
+text = "Toggle light OFF: Z/Space"
+
+[node name="PlayerInventory" type="Control" parent="." unique_id=2014681485]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_gtl8o")
+
+[node name="InventoryPosition" type="CenterContainer" parent="PlayerInventory" unique_id=793609769]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.84000003
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.32000732
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryBg" type="TextureRect" parent="PlayerInventory/InventoryPosition" unique_id=1289284135]
+self_modulate = Color(1, 1, 1, 0.7411765)
+custom_minimum_size = Vector2(225, 50)
+layout_mode = 2
+texture = ExtResource("5_4j7n3")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerInventory/InventoryPosition/InventoryBg" unique_id=147312862]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Slots" type="HBoxContainer" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer" unique_id=734958991]
+layout_mode = 2
+
+[node name="Slot1" type="Control" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots" unique_id=1113450936]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot1" unique_id=1776247209]
+self_modulate = Color(1, 1, 1, 0.74509805)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_pgcmc")
+
+[node name="Frame" type="TextureRect" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot1" unique_id=296912469]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_k35d6")
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot1" unique_id=855033970]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot1/CenterContainer" unique_id=1407974677]
+material = SubResource("ShaderMaterial_iwiun")
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -35)
+theme_override_fonts/font = ExtResource("9_76t6r")
+theme_override_font_sizes/font_size = 12
+text = "1"
+
+[node name="Slot2" type="Control" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots" unique_id=39512937]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot2" unique_id=493968236]
+self_modulate = Color(1, 1, 1, 0.74509805)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_pgcmc")
+
+[node name="Frame" type="TextureRect" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot2" unique_id=838392202]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_k35d6")
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot2" unique_id=207267251]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot2/CenterContainer" unique_id=264874930]
+material = SubResource("ShaderMaterial_iwiun")
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -35)
+theme_override_fonts/font = ExtResource("9_76t6r")
+theme_override_font_sizes/font_size = 12
+text = "2"
+
+[node name="Slot3" type="Control" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots" unique_id=659968388]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot3" unique_id=1635245089]
+self_modulate = Color(1, 1, 1, 0.74509805)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_pgcmc")
+
+[node name="Frame" type="TextureRect" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot3" unique_id=63686662]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_k35d6")
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot3" unique_id=1072814956]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot3/CenterContainer" unique_id=1326623117]
+material = SubResource("ShaderMaterial_iwiun")
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -35)
+theme_override_fonts/font = ExtResource("9_76t6r")
+theme_override_font_sizes/font_size = 12
+text = "3"
+
+[node name="Slot4" type="Control" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots" unique_id=188269515]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot4" unique_id=1691282342]
+self_modulate = Color(1, 1, 1, 0.74509805)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_pgcmc")
+
+[node name="Frame" type="TextureRect" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot4" unique_id=1327098355]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_k35d6")
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot4" unique_id=993026502]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot4/CenterContainer" unique_id=988777691]
+material = SubResource("ShaderMaterial_iwiun")
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -35)
+theme_override_fonts/font = ExtResource("9_76t6r")
+theme_override_font_sizes/font_size = 12
+text = "4"
+
+[node name="Slot5" type="Control" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots" unique_id=1231647666]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot5" unique_id=1860439038]
+self_modulate = Color(1, 1, 1, 0.74509805)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_pgcmc")
+
+[node name="Frame" type="TextureRect" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot5" unique_id=144005550]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_k35d6")
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot5" unique_id=1328557754]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot5/CenterContainer" unique_id=1179329711]
+material = SubResource("ShaderMaterial_iwiun")
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -35)
+theme_override_fonts/font = ExtResource("9_76t6r")
+theme_override_font_sizes/font_size = 12
+text = "5"
+
+[node name="PlayerKeys" type="Control" parent="." unique_id=462477186]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerKeys" unique_id=18371750]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73
+anchor_top = 0.88100004
+anchor_right = 1.0
+anchor_bottom = 0.95800006
+offset_left = 0.039978027
+offset_top = 0.11199951
+offset_bottom = 0.21594238
+
+[node name="Control" type="ColorRect" parent="PlayerKeys/CenterContainer" unique_id=416181822]
+self_modulate = Color(1, 1, 1, 0.07450981)
+custom_minimum_size = Vector2(225, 50)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerKeys/CenterContainer/Control" unique_id=937676940]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerKeys/CenterContainer/Control/MarginContainer" unique_id=547312044]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Kslot1" type="Control" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer" unique_id=671133055]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot1" unique_id=394460362]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_gcllk")
+expand_mode = 1
+
+[node name="Kslot2" type="Control" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer" unique_id=1619825921]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot2" unique_id=231226473]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("11_5dnht")
+expand_mode = 1
+
+[node name="Kslot3" type="Control" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer" unique_id=1332710946]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot3" unique_id=714292687]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("12_x6bx4")
+expand_mode = 1
+
+[node name="Kslot4" type="Control" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer" unique_id=1853850047]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot4" unique_id=386893365]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_1ara4")
+expand_mode = 1
+
+[node name="SpeedBar" type="Control" parent="." unique_id=633186520]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="SpeedBar" unique_id=1374477176]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.002
+anchor_top = 0.836
+anchor_right = 0.24800001
+anchor_bottom = 1.0
+offset_left = 0.30400014
+offset_top = 0.27197266
+offset_right = 0.3039856
+
+[node name="ColorRect" type="TextureRect" parent="SpeedBar/CenterContainer" unique_id=770419269]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+texture = ExtResource("15_mb82k")
+
+[node name="MarginContainer" type="MarginContainer" parent="SpeedBar/CenterContainer/ColorRect" unique_id=479056954]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ProgressBar" type="TextureProgressBar" parent="SpeedBar/CenterContainer/ColorRect/MarginContainer" unique_id=1315948275]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(35, 1)
+value = 100.0
+texture_progress = ExtResource("16_tnwcg")
+
+[node name="Notfication" type="Control" parent="." unique_id=801133820]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("17_yldgq")
+
+[node name="CenterContainer" type="CenterContainer" parent="Notfication" unique_id=746513032]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29500002
+anchor_top = -0.26900002
+anchor_right = 0.892
+offset_left = 0.15997314
+offset_top = 0.31201172
+offset_right = 0.41601563
+offset_transform_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="Notfication/CenterContainer" unique_id=160331127]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+color = Color(1, 1, 1, 0.13333334)
+
+[node name="MarginContainer" type="MarginContainer" parent="Notfication/CenterContainer/ColorRect" unique_id=2134013935]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Notfication/CenterContainer/ColorRect/MarginContainer" unique_id=922841634]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_76t6r")
+theme_override_font_sizes/font_size = 20
+text = "You got the WHITE key!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="Notfication" unique_id=114935786]
+one_shot = true
+
+[node name="GraffitiCounter" type="Control" parent="." unique_id=1134235532]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="GraffitiCounter" unique_id=1309324533]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.81100005
+anchor_right = 0.99500006
+anchor_bottom = 0.105000004
+offset_left = -0.2720337
+offset_right = -0.2401123
+offset_bottom = -0.040000916
+
+[node name="Label" type="Label" parent="GraffitiCounter/CenterContainer" unique_id=2135461369]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7aq4m")
+theme_override_font_sizes/font_size = 32
+text = "0/5 Graffities"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="timeout" from="Notfication/Timer" to="Notfication" method="_on_timer_timeout"]

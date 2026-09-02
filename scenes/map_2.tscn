@@ -241,3 +241,30 @@ self_modulate = Color(1, 1, 0.22745098, 1)
 position = Vector2(-91, 104.37341)
 color = Color(1, 1, 0.27058825, 1)
 texture = SubResource("GradientTexture2D_3h78v")
+
+[node name="HiddenAreas" type="Node2D" parent="." unique_id=1869564302]
+z_index = 1
+
+[node name="Green_Door2" type="Polygon2D" parent="HiddenAreas" unique_id=35542499]
+color = Color(0, 0, 0.011764706, 1)
+polygon = PackedVector2Array(1084, 708, 1198, 708, 1198, 745, 1229, 745, 1229, 708, 1566, 708, 1566, 956, 1514, 956, 1514, 991, 1230, 991, 1230, 955, 1084, 955)
+
+[node name="Red_Door2" type="Polygon2D" parent="HiddenAreas" unique_id=634562524]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(870, 708, 948, 708, 948, 745, 976, 745, 976, 708, 1067, 708, 1067, 956, 869, 956)
+
+[node name="Green_Door" type="Polygon2D" parent="HiddenAreas" unique_id=6825466]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(387, 749, 387, 766, 388, 766, 388, 768, 387, 768, 387, 791, 392, 791, 392, 956, 851, 956, 851, 708, 759, 708, 759, 745, 727, 745, 727, 707, 391, 707, 392, 749)
+
+[node name="Blue_Door" type="Polygon2D" parent="HiddenAreas" unique_id=1718667986]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(379, 749, 379, 791, 373, 791, 373, 956, 278, 956, 278, 705, 374, 705, 374, 749)
+
+[node name="Red_Door" type="Polygon2D" parent="HiddenAreas" unique_id=1000332131]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(290, 464, 359, 464, 359, 467, 391, 467, 393, 467, 393, 464, 498, 464, 498, 245, 290, 245)
+
+[node name="White_Door" type="Polygon2D" parent="HiddenAreas" unique_id=1572864567]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(668, 228, 727, 228, 729, 231, 759, 231, 761, 231, 764, 228, 822, 228, 822, 106, 668, 106)

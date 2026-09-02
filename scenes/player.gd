@@ -68,6 +68,9 @@ func _physics_process(delta: float) -> void:
 			walking.stop()
 		elif not walking.is_playing():
 			walking.play()
+	else:
+		walking.stop()
+
 
 	if direction == Vector2(0,0):
 		anim=playersprite.animation.erase(0,8)
