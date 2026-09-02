@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://c575pacxry2r8"]
+
+[ext_resource type="Script" uid="uid://c34oki28d35xx" path="res://scenes/vent_minigame.gd" id="1_3nm71"]
+[ext_resource type="Texture2D" uid="uid://c4xh07bmg1cyc" path="res://sprites/ventilator_bg.png" id="1_gka5f"]
+[ext_resource type="Texture2D" uid="uid://cg2iymtd6rsh5" path="res://sprites/ventilator_key.png" id="2_7cdqg"]
+[ext_resource type="Texture2D" uid="uid://c1o18q7wyhuxv" path="res://sprites/ventilator_purplewire.png" id="3_vw7lc"]
+[ext_resource type="Texture2D" uid="uid://2hvslhrtyeal" path="res://sprites/ventilator_yellowwire.png" id="4_c8q1i"]
+[ext_resource type="Texture2D" uid="uid://ckel1uk3l8jbp" path="res://sprites/ventilator_greenwire.png" id="5_fj70f"]
+[ext_resource type="Texture2D" uid="uid://dufho030nkdl4" path="res://sprites/ventilator_redwire.png" id="6_1oe22"]
+[ext_resource type="Texture2D" uid="uid://cdskgdsjutk7n" path="res://sprites/ventilator_bluewire.png" id="7_i18lp"]
+[ext_resource type="Texture2D" uid="uid://b5dihyurpkcad" path="res://sprites/ventilator_grid.png" id="8_c8q1i"]
+[ext_resource type="Texture2D" uid="uid://wcix0moo4jbb" path="res://sprites/ventilator_cuidrjos.png" id="9_cqv1x"]
+[ext_resource type="Texture2D" uid="uid://bdj7eur12nfoq" path="res://sprites/ventilator_cuidrsus.png" id="10_3nm71"]
+[ext_resource type="Texture2D" uid="uid://tfxu4ih3xo03" path="res://sprites/ventilator_cuistjos.png" id="11_jx86t"]
+[ext_resource type="Texture2D" uid="uid://loevspo7lni5" path="res://sprites/ventilator_cuistsus.png" id="12_nwg4d"]
+
+[node name="VentMinigame" type="CanvasLayer" unique_id=2143224959]
+visible = false
+script = ExtResource("1_3nm71")
+
+[node name="Control" type="Control" parent="." unique_id=1535081138]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=2137870819]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg" type="TextureRect" parent="Control/CenterContainer" unique_id=2049819468]
+layout_mode = 2
+texture = ExtResource("1_gka5f")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/CenterContainer/Bg" unique_id=1314065783]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.003
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.075999975
+
+[node name="Key" type="TextureButton" parent="Control/CenterContainer/Bg/CenterContainer" unique_id=208978212]
+layout_mode = 2
+texture_normal = ExtResource("2_7cdqg")
+
+[node name="CenterContainer2" type="CenterContainer" parent="Control/CenterContainer/Bg" unique_id=28069218]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PurpleWire" type="TextureButton" parent="Control/CenterContainer/Bg/CenterContainer2" unique_id=68265489]
+layout_mode = 2
+texture_normal = ExtResource("3_vw7lc")
+
+[node name="YellowWire" type="TextureButton" parent="Control/CenterContainer/Bg/CenterContainer2" unique_id=427677123]
+layout_mode = 2
+texture_normal = ExtResource("4_c8q1i")
+
+[node name="GreenWire" type="TextureButton" parent="Control/CenterContainer/Bg/CenterContainer2" unique_id=322466954]
+layout_mode = 2
+texture_normal = ExtResource("5_fj70f")
+
+[node name="RedWire" type="TextureButton" parent="Control/CenterContainer/Bg/CenterContainer2" unique_id=2017735287]
+layout_mode = 2
+texture_normal = ExtResource("6_1oe22")
+
+[node name="BlueWire" type="TextureButton" parent="Control/CenterContainer/Bg/CenterContainer2" unique_id=2091884695]
+layout_mode = 2
+texture_normal = ExtResource("7_i18lp")
+
+[node name="Grid" type="TextureRect" parent="Control/CenterContainer/Bg/CenterContainer2" unique_id=1584097522]
+layout_mode = 2
+texture = ExtResource("8_c8q1i")
+
+[node name="CuiDrJos" type="TextureButton" parent="Control/CenterContainer/Bg/CenterContainer2" unique_id=1451558957]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_pivot = Vector2(143, 143.4)
+texture_normal = ExtResource("9_cqv1x")
+
+[node name="CuiDrSus" type="TextureButton" parent="Control/CenterContainer/Bg/CenterContainer2" unique_id=551112341]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_pivot = Vector2(143.5, -143.5)
+texture_normal = ExtResource("10_3nm71")
+
+[node name="CuiStJos" type="TextureButton" parent="Control/CenterContainer/Bg/CenterContainer2" unique_id=538131155]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_pivot = Vector2(-143.5, 143.5)
+texture_normal = ExtResource("11_jx86t")
+
+[node name="CuiStSus" type="TextureButton" parent="Control/CenterContainer/Bg/CenterContainer2" unique_id=1641925893]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_pivot = Vector2(-143.5, -143.5)
+texture_normal = ExtResource("12_nwg4d")
+
+[connection signal="button_down" from="Control/CenterContainer/Bg/CenterContainer/Key" to="." method="_on_key_button_down"]
+[connection signal="pressed" from="Control/CenterContainer/Bg/CenterContainer2/PurpleWire" to="." method="_on_purple_wire_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/Bg/CenterContainer2/YellowWire" to="." method="_on_yellow_wire_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/Bg/CenterContainer2/GreenWire" to="." method="_on_green_wire_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/Bg/CenterContainer2/RedWire" to="." method="_on_red_wire_pressed"]
+[connection signal="button_down" from="Control/CenterContainer/Bg/CenterContainer2/BlueWire" to="." method="_on_blue_wire_button_down"]
+[connection signal="button_down" from="Control/CenterContainer/Bg/CenterContainer2/CuiDrJos" to="." method="_on_cui_dr_jos_button_down"]
+[connection signal="button_down" from="Control/CenterContainer/Bg/CenterContainer2/CuiDrSus" to="." method="_on_cui_dr_sus_button_down"]
+[connection signal="button_down" from="Control/CenterContainer/Bg/CenterContainer2/CuiStJos" to="." method="_on_cui_st_jos_button_down"]
+[connection signal="button_down" from="Control/CenterContainer/Bg/CenterContainer2/CuiStSus" to="." method="_on_cui_st_sus_button_down"]

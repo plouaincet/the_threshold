@@ -1,11 +1,13 @@
 extends CharacterBody2D
 signal Light_Toggled
-#signal Door_Opened
-@onready var progress: TextureProgressBar = $"../HUD/SpeedBar/CenterContainer/ColorRect/MarginContainer/ProgressBar"
-@onready var slots: HBoxContainer = $"../HUD/PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots"
+signal Door_Opened
+@onready var progress: TextureProgressBar = $"../HUD2/SpeedBar/CenterContainer/ColorRect/MarginContainer/ProgressBar"
+@onready var slots: HBoxContainer = $"../HUD2/PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots"
 @onready var playersprite: AnimatedSprite2D = $Sprite2D
 @onready var game: Node2D = $".."
 @onready var walking: AudioStreamPlayer2D = $"../Sounds/Walking"
+@onready var vent_minigame: CanvasLayer = $"../VentMinigame"
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var BASE_SPEED: float = 60.0
@@ -20,6 +22,9 @@ var is_sprinting: bool = false
 var lantern_open: bool = true
 var exhausted: bool = false
 var anim
+var nearby_interactables: Array[Interactable] = []
+var nearby_graffities: Array[Graffiti] =[]
+var nearby_doors: Array[Doors] = []
 func _physics_process(delta: float) -> void:
 	var wants_to_sprint := Input.is_action_pressed("sprint")
 
@@ -45,10 +50,13 @@ func _physics_process(delta: float) -> void:
 	#print(is_sprinting, " ", stamina)
 	var direction := Input.get_vector("left","right","up","down")
 	velocity = direction * current_speed
-	if velocity==Vector2.ZERO:
+	if not restrained():
+		if velocity==Vector2.ZERO:
+			walking.stop()
+		elif not walking.is_playing():
+			walking.play()
+	else:
 		walking.stop()
-	elif not walking.is_playing():
-		walking.play()
 
 	if direction == Vector2(0,0):
 		anim=playersprite.animation.erase(0,8)
@@ -73,4 +81,44 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		
 func restrained() -> bool:
+	if vent_minigame.visible:
+		return true
 	return false
+
+func _on_interaction_area_area_entered(area: Area2D) -> void:
+	if area.get_parent() is Interactable:
+		nearby_interactables.append(area.get_parent())
+		return
+	if area.get_parent() is Doors:
+		nearby_doors.append(area.get_parent())
+		return
+	if area.get_parent() is Graffiti:
+		nearby_graffities.append(area.get_parent())
+		return
+
+func _on_interaction_area_area_exited(area: Area2D) -> void:
+	if area.get_parent() is Interactable:
+		nearby_interactables.erase(area.get_parent())
+	if area.get_parent() is Doors:
+		nearby_doors.erase(area.get_parent())
+	if area.get_parent() is Graffiti:
+		nearby_graffities.erase(area.get_parent())
+
+func _unhandled_input(event):
+	if event.is_action_pressed("interact"):
+		print("slots: ",game.Slots)
+		try_interact()
+
+func try_interact():
+	if not lantern_open:
+		return
+
+	if nearby_interactables.is_empty() and nearby_doors.is_empty() and nearby_graffities.is_empty():
+		return
+	if !nearby_interactables.is_empty():
+		nearby_interactables[0].interact(self)
+	if !nearby_doors.is_empty():
+		nearby_doors[0].open(self)
+		emit_signal("Door_Opened")
+	if !nearby_graffities.is_empty():
+		nearby_graffities[0].wipe(self)

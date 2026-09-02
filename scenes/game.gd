@@ -24,6 +24,7 @@ extends Node
 @onready var scene_manager: Node = $".."
 @onready var intro_letter: Label = $IntroLetter/CenterContainer2/Label
 
+
 var graffities: float = 0
 var chours: int = 0
 var cminutes: int = 0
