@@ -30,6 +30,15 @@
 [ext_resource type="AudioStream" uid="uid://bnu32r6ng1j5g" path="res://assets/dooropening.mp3" id="17_7d3fj"]
 [ext_resource type="PackedScene" uid="uid://c575pacxry2r8" path="res://scenes/vent_minigame.tscn" id="22_gbhml"]
 [ext_resource type="PackedScene" uid="uid://ueb0nw881uo3" path="res://scenes/hud_2.tscn" id="30_gbhml"]
+[ext_resource type="PackedScene" uid="uid://bhk5iutax2rhw" path="res://scenes/safe_minigame.tscn" id="30_ikpmf"]
+[ext_resource type="PackedScene" uid="uid://cvs662bkwp5er" path="res://scenes/eye.tscn" id="32_2ltcf"]
+[ext_resource type="PackedScene" uid="uid://chq5my1kwvq53" path="res://scenes/sword.tscn" id="32_4gqe3"]
+[ext_resource type="PackedScene" uid="uid://djmdhkfsy2op8" path="res://scenes/cape.tscn" id="32_m8umf"]
+[ext_resource type="PackedScene" uid="uid://bwt5vix14jwuo" path="res://scenes/g_armor.tscn" id="35_x8gkp"]
+[ext_resource type="PackedScene" uid="uid://bcgnaa760fdb3" path="res://scenes/g_boot.tscn" id="36_f3uoa"]
+[ext_resource type="PackedScene" uid="uid://8mlaol35wdj0" path="res://scenes/g_glove.tscn" id="37_cwq51"]
+[ext_resource type="PackedScene" uid="uid://kfvpqc65jqmm" path="res://scenes/g_mask.tscn" id="38_sy3ae"]
+[ext_resource type="PackedScene" uid="uid://b6bidqk5uan06" path="res://scenes/g_scut.tscn" id="39_1g03o"]
 
 [node name="Etajul2" type="Node2D" unique_id=53355192]
 script = ExtResource("1_lm0ro")
@@ -108,6 +117,18 @@ position = Vector2(-820, -346)
 script = ExtResource("12_08lq5")
 door_nr = 6
 
+[node name="Graffities" type="Node2D" parent="." unique_id=1503200821]
+y_sort_enabled = true
+
+[node name="Eye" parent="Graffities" unique_id=1368580095 instance=ExtResource("32_2ltcf")]
+position = Vector2(-1253, 266)
+
+[node name="Sword" parent="Graffities" unique_id=1849136904 instance=ExtResource("32_4gqe3")]
+position = Vector2(-199, -328)
+
+[node name="Cape" parent="Graffities" unique_id=1385775896 instance=ExtResource("32_m8umf")]
+position = Vector2(-559, 297)
+
 [node name="player" parent="." unique_id=1698648380 instance=ExtResource("2_lm0ro")]
 unique_name_in_owner = true
 script = ExtResource("4_gckgg")
@@ -162,4 +183,40 @@ volume_db = 2.0
 
 [node name="VentMinigame" parent="." unique_id=2143224959 instance=ExtResource("22_gbhml")]
 
+[node name="SafeMinigame" parent="." unique_id=260007811 instance=ExtResource("30_ikpmf")]
+
 [node name="HUD2" parent="." unique_id=1381510903 instance=ExtResource("30_gbhml")]
+
+[node name="ShowGraffities" type="Node" parent="." unique_id=1327215525]
+
+[node name="Eye" parent="ShowGraffities" unique_id=627021875 instance=ExtResource("32_2ltcf")]
+position = Vector2(-979, -318)
+script = null
+
+[node name="GArmor" parent="ShowGraffities" unique_id=1690860637 instance=ExtResource("35_x8gkp")]
+position = Vector2(-1020, -418)
+script = null
+
+[node name="GBoot" parent="ShowGraffities" unique_id=1818891941 instance=ExtResource("36_f3uoa")]
+position = Vector2(-929, -406)
+script = null
+
+[node name="GGlove" parent="ShowGraffities" unique_id=894165738 instance=ExtResource("37_cwq51")]
+position = Vector2(-1134, -449)
+script = null
+
+[node name="GMask" parent="ShowGraffities" unique_id=1481443857 instance=ExtResource("38_sy3ae")]
+position = Vector2(-967, -441)
+script = null
+
+[node name="GScut" parent="ShowGraffities" unique_id=1754335642 instance=ExtResource("39_1g03o")]
+position = Vector2(-1073, -443)
+script = null
+
+[node name="Sword" parent="ShowGraffities" unique_id=1123808941 instance=ExtResource("32_4gqe3")]
+position = Vector2(-975, -369)
+script = null
+
+[node name="Cape" parent="ShowGraffities" unique_id=1538474087 instance=ExtResource("32_m8umf")]
+position = Vector2(-915, -328)
+script = null

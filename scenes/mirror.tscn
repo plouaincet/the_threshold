@@ -1,21 +1,104 @@
 [gd_scene format=3 uid="uid://b0kjmffq45ij4"]
 
 [ext_resource type="Texture2D" uid="uid://crb12l20iewnu" path="res://sprites/obiecte-et2.png" id="1_5o7h0"]
+[ext_resource type="Script" uid="uid://bceneaoip0427" path="res://scenes/mirror.gd" id="1_652kc"]
+[ext_resource type="Texture2D" uid="uid://bkakcd5i2tga3" path="res://sprites/et2_oglinda.png" id="3_nha6m"]
+[ext_resource type="FontFile" uid="uid://8sth7a34psu1" path="res://assets/PressStart2P.ttf" id="4_5823m"]
+[ext_resource type="Texture2D" uid="uid://c4m78gg2xrp5v" path="res://sprites/et2_oglinda_frame.png" id="5_0dm0a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8upip"]
 radius = 37.336308
 
 [node name="Mirror" type="StaticBody2D" unique_id=1836923732]
+script = ExtResource("1_652kc")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1940618399]
+points = PackedVector2Array(-8, -15, 6, -15, 11, -11, 11, 8, 8, 12, -8, 12, -11, 8, -11, -11, -7, -15, 4, -15)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=596605440]
+position = Vector2(0, -1)
 texture = ExtResource("1_5o7h0")
 region_enabled = true
 region_rect = Rect2(19, 14, 30, 35)
 
+[node name="Clean" type="Sprite2D" parent="." unique_id=1670503475]
+position = Vector2(0, -1)
+texture = ExtResource("3_nha6m")
+
+[node name="Polygon2D" type="Polygon2D" parent="Clean" unique_id=1841786551]
+color = Color(0.17439124, 0.07142655, 0.08573725, 1)
+polygon = PackedVector2Array(-8, -14, 8, -14, 8, -13, 9, -13, 9, -12, 10, -12, 10, -11, 11, -11, 11, -10, 12, -10, 12, 9, 11, 9, 11, 10, 10, 10, 10, 12, 9, 12, 9, 13, 8, 13, 8, 14, -7, 14, -7, 13, -8, 13, -8, 12, -9, 12, -9, 10, -10, 10, -10, 9, -11, 9, -11, 8, -12, 8, -12, -10, -11, -10, -11, -11, -10, -11, -10, -12, -9, -12, -9, -13, -8, -13)
+
+[node name="Ceiling" type="Node2D" parent="Clean" unique_id=1245807887]
+
+[node name="Polygon2D2" type="Polygon2D" parent="Clean/Ceiling" unique_id=555954508]
+position = Vector2(10, -3)
+color = Color(0.06775787, 0.02098195, 0.016140563, 1)
+polygon = PackedVector2Array(-12, -9, 1, -9, 1, -6, -12, -6)
+
+[node name="Polygon2D5" type="Polygon2D" parent="Clean/Ceiling" unique_id=992002414]
+position = Vector2(12, 15)
+color = Color(0.06775787, 0.02098195, 0.016140563, 1)
+polygon = PackedVector2Array(-21, -9, -2, -9, -2, -6, -21, -6)
+
+[node name="Polygon2D4" type="Polygon2D" parent="Clean/Ceiling" unique_id=148570441]
+position = Vector2(11, 5)
+color = Color(0.06775787, 0.02098195, 0.016140563, 1)
+polygon = PackedVector2Array(-24, -9, -1, -9, -1, -6, -24, -6)
+
+[node name="Polygon2D3" type="Polygon2D" parent="Clean/Ceiling" unique_id=1275183471]
+position = Vector2(4, 8)
+color = Color(0.06775787, 0.02098195, 0.016140563, 1)
+polygon = PackedVector2Array(-12, -8, -1, -8, -1, -5, -12, -5)
+
+[node name="Polygon2D" type="Polygon2D" parent="Clean/Ceiling" unique_id=55275984]
+color = Color(0.06666667, 0.019607844, 0.015686275, 1)
+polygon = PackedVector2Array(-13, 4, -9, 4, -9, 6, -13, 6)
+
+[node name="PIN" type="Sprite2D" parent="Clean/Ceiling" unique_id=2130630059]
+
+[node name="Polygon2D6" type="Polygon2D" parent="Clean/Ceiling" unique_id=1740822652]
+modulate = Color(1, 1, 1, 0.15686275)
+scale = Vector2(1.15, 1.15)
+color = Color(0.69411767, 1, 1, 1)
+polygon = PackedVector2Array(-8, -14, 8, -14, 8, -13, 9, -13, 9, -12, 10, -12, 10, -11, 11, -11, 11, -10, 12, -10, 12, 9, 11, 9, 11, 10, 10, 10, 10, 12, 9, 12, 9, 13, 8, 13, 8, 14, -7, 14, -7, 13, -8, 13, -8, 12, -9, 12, -9, 10, -10, 10, -10, 9, -11, 9, -11, 8, -12, 8, -12, -10, -11, -10, -11, -11, -10, -11, -10, -12, -9, -12, -9, -13, -8, -13)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clean" unique_id=422757154]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_0dm0a")
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=482278920]
+visible = false
 polygon = PackedVector2Array(-9, -17, 9, -17, 15, -10, 15, 10, 10, 17, -9, 17, -15, 9, -15, -11)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=614791271]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1045714234]
 shape = SubResource("CircleShape2D_8upip")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=720257106]
+transparent_bg = true
+oversampling_override = 5.0
+size = Vector2i(17, 20)
+
+[node name="Label" type="Label" parent="SubViewport" unique_id=1784040064]
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.21400002
+anchor_right = 0.8
+anchor_bottom = 0.814
+offset_left = 18.2
+offset_top = -9.280001
+offset_right = 36.199997
+offset_bottom = 11.7199955
+scale = Vector2(-1, 1)
+theme_override_fonts/font = ExtResource("4_5823m")
+theme_override_font_sizes/font_size = 9
+text = "12
+34"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

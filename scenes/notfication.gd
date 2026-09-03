@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func show_notification(text:String) -> void:
 	if allow_notification:
-		timer.start(3.2)
+		timer.start(stay_duration+1)
 		allow_notification=false
 		label.text=text
 		var tween := create_tween()

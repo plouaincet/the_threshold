@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://djmdhkfsy2op8"]
+
+[ext_resource type="Texture2D" uid="uid://dc2kfhgoa5n26" path="res://sprites/gcape.png" id="1_hewh0"]
+[ext_resource type="Script" uid="uid://b8bth822ssr5m" path="res://scenes/cape.gd" id="1_m5omv"]
+[ext_resource type="Shader" uid="uid://b4lmxx2iryfv4" path="res://scenes/graffiti.gdshader" id="3_q2nf1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3owqy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dvt07"]
+shader = ExtResource("3_q2nf1")
+shader_parameter/bite_count = 0
+shader_parameter/bites = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_m5omv"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m5omv"]
+gradient = SubResource("Gradient_m5omv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8717949, 0.14102565)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hewh0"]
+radius = 39.012817
+
+[node name="Cape" type="StaticBody2D" unique_id=1385775896]
+script = ExtResource("1_m5omv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1771127695]
+position = Vector2(0, 33)
+shape = SubResource("CircleShape2D_3owqy")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1423938391]
+material = SubResource("ShaderMaterial_dvt07")
+position = Vector2(0, 33)
+texture = ExtResource("1_hewh0")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1861829575]
+position = Vector2(0, 33)
+color = Color(0.07058824, 0.03529412, 0.4392157, 1)
+texture = SubResource("GradientTexture2D_m5omv")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1744523614]
+position = Vector2(0, 33)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1174404380]
+shape = SubResource("CircleShape2D_hewh0")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

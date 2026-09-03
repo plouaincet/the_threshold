@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dg7iptembi1dn"]
 
 [ext_resource type="Texture2D" uid="uid://c1w2tr6sdw0ud" path="res://sprites/et2_no_obj_no_door.png" id="1_3h78v"]
+[ext_resource type="Script" uid="uid://h72h6y0ldaa8" path="res://scenes/map_2.gd" id="1_t2xha"]
 
 [sub_resource type="Gradient" id="Gradient_4xfga"]
 offsets = PackedFloat32Array(0, 0.8537736)
@@ -12,7 +13,23 @@ fill = 1
 fill_from = Vector2(0.517094, 0.517094)
 fill_to = Vector2(0.9273504, 0.051282052)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
+size = Vector2(67, 207)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8upip"]
+size = Vector2(114, 207)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drsw1"]
+size = Vector2(206, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpga7"]
+size = Vector2(206, 111)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrfpl"]
+size = Vector2(364, 99)
+
 [node name="Map2" type="Node2D" unique_id=2100989850]
+script = ExtResource("1_t2xha")
 
 [node name="Black" type="Polygon2D" parent="." unique_id=652998454]
 self_modulate = Color(0, 0, 0, 1)
@@ -268,3 +285,43 @@ polygon = PackedVector2Array(290, 464, 359, 464, 359, 467, 391, 467, 393, 467, 3
 [node name="White_Door" type="Polygon2D" parent="HiddenAreas" unique_id=1572864567]
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(668, 228, 727, 228, 729, 231, 759, 231, 761, 231, 764, 228, 822, 228, 822, 106, 668, 106)
+
+[node name="ParallaxAreaRight" type="Area2D" parent="." unique_id=2097599885]
+
+[node name="Right" type="CollisionShape2D" parent="ParallaxAreaRight" unique_id=1872900621]
+position = Vector2(784.5, 851.5)
+shape = SubResource("RectangleShape2D_3owqy")
+
+[node name="ParallaxAreaLeft" type="Area2D" parent="." unique_id=868413041]
+
+[node name="Left" type="CollisionShape2D" parent="ParallaxAreaLeft" unique_id=1528539292]
+position = Vector2(669, 851.5)
+shape = SubResource("RectangleShape2D_8upip")
+
+[node name="ParallaxAreaUp" type="Area2D" parent="." unique_id=1783126444]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxAreaUp" unique_id=1181040963]
+position = Vector2(715, 784)
+shape = SubResource("RectangleShape2D_drsw1")
+
+[node name="ParallaxAreaDown" type="Area2D" parent="." unique_id=1313241500]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxAreaDown" unique_id=302186326]
+position = Vector2(715, 899.5)
+shape = SubResource("RectangleShape2D_dpga7")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1130692705]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=945941094]
+position = Vector2(471, 209.5)
+shape = SubResource("RectangleShape2D_hrfpl")
+
+[connection signal="body_entered" from="ParallaxAreaRight" to="." method="_on_parallax_area_right_body_entered"]
+[connection signal="body_exited" from="ParallaxAreaRight" to="." method="_on_parallax_area_right_body_exited"]
+[connection signal="body_entered" from="ParallaxAreaLeft" to="." method="_on_parallax_area_left_body_entered"]
+[connection signal="body_exited" from="ParallaxAreaLeft" to="." method="_on_parallax_area_left_body_exited"]
+[connection signal="body_entered" from="ParallaxAreaUp" to="." method="_on_parallax_area_up_body_entered"]
+[connection signal="body_exited" from="ParallaxAreaUp" to="." method="_on_parallax_area_up_body_exited"]
+[connection signal="body_entered" from="ParallaxAreaDown" to="." method="_on_parallax_area_down_body_entered"]
+[connection signal="body_exited" from="ParallaxAreaDown" to="." method="_on_parallax_area_down_body_exited"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

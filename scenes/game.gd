@@ -31,7 +31,7 @@ var cminutes: int = 0
 const SCREEN_SIZE := Vector2(1152, 648)
 const INDICATOR_SPEED := 500.0
 const INDICATOR_MARGIN := 0
-const CHASE_MUSIC_VOLUME := 0.0
+const CHASE_MUSIC_VOLUME := -1.0
 var flg:bool=1
 
 var Pink_Door1: bool =true
@@ -55,7 +55,7 @@ var fade_tween: Tween
 var indicator_pos := 0.0
 var light_state: bool = true
 
-var selected_frame:int=-1
+var selected_frame:int=-3
 
 var Slots: Array[String] = ["null","null","null","null","null"]
 var Chairs: Array[String] = ["null","null","null","null","null","null","null","null"]
@@ -68,8 +68,8 @@ var orangekey:bool=false
 var purplekey:bool=false
 
 func _ready() -> void:
-	#graffities=4.8
-	bg_music.volume_db=5
+	graffities=4.8
+	bg_music.volume_db=8
 	bg_music.play()
 	
 	music_box.quietdown.connect(_handle_bgmusic)
@@ -107,7 +107,6 @@ func _chasing_handle() -> void:
 			fade_tween.kill()
 		chasing_music.volume_db = CHASE_MUSIC_VOLUME
 		chasing_music.play()
-		print("trying to play")
 
 
 func _fade_out_chase_music() -> void:
@@ -303,7 +302,7 @@ func _handle_bgmusic(state:bool) -> void:
 		bg_music.volume_db=-3
 		print("down")
 	else:
-		bg_music.volume_db=5
+		bg_music.volume_db=8
 		print("up")
 
 func won() -> void:

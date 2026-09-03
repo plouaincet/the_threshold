@@ -88,7 +88,7 @@ y_sort_enabled = true
 position = Vector2(-368, -270)
 
 [node name="GGlove" parent="Graffities" unique_id=943695893 instance=ExtResource("40_bk1p3")]
-position = Vector2(-238, -82)
+position = Vector2(-241, -87)
 
 [node name="GBoot" parent="Graffities" unique_id=921013457 instance=ExtResource("37_q8j3a")]
 position = Vector2(-141, -551)

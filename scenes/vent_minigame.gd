@@ -14,6 +14,8 @@ var fade_tween: Tween
 @onready var cui_st_sus: TextureButton = $Control/CenterContainer/Bg/CenterContainer2/CuiStSus
 @onready var HUD2: TextureRect = $"../HUD2/PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot1/TextureRect"
 @onready var vent: StaticBody2D= $"../Objects/Vent"
+@onready var game: Node2D = $".."
+
 var nrcuie:int=0
 var allow_key:bool=false
 var cursor_sprite: Sprite2D
@@ -24,6 +26,7 @@ var wires: Array[bool]=[true,true,true,true,true,true]
 #yellow
 #purple
 var my_cursor = load("res://sprites/clips_cursor.png")
+var finished_cutting:bool=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_click_mask_from_texture(cui_dr_jos)
@@ -149,6 +152,7 @@ func _on_purple_wire_pressed() -> void:
 	wires[5]=false
 	fade_out_wire(purple_wire)
 	vent.custom_cursor=false
+	finished_cutting=true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	for i in get_children():
 		if i is Sprite2D:
@@ -172,4 +176,5 @@ func _on_key_button_down() -> void:
 	HUD2.visible=true
 	fade_out_wire(key)
 	fade_out_bg(bg)
+	game.et2_get_green_key()
 	
