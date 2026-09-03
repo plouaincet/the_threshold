@@ -7,10 +7,9 @@ signal Door_Opened
 @onready var game: Node2D = $".."
 @onready var walking: AudioStreamPlayer2D = $"../Sounds/Walking"
 @onready var vent_minigame: CanvasLayer = $"../VentMinigame"
+@onready var safe_minigame: CanvasLayer = $"../SafeMinigame"
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-var BASE_SPEED: float = 60.0
+var BASE_SPEED: float = 60.6
 const SPRINT_SPEED_BONUS: float = 30.0
 
 const MAX_STAMINA: float = 100.0
@@ -81,7 +80,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		
 func restrained() -> bool:
-	if vent_minigame.visible:
+	if vent_minigame.visible or safe_minigame.visible:
 		return true
 	return false
 

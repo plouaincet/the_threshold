@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqxeiqho0xy02" path="res://scenes/fuse_spaces.gd" id="1_s16ki"]
 [ext_resource type="Texture2D" uid="uid://crb12l20iewnu" path="res://sprites/obiecte-et2.png" id="1_yvq40"]
+[ext_resource type="Texture2D" uid="uid://efws3efqn1do" path="res://sprites/et2_fusespace.png" id="2_4ayq0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_no4i6"]
 radius = 47.010635
@@ -14,9 +15,79 @@ visible = false
 points = PackedVector2Array(-29, -12, 25, -12, 25, 12, -24, 12, -24, -17)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=925389554]
-texture = ExtResource("1_yvq40")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_4ayq0")
 region_enabled = true
-region_rect = Rect2(271, 21, 54, 30)
+region_rect = Rect2(0, 0, 108, 60)
+
+[node name="MarginContainer" type="MarginContainer" parent="Sprite2D" unique_id=1103498960]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -30.0
+offset_right = -54.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 14
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Sprite2D/MarginContainer" unique_id=1706571284]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="CenterContainer" type="CenterContainer" parent="Sprite2D/MarginContainer/HBoxContainer" unique_id=319639619]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/MarginContainer/HBoxContainer/CenterContainer" unique_id=1762696726]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("1_yvq40")
+centered = false
+region_enabled = true
+region_rect = Rect2(69, 25, 6, 15)
+
+[node name="CenterContainer2" type="CenterContainer" parent="Sprite2D/MarginContainer/HBoxContainer" unique_id=377361390]
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/MarginContainer/HBoxContainer/CenterContainer2" unique_id=385161505]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("1_yvq40")
+centered = false
+region_enabled = true
+region_rect = Rect2(69, 25, 6, 15)
+
+[node name="CenterContainer3" type="CenterContainer" parent="Sprite2D/MarginContainer/HBoxContainer" unique_id=1516302067]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/MarginContainer/HBoxContainer/CenterContainer3" unique_id=1783877508]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("1_yvq40")
+centered = false
+region_enabled = true
+region_rect = Rect2(69, 25, 6, 15)
+
+[node name="Maner" type="Sprite2D" parent="Sprite2D" unique_id=1061598532]
+position = Vector2(40, 0)
+texture = ExtResource("2_4ayq0")
+region_enabled = true
+region_rect = Rect2(114, 20, 16, 12)
+
+[node name="ON" type="Sprite2D" parent="Sprite2D" unique_id=68215684]
+position = Vector2(40, 16)
+texture = ExtResource("2_4ayq0")
+region_enabled = true
+region_rect = Rect2(114, 38, 20, 8)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=369653831]
 polygon = PackedVector2Array(-26, -14, 26, -14, 26, 14, -26, 14)

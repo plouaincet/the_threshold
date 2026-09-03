@@ -23,8 +23,6 @@ func wipe(_player: Node) -> void:
 		randf_range(0.05, 1.1),
 		randf_range(0.05, 1.1)
 	)
-
-	# Make each bite progressively larger
 	var progress := float(bites.size()) / float(max_bites)
 
 	var radius :float= lerp(
@@ -33,7 +31,6 @@ func wipe(_player: Node) -> void:
 		progress
 	)
 
-	# Add some randomness to the size
 	radius += randf_range(-0.05, 0.05)
 
 	# Final bite completely eats the remaining sprite

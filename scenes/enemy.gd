@@ -183,8 +183,8 @@ func is_position_navigable(pos: Vector2, tolerance: float = 16.0) -> bool:
 
 func _on_enemy_is_close_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		bg_music.volume_db=-5
+		bg_music.volume_db=-3
 
 func _on_enemy_is_close_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		bg_music.volume_db=5
+		bg_music.volume_db=8

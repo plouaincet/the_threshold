@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://chq5my1kwvq53"]
+
+[ext_resource type="Script" uid="uid://pb87ilr0v5b2" path="res://scenes/sword.gd" id="1_n355p"]
+[ext_resource type="Texture2D" uid="uid://cmtxdnr0grig6" path="res://sprites/gsword.png" id="1_ycbs3"]
+[ext_resource type="Shader" uid="uid://b4lmxx2iryfv4" path="res://scenes/graffiti.gdshader" id="2_s4ec8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q2nf1"]
+shader = ExtResource("2_s4ec8")
+shader_parameter/bite_count = 0
+shader_parameter/bites = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3owqy"]
+
+[sub_resource type="Gradient" id="Gradient_n355p"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n355p"]
+gradient = SubResource("Gradient_n355p")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8717949, 0.14102565)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8upip"]
+radius = 38.470768
+
+[node name="Sword" type="StaticBody2D" unique_id=1849136904]
+script = ExtResource("1_n355p")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1590456225]
+material = SubResource("ShaderMaterial_q2nf1")
+position = Vector2(0, 40)
+texture = ExtResource("1_ycbs3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=531257493]
+position = Vector2(0, 40)
+shape = SubResource("CircleShape2D_3owqy")
+disabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1511882903]
+position = Vector2(0, 40)
+color = Color(0.07058824, 0.03529412, 0.4392157, 1)
+texture = SubResource("GradientTexture2D_n355p")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=783753771]
+position = Vector2(0, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1313131987]
+shape = SubResource("CircleShape2D_8upip")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
