@@ -7,3 +7,10 @@
 script = ExtResource("1_65mdo")
 
 [node name="StartingScreen" parent="." unique_id=142385921 instance=ExtResource("1_we8k5")]
+
+[node name="Timer" type="Timer" parent="." unique_id=1680067895]
+
+[node name="Time" type="Timer" parent="." unique_id=12941768]
+autostart = true
+
+[connection signal="timeout" from="Time" to="." method="_on_time_timeout"]

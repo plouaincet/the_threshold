@@ -26,6 +26,7 @@ extends Node2D
 @onready var g_scut: StaticBody2D = $ShowGraffities/GScut
 @onready var sword: StaticBody2D = $ShowGraffities/Sword
 @onready var cape: StaticBody2D = $ShowGraffities/Cape
+@onready var time: Label = $HUD2/Timer/CenterContainer/Label
 var can_blue_key:bool=false
 
 var LIGHTSHOW_tween:Tween
@@ -56,6 +57,7 @@ func _ready() -> void:
 	g_scut.visible=false
 	sword.visible=false
 	cape.visible=false
+	scene_manager.player_to_leaderboard()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -241,3 +243,11 @@ func turn_light_back() -> void:
 	cape.visible=false
 	light.energy=0.92
 	light.color=Color8(255,255,255)
+
+func _change_time(seconds:int) -> void:
+	if seconds%60>9:
+		@warning_ignore("integer_division")
+		time.text=str(seconds/60) + ":" + str(seconds%60)
+	else:
+		@warning_ignore("integer_division")
+		time.text=str(seconds/60) + ":0" + str(seconds%60)

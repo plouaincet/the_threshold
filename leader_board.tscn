@@ -1,0 +1,344 @@
+[gd_scene format=3 uid="uid://cimslyg26v6y1"]
+
+[ext_resource type="Script" uid="uid://c26a5ivlwnclg" path="res://leader_board.gd" id="1_w1jv0"]
+[ext_resource type="FontFile" uid="uid://8sth7a34psu1" path="res://assets/PressStart2P.ttf" id="2_yx86l"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3owqy"]
+
+[sub_resource type="Gradient" id="Gradient_106kx"]
+colors = PackedColorArray(0.26095593, 0, 0.016303979, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8upip"]
+gradient = SubResource("Gradient_106kx")
+
+[node name="LeaderBoard" type="CanvasLayer" unique_id=1135058556]
+script = ExtResource("1_w1jv0")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1251750720]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+
+[node name="TextureRect" type="Button" parent="CenterContainer" unique_id=1504592333]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=743283603]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer" unique_id=707005788]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 0.3019608)
+theme_override_fonts/font = ExtResource("2_yx86l")
+placeholder_text = "Configure your name"
+alignment = 1
+expand_to_text_length = true
+deselect_on_focus_loss_enabled = false
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/LineEdit" unique_id=1891536189]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_3owqy")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1411206091]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "You will need to configure it every time you open the game."
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer" unique_id=1907507881]
+custom_minimum_size = Vector2(400, 506)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_8upip")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/TextureRect" unique_id=862960917]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer" unique_id=1090186863]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Titles" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1847344443]
+custom_minimum_size = Vector2(360, 46)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Titles" unique_id=574473743]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Titles" unique_id=1691008425]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "Time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1858655571]
+custom_minimum_size = Vector2(360, 46)
+layout_mode = 2
+
+[node name="Player1Name" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player1" unique_id=817939648]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1Time" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player1" unique_id=1467965677]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1374035551]
+custom_minimum_size = Vector2(360, 46)
+layout_mode = 2
+
+[node name="Player2Name" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player2" unique_id=1833511015]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2Time" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player2" unique_id=470820202]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1017755520]
+custom_minimum_size = Vector2(360, 46)
+layout_mode = 2
+
+[node name="Player3Name" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player3" unique_id=861213102]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3Time" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player3" unique_id=1320980038]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=457470932]
+custom_minimum_size = Vector2(360, 46)
+layout_mode = 2
+
+[node name="Player4Name" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player4" unique_id=683672613]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4Time" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player4" unique_id=1997348406]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1900913149]
+custom_minimum_size = Vector2(360, 46)
+layout_mode = 2
+
+[node name="Player5Name" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player5" unique_id=2102557864]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5Time" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player5" unique_id=653059435]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player6" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=398195590]
+custom_minimum_size = Vector2(360, 46)
+layout_mode = 2
+
+[node name="Player6Name" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player6" unique_id=1926167660]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player6Time" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player6" unique_id=1707426147]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player7" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=619417848]
+custom_minimum_size = Vector2(360, 46)
+layout_mode = 2
+
+[node name="Player7Name" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player7" unique_id=711843441]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player7Time" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player7" unique_id=987285872]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player8" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=647941389]
+custom_minimum_size = Vector2(360, 46)
+layout_mode = 2
+
+[node name="Player8Name" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player8" unique_id=65921648]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player8Time" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player8" unique_id=848683810]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player9" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=958061392]
+custom_minimum_size = Vector2(360, 46)
+layout_mode = 2
+
+[node name="Player9Name" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player9" unique_id=442717662]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player9Time" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player9" unique_id=1337184169]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player10" type="HBoxContainer" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1220753325]
+custom_minimum_size = Vector2(360, 46)
+layout_mode = 2
+
+[node name="Player10Name" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player10" unique_id=1678495666]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player10Time" type="Label" parent="CenterContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Player10" unique_id=1912286894]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="." unique_id=2076194347]
+anchors_preset = -1
+anchor_left = 0.674
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.44799805
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer2" unique_id=631394413]
+layout_mode = 2
+
+[node name="UserSearch" type="LineEdit" parent="CenterContainer2/VBoxContainer" unique_id=2034053946]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 0.3019608)
+theme_override_fonts/font = ExtResource("2_yx86l")
+placeholder_text = "Search user"
+alignment = 1
+expand_to_text_length = true
+deselect_on_focus_loss_enabled = false
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/VBoxContainer/UserSearch" unique_id=943710399]
+show_behind_parent = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_3owqy")
+
+[node name="UserPlaceTime" type="Label" parent="CenterContainer2/VBoxContainer" unique_id=660243883]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "User's place"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CenterContainer/TextureRect" to="." method="_on_texture_rect_pressed"]
+[connection signal="text_submitted" from="CenterContainer/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="CenterContainer2/VBoxContainer/UserSearch" to="." method="_on_user_search_text_submitted"]
