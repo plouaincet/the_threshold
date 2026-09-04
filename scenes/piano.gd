@@ -12,9 +12,9 @@ func _ready() -> void:
 func interact(_player: Node) -> void:
 	PianoMinigame.visible=not PianoMinigame.visible
 	if PianoMinigame.visible:
-		bg_music.volume_db=0
+		bg_music.volume_db-=3
 	else:
-		bg_music.volume_db=5
+		bg_music.volume_db=8
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

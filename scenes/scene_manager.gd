@@ -1,10 +1,11 @@
 extends Node
 var music_position:float=0.0
-var leaderboard_name:String
+var leaderboard_name:String=""
 var leaderboard_time:int=0
 @onready var gamee:Node2D=null
 @onready var etajul2:Node2D=null
 @onready var leaderboard:CanvasLayer=$StartingScreen/LeaderBoard
+var allow_pause:bool=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$StartingScreen.connect("game_entered",handle_start_game)
@@ -23,6 +24,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	#print(leaderboard_time)
 	pass
 
 func handle_start_game():
@@ -34,6 +36,7 @@ func handle_start_game():
 	#$LoadingScreen.queue_free()
 	add_child(game)
 	$StartingScreen.queue_free()
+	allow_pause=true
 
 func second_floor() -> void:
 	var et2=preload("res://scenes/etajul_2.tscn").instantiate()
@@ -41,17 +44,31 @@ func second_floor() -> void:
 	call_deferred("add_child", et2)
 	$Game.queue_free()
 
-
 func _on_time_timeout() -> void:
-	if self.get_child_count()>2 and self.get_child(2).name == "Game":
+	if gamee:
 		print("ok")
 		leaderboard_time+=1
 		gamee._change_time(leaderboard_time)
-	elif self.get_child_count()>2 and self.get_child(2).name == "Etajul2":
+	elif etajul2:
 		leaderboard_time+=1
 		etajul2._change_time(leaderboard_time)
 
 func player_to_leaderboard() -> void:
-	SilentWolf.Scores.save_score(leaderboard_name, leaderboard_time)
+	if leaderboard_name!="":
+		SilentWolf.Scores.save_score(leaderboard_name, leaderboard_time)
 	var sw_result: Dictionary = await SilentWolf.Scores.get_scores().sw_get_scores_complete
 	print("Scores: " + str(sw_result.scores))
+	
+func return_to_title() -> void:
+	if gamee:
+		gamee.queue_free()
+		gamee = null
+	if etajul2:
+		etajul2.queue_free()
+		etajul2 = null
+
+	leaderboard_time = 0
+
+	var starting_screen = preload("res://scenes/starting_screen.tscn").instantiate()
+	add_child(starting_screen)
+	starting_screen.connect("game_entered", handle_start_game)

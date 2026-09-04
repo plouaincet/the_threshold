@@ -10,6 +10,9 @@ extends Node
 @onready var leaderboardcontrol1: TextureRect = $ButtonsSpace/VBoxContainer/LeaderboardContainer/LeaderboardContainer/Control
 @onready var leaderboardcontrol2: TextureRect = $ButtonsSpace/VBoxContainer/LeaderboardContainer/LeaderboardContainer/Control2
 @onready var leader_board: CanvasLayer = $LeaderBoard
+@onready var username: Label = $ButtonsSpace/VBoxContainer/NameContainer/Name
+@onready var scene_manager: Node = $".."
+
 var allow_display:bool=false
 
 
@@ -18,7 +21,7 @@ signal game_entered()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	update_username()
 	audio_stream_player_2d.play()
 	'''arrow_1.position=Vector2(364,163)
 	arrow_2.position=Vector2(555,162)'''
@@ -28,6 +31,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func _on_start_game_pressed() -> void:
+	get_tree().paused =false
 	emit_signal("game_entered")
 
 
@@ -79,3 +83,9 @@ func _on_leaderboard_pressed() -> void:
 
 func _on_timer_timeout() -> void:
 	allow_display=true
+
+func update_username() -> void:
+	if scene_manager.leaderboard_name=="":
+		username.text="Username not configured. Configure name inside leaderboard."
+	else:
+		username.text="Playing as: " + scene_manager.leaderboard_name

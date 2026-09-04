@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d1tqhruj3jaap" path="res://sprites/enemyleft.png" id="2_c4w8v"]
 [ext_resource type="Script" uid="uid://djslwasj401a3" path="res://scenes/area_w_o_light.gd" id="3_4ra3w"]
 [ext_resource type="Script" uid="uid://qsjiln88154c" path="res://scenes/area_w_light.gd" id="4_5uy6h"]
+[ext_resource type="AudioStream" uid="uid://b4hefkit8lpnv" path="res://assets/enemy-footsteps.mp3" id="6_xwavj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wtq4b"]
 atlas = ExtResource("2_c4w8v")
@@ -203,6 +204,12 @@ color = Color(0.4836082, 0.065054744, 0.024043525, 1)
 energy = 1.5
 texture = SubResource("GradientTexture2D_8upip")
 texture_scale = 0.7
+
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="." unique_id=1561204797]
+stream = ExtResource("6_xwavj")
+volume_db = -2.0
+pitch_scale = 0.63
+max_distance = 300.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Enemy is close" to="." method="_on_enemy_is_close_body_entered"]

@@ -28,19 +28,22 @@ extends CanvasLayer
 @onready var line_edit: LineEdit = $CenterContainer/VBoxContainer/LineEdit
 @onready var user_place_time: Label = $CenterContainer2/VBoxContainer/UserPlaceTime
 @onready var scene_manager: Node = $"../.."
+@onready var starting_screen: Control = $"../../StartingScreen"
+var nr_of_scores:int=0
 var sw_result: Dictionary
 func _ready() -> void:
 	pass
 func refresh_leaderboard() -> void:
 	sw_result = await SilentWolf.Scores.get_scores(10).sw_get_scores_complete
+	nr_of_scores=SilentWolf.Scores.scores.size()
 	
 func _process(_delta: float) -> void:
 	pass
 
 func display_leaderboard() -> void:
 	if sw_result:
-		var top_scores: Array = sw_result.scores
-
+		var top_scores: Array = sw_result.scores.duplicate()
+		top_scores.reverse()
 		for i in range(name_labels.size()):
 			if i < top_scores.size():
 				var entry = top_scores[i]
@@ -65,9 +68,11 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 
 func _on_texture_rect_pressed() -> void:
 	visible=false
-
+	starting_screen.update_username()
 
 func _on_user_search_text_submitted(new_text: String) -> void:
+	refresh_leaderboard()
+	display_leaderboard()
 	if new_text == "":
 		return
 
@@ -75,11 +80,12 @@ func _on_user_search_text_submitted(new_text: String) -> void:
 
 	if not top_score_result.has("top_score") or top_score_result.top_score == null:
 		user_place_time.text = "No score found"
+		display_leaderboard()
 		return
 
 	var player_score = top_score_result.top_score
 
 	var position_result: Dictionary = await SilentWolf.Scores.get_score_position(player_score.score_id).sw_get_position_complete
-	var place: int = position_result.position
+	var place: int = abs(nr_of_scores-position_result.position)+1
 
 	user_place_time.text = "Place " + str(place) + ", " + format_time(player_score.score)

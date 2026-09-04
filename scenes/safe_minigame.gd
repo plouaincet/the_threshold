@@ -13,6 +13,8 @@ extends CanvasLayer
 @onready var maner: TextureRect = $CenterContainer/TextureRect/MarginContainer/HBoxContainer/CenterContainer/TextureRect
 @onready var timer: Timer = $Timer
 @onready var texture_rect: TextureRect = $CenterContainer/TextureRect/MarginContainer/HBoxContainer/CenterContainer2/TextureRect/MarginContainer/TextureRect
+@onready var handle_pushed: AudioStreamPlayer2D = $HandlePushed
+var fading:bool=false
 var pressing_button:bool=false
 var hovering: bool
 var PIN:int=0
@@ -99,7 +101,7 @@ func fade_out_safe() -> void:
 	fade_tween.tween_callback(func(): visible=false)
 func check_pin(pin: int) -> void:
 	print("pressed",PIN)
-	if pin==correct_pin:
+	if pin==correct_pin and !fading:
 		fade_out_game()
 	else:
 		PIN=0
@@ -140,6 +142,8 @@ func slow_maner_move() -> void:
 	fade_tween = create_tween()
 	fade_tween.tween_property(maner, "offset_transform_rotation", 0, 0.25)
 func fade_out_game() -> void:
+	fading=true
+	handle_pushed.play()
 	await get_tree().create_timer(2).timeout
 	fade_tween = create_tween()
 	fade_tween.tween_property(center_container, "modulate:a", 0, 0.5)

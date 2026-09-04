@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cimslyg26v6y1"]
 
-[ext_resource type="Script" uid="uid://c26a5ivlwnclg" path="res://leader_board.gd" id="1_w1jv0"]
+[ext_resource type="Script" uid="uid://c26a5ivlwnclg" path="res://scenes/leader_board.gd" id="1_w1jv0"]
 [ext_resource type="FontFile" uid="uid://8sth7a34psu1" path="res://assets/PressStart2P.ttf" id="2_yx86l"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3owqy"]
@@ -106,7 +106,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -114,7 +113,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -126,7 +124,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -134,7 +131,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -146,7 +142,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -154,7 +149,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -166,7 +160,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -174,7 +167,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -186,7 +178,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -194,7 +185,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -206,7 +196,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -214,7 +203,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -226,7 +214,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -234,7 +221,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -246,7 +232,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -254,7 +239,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -266,7 +250,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -274,7 +257,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -286,7 +268,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -294,7 +275,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_yx86l")
-text = "empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -57,7 +57,7 @@ func _ready() -> void:
 	g_scut.visible=false
 	sword.visible=false
 	cape.visible=false
-	scene_manager.player_to_leaderboard()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -176,6 +176,7 @@ func et2_get_blue_key()-> void:
 		keys[5]=true
 		kslot_3.visible=true
 		notif.show_notification("You got the BLUE key.")
+		scene_manager.player_to_leaderboard()
 
 func randomise_pin() -> String:
 	var first_digit:int=randi_range(1,9)
@@ -192,7 +193,7 @@ func remove_slot_obj() ->void:
 	for child in slott.get_children():
 		if child is Sprite2D:
 			child.queue_free()
-func add_graffities(GName:String,value:float) -> void:
+func add_graffities(_GName:String,value:float) -> void:
 	graffities+=value
 	print(round(graffities))
 	if abs(graffities - round(graffities)) < 0.001:

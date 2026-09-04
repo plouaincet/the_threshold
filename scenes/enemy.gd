@@ -33,9 +33,11 @@ var vision_rays: Array[RayCast2D] = []
 
 var anim :String
 @onready var enemysprite: AnimatedSprite2D = $Sprite2D
+@onready var footsteps: AudioStreamPlayer2D = $Footsteps
 
 
 func _ready() -> void:
+	footsteps.play()
 	vision_rays.clear()
 	for i in range(ray_count):
 		vision_rays.append(_make_vision_ray())

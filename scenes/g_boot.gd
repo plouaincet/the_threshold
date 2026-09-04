@@ -3,6 +3,8 @@ var fade_tween: Tween
 @onready var point_light: PointLight2D = $PointLight2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var game: Node2D = $"../.."
+@onready var Wipe: AudioStreamPlayer2D = $"../Wipe"
+
 var bites: Array[Vector3] = []
 var max_bites := 5
 # Called when the node enters the scene tree for the first time.
@@ -14,6 +16,7 @@ func _ready() -> void:
 
 
 func wipe(_player: Node) -> void:
+	Wipe.play()
 	game.add_graffities(name,0.2)
 	if bites.size() >= max_bites:
 		return

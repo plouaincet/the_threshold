@@ -68,7 +68,7 @@ var orangekey:bool=false
 var purplekey:bool=false
 
 func _ready() -> void:
-	graffities=4.8
+	#graffities=4.8
 	bg_music.volume_db=8
 	bg_music.play()
 	
@@ -125,6 +125,7 @@ func _check_doors() -> void:
 	#print(White_Doors,Blue_Doors,Pink_Doors,Orange_Doors,Purple_Doors)
 	if Pink_Door1==false:
 		%TileMap/PinkDoor1.navigation_enabled=true
+		fade_out_black(map.get_node("PinkDoor2"))
 	if Pink_Door2==false:
 		%TileMap/PinkDoor2.navigation_enabled=true
 		fade_out_black(map.get_node("PinkDoor2"))
