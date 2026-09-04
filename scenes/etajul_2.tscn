@@ -181,11 +181,12 @@ autoplay = true
 stream = ExtResource("17_7d3fj")
 volume_db = 2.0
 
+[node name="HUD2" parent="." unique_id=1381510903 instance=ExtResource("30_gbhml")]
+
 [node name="VentMinigame" parent="." unique_id=2143224959 instance=ExtResource("22_gbhml")]
 
 [node name="SafeMinigame" parent="." unique_id=260007811 instance=ExtResource("30_ikpmf")]
-
-[node name="HUD2" parent="." unique_id=1381510903 instance=ExtResource("30_gbhml")]
+visible = false
 
 [node name="ShowGraffities" type="Node" parent="." unique_id=1327215525]
 

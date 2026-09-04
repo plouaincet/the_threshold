@@ -26,6 +26,7 @@ extends Node2D
 @onready var g_scut: StaticBody2D = $ShowGraffities/GScut
 @onready var sword: StaticBody2D = $ShowGraffities/Sword
 @onready var cape: StaticBody2D = $ShowGraffities/Cape
+@onready var time: Label = $HUD2/Timer/CenterContainer/Label
 var can_blue_key:bool=false
 
 var LIGHTSHOW_tween:Tween
@@ -56,6 +57,7 @@ func _ready() -> void:
 	g_scut.visible=false
 	sword.visible=false
 	cape.visible=false
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -174,6 +176,7 @@ func et2_get_blue_key()-> void:
 		keys[5]=true
 		kslot_3.visible=true
 		notif.show_notification("You got the BLUE key.")
+		scene_manager.player_to_leaderboard()
 
 func randomise_pin() -> String:
 	var first_digit:int=randi_range(1,9)
@@ -190,7 +193,7 @@ func remove_slot_obj() ->void:
 	for child in slott.get_children():
 		if child is Sprite2D:
 			child.queue_free()
-func add_graffities(GName:String,value:float) -> void:
+func add_graffities(_GName:String,value:float) -> void:
 	graffities+=value
 	print(round(graffities))
 	if abs(graffities - round(graffities)) < 0.001:
@@ -241,3 +244,11 @@ func turn_light_back() -> void:
 	cape.visible=false
 	light.energy=0.92
 	light.color=Color8(255,255,255)
+
+func _change_time(seconds:int) -> void:
+	if seconds%60>9:
+		@warning_ignore("integer_division")
+		time.text=str(seconds/60) + ":" + str(seconds%60)
+	else:
+		@warning_ignore("integer_division")
+		time.text=str(seconds/60) + ":0" + str(seconds%60)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://davurggctdvm4" path="res://scenes/spider.gd" id="1_algeo"]
 [ext_resource type="Texture2D" uid="uid://b0y43ijsyx463" path="res://sprites/spider.png" id="1_c7em6"]
+[ext_resource type="AudioStream" uid="uid://behka125hhn06" path="res://assets/spooder.mp3" id="3_k5hg5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_algeo"]
 radius = 23.61873
@@ -47,6 +48,10 @@ position = Vector2(0, -69)
 position = Vector2(39, 25)
 rotation = -1.2281035
 shape = SubResource("CapsuleShape2D_c7em6")
+
+[node name="Ambience" type="AudioStreamPlayer2D" parent="." unique_id=755754895]
+stream = ExtResource("3_k5hg5")
+volume_db = 2.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

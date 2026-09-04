@@ -23,7 +23,7 @@ extends Node
 @onready var spider: StaticBody2D = $Spider
 @onready var scene_manager: Node = $".."
 @onready var intro_letter: Label = $IntroLetter/CenterContainer2/Label
-
+@onready var time: Label = %HUD/Timer/CenterContainer/Label
 
 var graffities: float = 0
 var chours: int = 0
@@ -68,7 +68,7 @@ var orangekey:bool=false
 var purplekey:bool=false
 
 func _ready() -> void:
-	graffities=4.8
+	#graffities=4.8
 	bg_music.volume_db=8
 	bg_music.play()
 	
@@ -77,6 +77,7 @@ func _ready() -> void:
 	enemy.Enemy_Chasing.connect(_chasing_handle)
 	player.Door_Opened.connect(_check_doors)
 	randomise_clock()
+	#SilentWolf.Scores.wipe_leaderboard()
 
 func _process(_delta: float) -> void:
 	#print(Engine.get_frames_per_second())
@@ -124,6 +125,7 @@ func _check_doors() -> void:
 	#print(White_Doors,Blue_Doors,Pink_Doors,Orange_Doors,Purple_Doors)
 	if Pink_Door1==false:
 		%TileMap/PinkDoor1.navigation_enabled=true
+		fade_out_black(map.get_node("PinkDoor2"))
 	if Pink_Door2==false:
 		%TileMap/PinkDoor2.navigation_enabled=true
 		fade_out_black(map.get_node("PinkDoor2"))
@@ -308,3 +310,12 @@ func _handle_bgmusic(state:bool) -> void:
 func won() -> void:
 	scene_manager.music_position=bg_music.get_playback_position()
 	scene_manager.second_floor()
+
+
+func _change_time(seconds:int) -> void:
+	if seconds%60>9:
+		@warning_ignore("integer_division")
+		time.text=str(seconds/60) + ":" + str(seconds%60)
+	else:
+		@warning_ignore("integer_division")
+		time.text=str(seconds/60) + ":0" + str(seconds%60)

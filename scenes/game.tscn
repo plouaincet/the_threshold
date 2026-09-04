@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://chrehl7mdvq7a" path="res://scenes/toy_2.tscn" id="8_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://cwt4uwys4eo2h" path="res://scenes/toy_3.tscn" id="9_264po"]
 [ext_resource type="AudioStream" uid="uid://cbwtrp6kmsxe8" path="res://assets/lightswitch_off.mp3" id="9_vtaks"]
+[ext_resource type="AudioStream" uid="uid://bs1krq6u48xu0" path="res://assets/gerase.mp3" id="9_xbak0"]
 [ext_resource type="PackedScene" uid="uid://ce1odtdbuwngj" path="res://scenes/toy_4.tscn" id="10_1kice"]
 [ext_resource type="PackedScene" uid="uid://pru35yism46k" path="res://scenes/Clock.tscn" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://di2c7evf5u87e" path="res://scenes/toy_5.tscn" id="11_5newe"]
@@ -88,7 +89,7 @@ y_sort_enabled = true
 position = Vector2(-368, -270)
 
 [node name="GGlove" parent="Graffities" unique_id=943695893 instance=ExtResource("40_bk1p3")]
-position = Vector2(-241, -87)
+position = Vector2(-238, -76)
 
 [node name="GBoot" parent="Graffities" unique_id=921013457 instance=ExtResource("37_q8j3a")]
 position = Vector2(-141, -551)
@@ -98,6 +99,9 @@ position = Vector2(-686, -567)
 
 [node name="GScut" parent="Graffities" unique_id=1365421989 instance=ExtResource("38_ms3bu")]
 position = Vector2(-6, -630)
+
+[node name="Wipe" type="AudioStreamPlayer2D" parent="Graffities" unique_id=1854628261]
+stream = ExtResource("9_xbak0")
 
 [node name="Objects" type="Node2D" parent="." unique_id=1576869208]
 y_sort_enabled = true
