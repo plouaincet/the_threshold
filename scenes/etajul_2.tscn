@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://4j360eaiy6st" path="res://scenes/red_door_2.tscn" id="15_ikpmf"]
 [ext_resource type="PackedScene" uid="uid://deqjsqk8v6nl1" path="res://scenes/blue_door.tscn" id="16_4g53l"]
 [ext_resource type="AudioStream" uid="uid://bnu32r6ng1j5g" path="res://assets/dooropening.mp3" id="17_7d3fj"]
+[ext_resource type="AudioStream" uid="uid://bs1krq6u48xu0" path="res://assets/gerase.mp3" id="21_f3uoa"]
 [ext_resource type="PackedScene" uid="uid://c575pacxry2r8" path="res://scenes/vent_minigame.tscn" id="22_gbhml"]
 [ext_resource type="PackedScene" uid="uid://ueb0nw881uo3" path="res://scenes/hud_2.tscn" id="30_gbhml"]
 [ext_resource type="PackedScene" uid="uid://bhk5iutax2rhw" path="res://scenes/safe_minigame.tscn" id="30_ikpmf"]
@@ -128,6 +129,9 @@ position = Vector2(-199, -328)
 
 [node name="Cape" parent="Graffities" unique_id=1385775896 instance=ExtResource("32_m8umf")]
 position = Vector2(-559, 297)
+
+[node name="Wipe" type="AudioStreamPlayer2D" parent="Graffities" unique_id=761091035]
+stream = ExtResource("21_f3uoa")
 
 [node name="player" parent="." unique_id=1698648380 instance=ExtResource("2_lm0ro")]
 unique_name_in_owner = true

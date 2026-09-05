@@ -256,6 +256,7 @@ func get_white_key() -> void:
 		whitekey=true
 		kslot_1.visible=true
 		notfication.show_notification("You got the WHITE key!")
+		
 
 func get_blue_key() -> void:
 	if not bluekey:
@@ -312,10 +313,14 @@ func won() -> void:
 	scene_manager.second_floor()
 
 
-func _change_time(seconds:int) -> void:
-	if seconds%60>9:
-		@warning_ignore("integer_division")
-		time.text=str(seconds/60) + ":" + str(seconds%60)
+func _change_time(seconds: int) -> void:
+	@warning_ignore("integer_division")
+	var hours := seconds / 3600
+	@warning_ignore("integer_division")
+	var minutes := (seconds % 3600) / 60
+	var secs := seconds % 60
+
+	if hours > 0:
+		time.text = "%d:%02d:%02d" % [hours, minutes, secs]
 	else:
-		@warning_ignore("integer_division")
-		time.text=str(seconds/60) + ":0" + str(seconds%60)
+		time.text = "%d:%02d" % [minutes, secs]

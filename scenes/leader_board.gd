@@ -36,6 +36,7 @@ func _ready() -> void:
 func refresh_leaderboard() -> void:
 	sw_result = await SilentWolf.Scores.get_scores(10).sw_get_scores_complete
 	nr_of_scores=SilentWolf.Scores.scores.size()
+	print(nr_of_scores)
 	
 func _process(_delta: float) -> void:
 	pass
@@ -43,7 +44,6 @@ func _process(_delta: float) -> void:
 func display_leaderboard() -> void:
 	if sw_result:
 		var top_scores: Array = sw_result.scores.duplicate()
-		top_scores.reverse()
 		for i in range(name_labels.size()):
 			if i < top_scores.size():
 				var entry = top_scores[i]
@@ -55,12 +55,19 @@ func display_leaderboard() -> void:
 				time_labels[i].text = ""
 				name_labels[i].get_parent().visible = false
 
-func format_time(score) -> String:
-	var t := int(score)
-	var minutes := t / 60
-	var seconds := t % 60
-	return "%02d:%02d" % [minutes, seconds]
-
+func format_time(seconds:int) -> String:
+	seconds=abs(seconds)
+	@warning_ignore("integer_division")
+	var hours := seconds / 3600
+	@warning_ignore("integer_division")
+	var minutes := (seconds % 3600) / 60
+	var secs := seconds % 60
+	var text:String=""
+	if hours > 0:
+		text = "%d:%02d:%02d" % [hours, minutes, secs]
+	else:
+		text = "%d:%02d" % [minutes, secs]
+	return text
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	scene_manager.leaderboard_name=new_text
@@ -76,7 +83,7 @@ func _on_user_search_text_submitted(new_text: String) -> void:
 	if new_text == "":
 		return
 
-	var top_score_result: Dictionary = await SilentWolf.Scores.get_top_score_by_player(new_text).sw_top_player_score_complete
+	var top_score_result: Dictionary = await SilentWolf.Scores.get_top_score_by_player(new_text, 0).sw_top_player_score_complete
 
 	if not top_score_result.has("top_score") or top_score_result.top_score == null:
 		user_place_time.text = "No score found"
@@ -86,6 +93,12 @@ func _on_user_search_text_submitted(new_text: String) -> void:
 	var player_score = top_score_result.top_score
 
 	var position_result: Dictionary = await SilentWolf.Scores.get_score_position(player_score.score_id).sw_get_position_complete
-	var place: int = abs(nr_of_scores-position_result.position)+1
+	var place: int = position_result.position
 
 	user_place_time.text = "Place " + str(place) + ", " + format_time(player_score.score)
+
+
+func _on_button_pressed() -> void:
+	refresh_leaderboard()
+	await get_tree().create_timer(2.0).timeout
+	display_leaderboard()
