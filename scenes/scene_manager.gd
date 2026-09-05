@@ -55,7 +55,8 @@ func _on_time_timeout() -> void:
 
 func player_to_leaderboard() -> void:
 	if leaderboard_name!="":
-		SilentWolf.Scores.save_score(leaderboard_name, leaderboard_time)
+		#SilentWolf.Scores.save_score(leaderboard_name, -leaderboard_time)
+		SilentWolf.Scores.save_score("youcantbeatme", -934)
 	var sw_result: Dictionary = await SilentWolf.Scores.get_scores().sw_get_scores_complete
 	print("Scores: " + str(sw_result.scores))
 	

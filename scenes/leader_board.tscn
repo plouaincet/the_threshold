@@ -319,6 +319,15 @@ theme_override_fonts/font = ExtResource("2_yx86l")
 text = "User's place"
 horizontal_alignment = 1
 
+[node name="Button" type="Button" parent="CenterContainer2/VBoxContainer" unique_id=375530882]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 40)
+offset_transform_visual_only = false
+theme_override_fonts/font = ExtResource("2_yx86l")
+text = "Refresh Leaderboard"
+
 [connection signal="pressed" from="CenterContainer/TextureRect" to="." method="_on_texture_rect_pressed"]
 [connection signal="text_submitted" from="CenterContainer/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="text_submitted" from="CenterContainer2/VBoxContainer/UserSearch" to="." method="_on_user_search_text_submitted"]
+[connection signal="pressed" from="CenterContainer2/VBoxContainer/Button" to="." method="_on_button_pressed"]

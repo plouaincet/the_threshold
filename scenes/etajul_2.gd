@@ -176,7 +176,6 @@ func et2_get_blue_key()-> void:
 		keys[5]=true
 		kslot_3.visible=true
 		notif.show_notification("You got the BLUE key.")
-		scene_manager.player_to_leaderboard()
 
 func randomise_pin() -> String:
 	var first_digit:int=randi_range(1,9)
@@ -201,7 +200,7 @@ func add_graffities(_GName:String,value:float) -> void:
 	else:
 		glabel.text=str(graffities) + "/8 Graffities"
 	if abs(graffities - 8.0) < 0.001:
-		#open white door basically
+		scene_manager.player_to_leaderboard()
 		pass
 func light_show() -> void:
 	if LIGHTSHOW_tween and LIGHTSHOW_tween.is_valid():
@@ -245,10 +244,14 @@ func turn_light_back() -> void:
 	light.energy=0.92
 	light.color=Color8(255,255,255)
 
-func _change_time(seconds:int) -> void:
-	if seconds%60>9:
-		@warning_ignore("integer_division")
-		time.text=str(seconds/60) + ":" + str(seconds%60)
+func _change_time(seconds: int) -> void:
+	@warning_ignore("integer_division")
+	var hours := seconds / 3600
+	@warning_ignore("integer_division")
+	var minutes := (seconds % 3600) / 60
+	var secs := seconds % 60
+
+	if hours > 0:
+		time.text = "%d:%02d:%02d" % [hours, minutes, secs]
 	else:
-		@warning_ignore("integer_division")
-		time.text=str(seconds/60) + ":0" + str(seconds%60)
+		time.text = "%d:%02d" % [minutes, secs]
