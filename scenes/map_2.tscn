@@ -28,6 +28,9 @@ size = Vector2(206, 111)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hrfpl"]
 size = Vector2(364, 99)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w0kd"]
+size = Vector2(261, 239)
+
 [node name="Map2" type="Node2D" unique_id=2100989850]
 script = ExtResource("1_t2xha")
 
@@ -316,6 +319,12 @@ shape = SubResource("RectangleShape2D_dpga7")
 position = Vector2(471, 209.5)
 shape = SubResource("RectangleShape2D_hrfpl")
 
+[node name="Area2D2" type="Area2D" parent="." unique_id=1843078033]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=216323399]
+position = Vector2(963.5, 378.5)
+shape = SubResource("RectangleShape2D_2w0kd")
+
 [connection signal="body_entered" from="ParallaxAreaRight" to="." method="_on_parallax_area_right_body_entered"]
 [connection signal="body_exited" from="ParallaxAreaRight" to="." method="_on_parallax_area_right_body_exited"]
 [connection signal="body_entered" from="ParallaxAreaLeft" to="." method="_on_parallax_area_left_body_entered"]
@@ -325,3 +334,5 @@ shape = SubResource("RectangleShape2D_hrfpl")
 [connection signal="body_entered" from="ParallaxAreaDown" to="." method="_on_parallax_area_down_body_entered"]
 [connection signal="body_exited" from="ParallaxAreaDown" to="." method="_on_parallax_area_down_body_exited"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]

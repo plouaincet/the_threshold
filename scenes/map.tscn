@@ -18,6 +18,9 @@ fill_to = Vector2(0.9273504, 0.051282052)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
 size = Vector2(12, 45)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8upip"]
+size = Vector2(246, 238)
+
 [node name="Map" type="Node2D" unique_id=515555644]
 script = ExtResource("1_paxxb")
 
@@ -275,6 +278,14 @@ polygon = PackedVector2Array(254, 421, 282, 421, 282, 494, 254, 494)
 position = Vector2(180, 586.5)
 shape = SubResource("RectangleShape2D_3owqy")
 
+[node name="SafeSpace" type="Area2D" parent="." unique_id=1275844104]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeSpace" unique_id=206086259]
+position = Vector2(873, 883)
+shape = SubResource("RectangleShape2D_8upip")
+
 [connection signal="body_entered" from="CorridorEntrance" to="." method="_on_corridor_entrance_body_entered"]
 [connection signal="body_entered" from="CorridorExit" to="." method="_on_corridor_exit_body_entered"]
 [connection signal="body_entered" from="Map exit" to="." method="_on_map_exit_body_entered"]
+[connection signal="body_entered" from="SafeSpace" to="." method="_on_safe_space_body_entered"]
+[connection signal="body_exited" from="SafeSpace" to="." method="_on_safe_space_body_exited"]

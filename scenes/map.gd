@@ -40,3 +40,17 @@ func _on_corridor_exit_body_entered(body: Node2D) -> void:
 func _on_map_exit_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		game.won()
+
+
+func _on_safe_space_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		print("yes")
+		game.is_chasing=false
+		game._fade_out_chase_music()
+		enemy._change_vision_ray(false)
+		enemy.stop_chase = true
+
+func _on_safe_space_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		enemy._change_vision_ray(true)
+		enemy.stop_chase = false
