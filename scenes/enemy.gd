@@ -69,6 +69,7 @@ func spawn_enemy_chase() -> void:
 	forced_chase = true
 
 func _physics_process(_delta):
+	#print(spotted_by_enemy,spotted_by_enemy_forced,forced_chase,stop_chase)
 	check_player_inside()
 	check_for_player()
 	if forced_chase:
@@ -174,14 +175,17 @@ func check_player_inside() -> void:
 		spotted_by_enemy_forced=false
 
 func is_chasing() -> bool:
-	return spotted_by_enemy or spotted_by_enemy_forced or forced_chase
+	return (spotted_by_enemy or spotted_by_enemy_forced or forced_chase) and !stop_chase
 
+@warning_ignore("unused_parameter")
 func is_position_navigable(pos: Vector2, tolerance: float = 16.0) -> bool:
-	if not map_synced:
+	return true
+	@warning_ignore("unreachable_code")
+	'''if not map_synced:
 		return true
 	var map_rid := nav.get_navigation_map()
 	var closest_point := NavigationServer2D.map_get_closest_point(map_rid, pos)
-	return closest_point.distance_to(pos) <= tolerance
+	return closest_point.distance_to(pos) <= tolerance'''
 
 func _on_enemy_is_close_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):

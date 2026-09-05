@@ -42,6 +42,7 @@ var is_chasing: bool = false
 var graffities:float=5.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#graffities=7.8
 	player.global_position=Vector2(0,0)
 	enemy.global_position=Vector2(-1200,-400)
 	bg_music.volume_db=5

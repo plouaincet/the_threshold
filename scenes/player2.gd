@@ -9,7 +9,7 @@ signal Door_Opened
 @onready var vent_minigame: CanvasLayer = $"../VentMinigame"
 @onready var safe_minigame: CanvasLayer = $"../SafeMinigame"
 
-var BASE_SPEED: float = 60.6
+var BASE_SPEED: float = 75.0
 const SPRINT_SPEED_BONUS: float = 30.0
 
 const MAX_STAMINA: float = 100.0
