@@ -9,8 +9,8 @@ var allow_pause:bool=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$StartingScreen.connect("game_entered",handle_start_game)
-	if not FileAccess.file_exists("res://sw_config.gd"):
-		push_error("Missing sw_config.gd")
+	if not ResourceLoader.exists("res://sw_config.gd"):
+		push_error("Missing sw_config.gd — copy sw_config.gd.example and fill in your keys.")
 		return
 	var config = load("res://sw_config.gd").new()
 	SilentWolf.configure({

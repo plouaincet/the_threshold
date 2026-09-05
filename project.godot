@@ -22,7 +22,6 @@ SilentWolf="*uid://bgr73u2eh7q7f"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [editor_plugins]
 
