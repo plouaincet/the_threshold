@@ -35,8 +35,10 @@ func _ready() -> void:
 	pass
 func refresh_leaderboard() -> void:
 	sw_result = await SilentWolf.Scores.get_scores(10).sw_get_scores_complete
-	nr_of_scores=SilentWolf.Scores.scores.size()
-	print(nr_of_scores)
+	if not sw_result.has("scores"):
+		sw_result = {}
+		return
+	nr_of_scores = SilentWolf.Scores.scores.size()
 	
 func _process(_delta: float) -> void:
 	pass
@@ -99,6 +101,5 @@ func _on_user_search_text_submitted(new_text: String) -> void:
 
 
 func _on_button_pressed() -> void:
-	refresh_leaderboard()
-	await get_tree().create_timer(2.0).timeout
+	await refresh_leaderboard()
 	display_leaderboard()
