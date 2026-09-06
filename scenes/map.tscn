@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cp4snha0o1uw0" path="res://sprites/mapwostuff.png" id="1_4xfga"]
 [ext_resource type="Script" uid="uid://c1tuv7q5fjptd" path="res://scenes/map.gd" id="1_paxxb"]
+[ext_resource type="Texture2D" uid="uid://clrg6jiygj20a" path="res://sprites/poster-safe-zone-verde.png" id="3_gldc4"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3owqy"]
 
@@ -283,6 +284,10 @@ shape = SubResource("RectangleShape2D_3owqy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SafeSpace" unique_id=206086259]
 position = Vector2(873, 883)
 shape = SubResource("RectangleShape2D_8upip")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=426557808]
+position = Vector2(844, 794)
+texture = ExtResource("3_gldc4")
 
 [connection signal="body_entered" from="CorridorEntrance" to="." method="_on_corridor_entrance_body_entered"]
 [connection signal="body_entered" from="CorridorExit" to="." method="_on_corridor_exit_body_entered"]

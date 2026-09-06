@@ -68,7 +68,7 @@ var orangekey:bool=false
 var purplekey:bool=false
 
 func _ready() -> void:
-	#graffities=4.8
+	graffities=4.8
 	bg_music.volume_db=8
 	bg_music.play()
 	
@@ -92,10 +92,12 @@ func light_toggled() -> void:
 		$Sounds/LightOn.play()
 		label.text = "Toggle light OFF: Z/Space"
 		light_state = true
+		scene_manager.light_state=true
 	else:
 		$Sounds/LightOff.play()
 		label.text = "Toggle light ON: Z/Space"
 		light_state = false
+		scene_manager.light_state=false
 
 func _handle_doors(_door_name: String) -> void:
 	pass

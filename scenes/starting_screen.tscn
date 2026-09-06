@@ -103,8 +103,8 @@ grow_vertical = 2
 script = ExtResource("1_0g0qd")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1013343908]
-position = Vector2(576, 324.00003)
-scale = Vector2(1.8, 1.8000002)
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_8upip")
 animation = &"flickering"
 autoplay = "flickering"
@@ -305,6 +305,7 @@ autostart = true
 [connection signal="pressed" from="ButtonsSpace/VBoxContainer/StartGameContainer/HBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="mouse_entered" from="ButtonsSpace/VBoxContainer/InstructionsContainer/HBoxContainer/Instructions" to="." method="_on_instructions_mouse_entered"]
 [connection signal="mouse_exited" from="ButtonsSpace/VBoxContainer/InstructionsContainer/HBoxContainer/Instructions" to="." method="_on_instructions_mouse_exited"]
+[connection signal="pressed" from="ButtonsSpace/VBoxContainer/InstructionsContainer/HBoxContainer/Instructions" to="." method="_on_instructions_pressed"]
 [connection signal="mouse_entered" from="ButtonsSpace/VBoxContainer/QuitContainer/HBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="mouse_exited" from="ButtonsSpace/VBoxContainer/QuitContainer/HBoxContainer/Quit" to="." method="_on_quit_mouse_exited"]
 [connection signal="pressed" from="ButtonsSpace/VBoxContainer/QuitContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

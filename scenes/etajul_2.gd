@@ -9,6 +9,7 @@ extends Node2D
 @onready var scene_manager: Node = $".."
 @onready var enemy_map_2: Node2D = $EnemyMap2
 @onready var map: Node2D = $Map2/HiddenAreas
+@onready var map_2: Node2D = $Map2
 @onready var inventory: Control = $"./HUD2/PlayerInventory"
 @onready var playerkeys: Control = $"./HUD2/PlayerKeys"
 @onready var kslot_1: TextureRect = $HUD2/PlayerKeys/CenterContainer/Control/MarginContainer/HBoxContainer/Kslot1/TextureRect
@@ -27,6 +28,12 @@ extends Node2D
 @onready var sword: StaticBody2D = $ShowGraffities/Sword
 @onready var cape: StaticBody2D = $ShowGraffities/Cape
 @onready var time: Label = $HUD2/Timer/CenterContainer/Label
+@onready var white_door: Doors = $Doors/WhiteDoor
+@onready var enemy_dies: AnimatedSprite2D = $StaticBody2D/EnemyDies
+@onready var enemy_dead: AudioStreamPlayer2D = $Sounds/Enemy_Dead
+@onready var point_light_2d_enemy: PointLight2D = $PointLight2DEnemy
+@onready var camera: Camera2D = %player/Camera2D
+
 var can_blue_key:bool=false
 
 var LIGHTSHOW_tween:Tween
@@ -42,10 +49,15 @@ var is_chasing: bool = false
 var graffities:float=5.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#graffities=7.8
+	graffities=7.8
+	if scene_manager.light_state==false:
+		player.lantern_open=false
+		point_light_2d.enabled =false
+		label.text = "Toggle light ON: Z/Space"
+		light_state = false
 	player.global_position=Vector2(0,0)
 	enemy.global_position=Vector2(-1200,-400)
-	bg_music.volume_db=5
+	bg_music.volume_db=8
 	bg_music.play(scene_manager.music_position)
 	player.Light_Toggled.connect(light_toggled)
 	enemy.Enemy_Chasing.connect(_chasing_handle)
@@ -58,11 +70,12 @@ func _ready() -> void:
 	g_scut.visible=false
 	sword.visible=false
 	cape.visible=false
-	
+	enemy_dies.modulate.a=0
+	point_light_2d_enemy.visible=false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-		if !enemy.is_chasing() and is_chasing and (abs(enemy.global_position.y - player.global_position.y) >= 200 or abs(enemy.global_position.x - player.global_position.x) >= 200):
+		if is_instance_valid(enemy) and !enemy.is_chasing() and is_chasing and (abs(enemy.global_position.y - player.global_position.y) >= 200 or abs(enemy.global_position.x - player.global_position.x) >= 200):
 			player.BASE_SPEED=75
 			_fade_out_chase_music()
 			is_chasing = false
@@ -178,6 +191,12 @@ func et2_get_blue_key()-> void:
 		kslot_3.visible=true
 		notif.show_notification("You got the BLUE key.")
 
+func et2_get_white_key()-> void: #metaphorically
+	if !keys[6]:
+		keys[6]=true
+		white_door.change_texture()
+		scene_manager.player_to_leaderboard()
+
 func randomise_pin() -> String:
 	var first_digit:int=randi_range(1,9)
 	var second_digit:int=randi_range(1,9)
@@ -201,8 +220,10 @@ func add_graffities(_GName:String,value:float) -> void:
 	else:
 		glabel.text=str(graffities) + "/8 Graffities"
 	if abs(graffities - 8.0) < 0.001:
-		scene_manager.player_to_leaderboard()
-		pass
+		et2_get_white_key()
+		notif.stay_duration+=3
+		notif.show_notification("The house is weakened, escape now through the WHITE door!")
+		notif.stay_duration-=3
 func light_show() -> void:
 	if LIGHTSHOW_tween and LIGHTSHOW_tween.is_valid():
 		LIGHTSHOW_tween.kill()
@@ -231,7 +252,7 @@ func light_show() -> void:
 	LIGHTSHOW_tween.tween_property(light, "color:a", 1.0, 0.1)
 	can_blue_key=true
 func turn_light_back() -> void:
-	bg_music.volume_db=5
+	bg_music.volume_db=8
 	if can_blue_key:
 		et2_get_blue_key()
 	eye.visible=false
@@ -256,3 +277,27 @@ func _change_time(seconds: int) -> void:
 		time.text = "%d:%02d:%02d" % [hours, minutes, secs]
 	else:
 		time.text = "%d:%02d" % [minutes, secs]
+
+func ending_animation_start() -> void:
+	bg_music.stop()
+	chasing_music.stop()
+	enemy.call_deferred("queue_free")
+	enemy_dies.modulate.a=1.0
+	
+	enemy_dies.sprite_frames.set_animation_speed("Dissapearing", 10.0)
+	enemy_dies.stop()
+	enemy_dies.frame = 0
+	enemy_dies.play("Dissapearing")
+	
+	enemy_dead.play()
+	point_light_2d_enemy.visible=true
+	var tween := create_tween()
+	tween.tween_property(camera, "position:y", camera.position.y - 50, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+func _on_enemy_dies_animation_finished() -> void:
+	var tweewn := create_tween()
+	tweewn.tween_property(camera, "position:y", camera.position.y +50, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	player.restrainedd=false
+	map_2.end_scene_area.monitoring=false
+
+func end_game() -> void:
+	scene_manager.rotoscopereverse()

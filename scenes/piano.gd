@@ -2,14 +2,17 @@ extends Interactable
 @onready var line_2d: Line2D = $Line2D
 @onready var PianoMinigame: CanvasLayer= $"../../PianoMinigame"
 @onready var bg_music: AudioStreamPlayer2D = $"../../Sounds/BgMusic"
-
-
+var first_open:bool=true
+@onready var notif:Control = $"../../HUD/Notfication"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PianoMinigame.visible=false
 	line_2d.visible=false
 
 func interact(_player: Node) -> void:
+	if first_open:
+		first_open=false
+		notif.show_notification("Press the button to play.")
 	PianoMinigame.visible=not PianoMinigame.visible
 	if PianoMinigame.visible:
 		bg_music.volume_db-=3

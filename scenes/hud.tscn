@@ -35,6 +35,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="PaintingViewer" unique_id=1045622032]
 layout_mode = 1
@@ -60,6 +61,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="Text" unique_id=652382042]
 layout_mode = 1
@@ -82,6 +84,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("4_0m4u7")
 
 [node name="InventoryPosition" type="CenterContainer" parent="PlayerInventory" unique_id=793609769]
@@ -306,6 +309,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="PlayerKeys" unique_id=18371750]
 layout_mode = 1
@@ -409,6 +413,7 @@ offset_left = 2.0
 offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="SpeedBar" unique_id=1374477176]
 layout_mode = 1
@@ -452,6 +457,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("10_uxdf7")
 
 [node name="CenterContainer" type="CenterContainer" parent="Notfication" unique_id=746513032]
@@ -502,6 +508,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="GraffitiCounter" unique_id=1309324533]
 layout_mode = 1
@@ -528,6 +535,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="Timer" unique_id=73369900]
 layout_mode = 1

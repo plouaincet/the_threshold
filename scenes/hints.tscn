@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cjad7tnx1v3c5"]
+
+[ext_resource type="Script" uid="uid://chpsk5pk63sg5" path="res://scenes/hints.gd" id="1_gw031"]
+[ext_resource type="Texture2D" uid="uid://cktbj8oomb6t5" path="res://sprites/hints_page.png" id="1_wixqs"]
+[ext_resource type="FontFile" uid="uid://ctc05h4iw85k6" path="res://assets/PixelOperator.ttf" id="3_pui8s"]
+
+[node name="Hints" type="CanvasLayer" unique_id=1281334768]
+layer = 101
+script = ExtResource("1_gw031")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=124331948]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.005
+offset_right = 640.0
+offset_bottom = 356.40002
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("1_wixqs")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=201640485]
+anchors_preset = -1
+anchor_right = 0.164
+anchor_bottom = 0.09
+offset_right = 0.07998657
+offset_bottom = 0.19999695
+
+[node name="Label" type="Label" parent="CenterContainer" unique_id=1693872518]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pui8s")
+theme_override_font_sizes/font_size = 32
+text = "Exit: Esc"
+vertical_alignment = 1

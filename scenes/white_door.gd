@@ -1,0 +1,30 @@
+extends Doors
+var fade_tween: Tween
+var cracked_door: Texture2D = preload("res://sprites/lastdoor.png")
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var game: Node2D = $"../.."
+@export var door_nr:int
+@onready var door_opening: AudioStreamPlayer2D = $"../../Sounds/DoorOpening"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+func open(_player: Node) -> void:
+	if game.keys[door_nr]:
+		game.open_door(door_nr)
+		fade_out_door()
+		return
+	game.playerkeys_spaces_shake()
+
+func fade_out_door() -> void:
+	fade_tween = create_tween()
+	fade_tween.tween_property(sprite_2d, "modulate:a", 0.0, 0.5)
+	fade_tween.tween_callback(queue_free)
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+
+func change_texture() -> void:
+	sprite_2d.region_enabled=false
+	sprite_2d.texture=cracked_door
