@@ -28,11 +28,13 @@ extends Node2D
 @onready var sword: StaticBody2D = $ShowGraffities/Sword
 @onready var cape: StaticBody2D = $ShowGraffities/Cape
 @onready var time: Label = $HUD2/Timer/CenterContainer/Label
+@onready var timer: Timer = $Timer
 @onready var white_door: Doors = $Doors/WhiteDoor
 @onready var enemy_dies: AnimatedSprite2D = $StaticBody2D/EnemyDies
 @onready var enemy_dead: AudioStreamPlayer2D = $Sounds/Enemy_Dead
 @onready var point_light_2d_enemy: PointLight2D = $PointLight2DEnemy
 @onready var camera: Camera2D = %player/Camera2D
+@onready var screenent_sound: AudioStreamPlayer2D = $Sounds/Screen_Entered_By_Enemy
 
 var can_blue_key:bool=false
 
@@ -49,7 +51,7 @@ var is_chasing: bool = false
 var graffities:float=5.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	graffities=7.8
+	#graffities=7.8
 	if scene_manager.light_state==false:
 		player.lantern_open=false
 		point_light_2d.enabled =false
@@ -195,7 +197,6 @@ func et2_get_white_key()-> void: #metaphorically
 	if !keys[6]:
 		keys[6]=true
 		white_door.change_texture()
-		scene_manager.player_to_leaderboard()
 
 func randomise_pin() -> String:
 	var first_digit:int=randi_range(1,9)
@@ -212,6 +213,7 @@ func remove_slot_obj() ->void:
 	for child in slott.get_children():
 		if child is Sprite2D:
 			child.queue_free()
+			Slots[selected_frame]="null"
 func add_graffities(_GName:String,value:float) -> void:
 	graffities+=value
 	print(round(graffities))
@@ -251,6 +253,7 @@ func light_show() -> void:
 	LIGHTSHOW_tween.tween_property(light, "color:a", 0.0, 0.1)
 	LIGHTSHOW_tween.tween_property(light, "color:a", 1.0, 0.1)
 	can_blue_key=true
+	timer.start(4.0)
 func turn_light_back() -> void:
 	bg_music.volume_db=8
 	if can_blue_key:
@@ -300,4 +303,13 @@ func _on_enemy_dies_animation_finished() -> void:
 	map_2.end_scene_area.monitoring=false
 
 func end_game() -> void:
+	scene_manager.player_to_leaderboard()
 	scene_manager.rotoscopereverse()
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	screenent_sound.play()
+
+
+func _on_timer_timeout() -> void:
+	turn_light_back()

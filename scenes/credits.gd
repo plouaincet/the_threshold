@@ -14,5 +14,5 @@ func _ready() -> void:
 	tween.tween_property(v_box_container, "position:y", -2200, 30.0)
 	tween.tween_callback(func(): credits_finished.emit())
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

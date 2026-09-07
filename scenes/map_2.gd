@@ -52,11 +52,6 @@ func _on_parallax_area_down_body_exited(body: Node2D) -> void:
 		end_parallax+=Vector2(0,2)
 
 
-@warning_ignore("unused_parameter")
-func _on_area_2d_area_exited(area: Area2D) -> void:
-	game.turn_light_back()
-
-
 func _on_area_2d_2_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		game.is_chasing=false

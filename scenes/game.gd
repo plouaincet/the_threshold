@@ -55,7 +55,7 @@ var fade_tween: Tween
 var indicator_pos := 0.0
 var light_state: bool = true
 
-var selected_frame:int=-3
+var selected_frame:int=-1
 
 var Slots: Array[String] = ["null","null","null","null","null"]
 var Chairs: Array[String] = ["null","null","null","null","null","null","null","null"]
@@ -68,7 +68,7 @@ var orangekey:bool=false
 var purplekey:bool=false
 
 func _ready() -> void:
-	graffities=4.8
+	#graffities=4.8
 	bg_music.volume_db=8
 	bg_music.play()
 	
@@ -127,6 +127,7 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 func _check_doors() -> void:
 	#print(White_Doors,Blue_Doors,Pink_Doors,Orange_Doors,Purple_Doors)
 	if Pink_Door1==false:
+		enemy.musicbox_chase=false
 		%TileMap/PinkDoor1.navigation_enabled=true
 		fade_out_black(map.get_node("PinkDoor2"))
 	if Pink_Door2==false:

@@ -16,6 +16,7 @@ var hints_available:int=3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	$StartingScreen.connect("game_entered",handle_start_game)
 	if not ResourceLoader.exists("res://sw_config.gd"):
 		push_error("Missing sw_config.gd — copy sw_config.gd.example and fill in your keys.")
@@ -25,7 +26,7 @@ func _ready() -> void:
 		"api_key": config.API_KEY,
 		"game_id": config.GAME_ID,
 		"game_version": "1.0",
-		"log_level": 1
+		"log_level": 0
 	})
 	#SilentWolf.Scores.wipe_leaderboard()
 	leaderboard.refresh_leaderboard()
