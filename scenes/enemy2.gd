@@ -65,20 +65,10 @@ func _make_vision_ray() -> RayCast2D:
 func _on_map_changed(_map_rid: RID) -> void:
 	map_synced = true
 
-func spawn_enemy_chase() -> void:
-	global_position = Vector2(437, -488)
-	forced_chase = true
-
 func _physics_process(_delta):
 	check_player_inside()
 	check_for_player()
-	if forced_chase:
-		if game.Pink_Doors == 0:
-			if not spotted_by_enemy and not spotted_by_enemy_forced:
-				var diff = global_position - player.global_position
-				if abs(diff.x) >= forced_chase_lose_distance or abs(diff.y) >= forced_chase_lose_distance:
-					forced_chase = false
-	if (spotted_by_enemy or spotted_by_enemy_forced or forced_chase) and !stop_chase:
+	if (spotted_by_enemy or spotted_by_enemy_forced) and !stop_chase:
 		SPEED=60
 		emit_signal("Enemy_Chasing")
 		nav.target_position = player.global_position 
