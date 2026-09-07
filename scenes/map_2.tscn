@@ -270,6 +270,7 @@ color = Color(1, 1, 0.27058825, 1)
 texture = SubResource("GradientTexture2D_3h78v")
 
 [node name="HiddenAreas" type="Node2D" parent="." unique_id=1869564302]
+visible = false
 z_index = 1
 
 [node name="Green_Door2" type="Polygon2D" parent="HiddenAreas" unique_id=35542499]
