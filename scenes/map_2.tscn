@@ -2,13 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://c1w2tr6sdw0ud" path="res://sprites/et2_no_obj_no_door.png" id="1_3h78v"]
 [ext_resource type="Script" uid="uid://h72h6y0ldaa8" path="res://scenes/map_2.gd" id="1_t2xha"]
+[ext_resource type="Texture2D" uid="uid://clrg6jiygj20a" path="res://sprites/poster-safe-zone-verde.png" id="3_a7y6p"]
 
-[sub_resource type="Gradient" id="Gradient_4xfga"]
+[sub_resource type="Gradient" id="Gradient_a7y6p"]
 offsets = PackedFloat32Array(0, 0.8537736)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3h78v"]
-gradient = SubResource("Gradient_4xfga")
+gradient = SubResource("Gradient_a7y6p")
 fill = 1
 fill_from = Vector2(0.517094, 0.517094)
 fill_to = Vector2(0.9273504, 0.051282052)
@@ -25,11 +26,17 @@ size = Vector2(206, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpga7"]
 size = Vector2(206, 111)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrfpl"]
-size = Vector2(364, 99)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2w0kd"]
 size = Vector2(261, 239)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3vdb"]
+size = Vector2(154, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2s3ny"]
+size = Vector2(29, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2sdbu"]
+size = Vector2(39, 20)
 
 [node name="Map2" type="Node2D" unique_id=2100989850]
 script = ExtResource("1_t2xha")
@@ -313,17 +320,34 @@ shape = SubResource("RectangleShape2D_drsw1")
 position = Vector2(715, 899.5)
 shape = SubResource("RectangleShape2D_dpga7")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1130692705]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=945941094]
-position = Vector2(471, 209.5)
-shape = SubResource("RectangleShape2D_hrfpl")
-
 [node name="Area2D2" type="Area2D" parent="." unique_id=1843078033]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=216323399]
 position = Vector2(963.5, 378.5)
 shape = SubResource("RectangleShape2D_2w0kd")
+
+[node name="EndSceneArea" type="Area2D" parent="." unique_id=210352788]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndSceneArea" unique_id=486025331]
+position = Vector2(745, 214)
+shape = SubResource("RectangleShape2D_h3vdb")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1228375588]
+position = Vector2(996, 493)
+texture = ExtResource("3_a7y6p")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1990002868]
+position = Vector2(746, 235)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1338933231]
+position = Vector2(-0.5, 9)
+shape = SubResource("RectangleShape2D_2s3ny")
+
+[node name="GAMEEND" type="Area2D" parent="." unique_id=190904150]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GAMEEND" unique_id=1327700261]
+position = Vector2(747.5, 136)
+shape = SubResource("RectangleShape2D_2sdbu")
 
 [connection signal="body_entered" from="ParallaxAreaRight" to="." method="_on_parallax_area_right_body_entered"]
 [connection signal="body_exited" from="ParallaxAreaRight" to="." method="_on_parallax_area_right_body_exited"]
@@ -333,6 +357,7 @@ shape = SubResource("RectangleShape2D_2w0kd")
 [connection signal="body_exited" from="ParallaxAreaUp" to="." method="_on_parallax_area_up_body_exited"]
 [connection signal="body_entered" from="ParallaxAreaDown" to="." method="_on_parallax_area_down_body_entered"]
 [connection signal="body_exited" from="ParallaxAreaDown" to="." method="_on_parallax_area_down_body_exited"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]
+[connection signal="body_entered" from="EndSceneArea" to="." method="_on_end_scene_area_body_entered"]
+[connection signal="body_entered" from="GAMEEND" to="." method="_on_gameend_body_entered"]

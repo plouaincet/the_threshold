@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://bn6i84a3ser1o"]
+
+[ext_resource type="FontFile" uid="uid://ctc05h4iw85k6" path="res://assets/PixelOperator.ttf" id="1_0bpdh"]
+[ext_resource type="Script" uid="uid://cmi1xg8egn8y3" path="res://scenes/credits.gd" id="1_2ckv8"]
+[ext_resource type="Texture2D" uid="uid://b500adm35mwb" path="res://sprites/title.png" id="2_0ctdu"]
+[ext_resource type="AudioStream" uid="uid://b66cx5xdyq7av" path="res://assets/startscreen.mp3" id="4_2fbfq"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3owqy"]
+
+[node name="Credits" type="Control" unique_id=4959430]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ckv8")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=971867822]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_3owqy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=479579879]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -573.5
+offset_top = 1200.0
+offset_right = 573.5
+offset_bottom = 2578.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 250
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1198573252]
+layout_mode = 2
+texture = ExtResource("2_0ctdu")
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=636860592]
+layout_mode = 2
+offset_transform_position = Vector2(0, 1200)
+theme_override_fonts/font = ExtResource("1_0bpdh")
+theme_override_font_sizes/font_size = 48
+text = "Created by:
+Luminițele
+
+Directed by:
+Anghel Maria-Cornelia
+
+Lead Programmer:
+Anghel Maria-Cornelia
+
+Additional programmers:
+Atitienei Ekaterina-Gabriela
+Constantiniu Matei
+Huțanu Ioana-Maia
+
+Art:
+Atitienei Ekaterina-Gabriela
+
+Narrative Designer:
+Huțanu Ioana-Maia
+
+Audio Designers:
+Constantiniu Matei
+Huțanu Ioana-Maia
+
+Tested by:
+Anghel Maria-Cornelia
+Atitienei Ekaterina-Gabriela
+Constantiniu Matei
+Huțanu Ioana-Maia
+
+
+Thank you for playing!"
+horizontal_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1385101922]
+stream = ExtResource("4_2fbfq")

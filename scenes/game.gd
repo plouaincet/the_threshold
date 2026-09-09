@@ -55,7 +55,7 @@ var fade_tween: Tween
 var indicator_pos := 0.0
 var light_state: bool = true
 
-var selected_frame:int=-3
+var selected_frame:int=-1
 
 var Slots: Array[String] = ["null","null","null","null","null"]
 var Chairs: Array[String] = ["null","null","null","null","null","null","null","null"]
@@ -92,10 +92,12 @@ func light_toggled() -> void:
 		$Sounds/LightOn.play()
 		label.text = "Toggle light OFF: Z/Space"
 		light_state = true
+		scene_manager.light_state=true
 	else:
 		$Sounds/LightOff.play()
 		label.text = "Toggle light ON: Z/Space"
 		light_state = false
+		scene_manager.light_state=false
 
 func _handle_doors(_door_name: String) -> void:
 	pass
@@ -125,6 +127,7 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 func _check_doors() -> void:
 	#print(White_Doors,Blue_Doors,Pink_Doors,Orange_Doors,Purple_Doors)
 	if Pink_Door1==false:
+		enemy.musicbox_chase=false
 		%TileMap/PinkDoor1.navigation_enabled=true
 		fade_out_black(map.get_node("PinkDoor2"))
 	if Pink_Door2==false:

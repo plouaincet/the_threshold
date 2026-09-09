@@ -14,7 +14,7 @@ func _ready() -> void:
 	music.volume_db=5
 
 func insert_clank() -> void:
-	if game.Slots[game.selected_frame]=="Clank":
+	if game.Slots[game.selected_frame]=="Clank" and game.selected_frame>=0 and game.selected_frame<=4:
 		game.Slots[game.selected_frame]="null"
 		var slott := get_node("../../HUD/PlayerInventory/InventoryPosition/InventoryBg/MarginContainer/Slots/Slot" + str(game.selected_frame + 1))
 		for child in slott.get_children():

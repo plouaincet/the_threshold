@@ -52,13 +52,12 @@ var players_script = load("res://addons/silent_wolf/Players/Players.gd")
 
 
 func _init():
-	print("SW Init timestamp: " + str(SWUtils.get_timestamp()))
+	pass
 
 
 func _ready():
 	# The following line would keep SilentWolf working even if the game tree is paused.
 	#pause_mode = Node.PAUSE_MODE_PROCESS
-	print("SW ready start timestamp: " + str(SWUtils.get_timestamp()))
 	Auth.set_script(auth_script)
 	add_child(Auth)
 	Scores.set_script(scores_script)
@@ -67,7 +66,6 @@ func _ready():
 	add_child(Players)
 	#Multiplayer.set_script(multiplayer_script)
 	#add_child(Multiplayer)
-	print("SW ready end timestamp: " + str(SWUtils.get_timestamp()))
 
 
 func configure(json_config):
@@ -143,7 +141,6 @@ func send_get_request(http_node: HTTPRequest, request_url: String):
 		"x-sw-godot-version: " + godot_version 
 	]
 	headers = add_jwt_token_headers(headers)
-	print("GET headers: " + str(headers))
 	if !http_node.is_inside_tree():
 		await get_tree().create_timer(0.01).timeout
 	SWLogger.debug("Method: GET")
@@ -161,7 +158,6 @@ func send_post_request(http_node, request_url, payload):
 		"x-sw-godot-version: " + godot_version 
 	]
 	headers = add_jwt_token_headers(headers)
-	print("POST headers: " + str(headers))
 	# TODO: This should in fact be the case for all POST requests, make the following code more generic
 	#var post_request_paths: Array[String] = ["post_new_score", "push_player_data"]
 	var paths_with_values_to_hash: Dictionary = {

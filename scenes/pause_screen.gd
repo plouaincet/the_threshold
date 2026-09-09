@@ -1,10 +1,11 @@
 extends CanvasLayer
 @onready var resume: TextureButton = $CenterContainer/VBoxContainer/CenterContainer/TextureRect
 @onready var instructions: TextureButton = $CenterContainer/VBoxContainer/CenterContainer2/instructions
-@onready var hints: TextureButton = $CenterContainer/VBoxContainer/CenterContainer3/hints
+@onready var hints: TextureButton = $CenterContainer/VBoxContainer/CenterContainer3/HBoxContainer/hints
 @onready var return_to_title: TextureButton = $CenterContainer/VBoxContainer/CenterContainer4/return_to_title
 @onready var for_pause_screen: Node = $"../ForPauseScreen"
-
+@onready var scene_manager:Node = $".."
+@onready var label: Label = $CenterContainer/VBoxContainer/CenterContainer3/HBoxContainer/Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +13,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
@@ -48,11 +49,17 @@ func _on_texture_rect_pressed() -> void:
 
 
 func _on_instructions_pressed() -> void:
-	pass # Replace with function body.
+	var instructions_scene = preload("res://scenes/instructions.tscn").instantiate()
+	add_child(instructions_scene)
 
 
 func _on_hints_pressed() -> void:
-	pass # Replace with function body.
+	if scene_manager.hints_available>0:
+		label.text=str(scene_manager.hints_available) + "/3"
+		scene_manager.hints_available-=1
+		var hints_scene = preload("res://scenes/hints.tscn").instantiate()
+		label.text=str(scene_manager.hints_available) + "/3"
+		add_child(hints_scene)
 
 
 func _on_return_to_title_pressed() -> void:
