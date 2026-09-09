@@ -89,3 +89,8 @@ func update_username() -> void:
 		username.text="Username not configured. Configure name inside leaderboard."
 	else:
 		username.text="Playing as: " + scene_manager.leaderboard_name
+
+
+func _on_instructions_pressed() -> void:
+	var instructions_scene = preload("res://scenes/instructions.tscn").instantiate()
+	add_child(instructions_scene)

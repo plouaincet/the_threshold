@@ -5,7 +5,7 @@ extends Node
 @onready var container: CenterContainer = $"../PauseScreen/CenterContainer"
 var was_hidden:bool=false
 func _unhandled_input(event):
-	if event.is_action_pressed("pause") and scene_manager.get_child(0).name!="StartingScreen":
+	if event.is_action_pressed("pause") and not scene_manager.has_node("StartingScreen") and not scene_manager.has_node("Credits"):
 		get_tree().paused = !get_tree().paused
 		pause_screen.visible=!pause_screen.visible
 		if pause_screen.visible and Input.mouse_mode==Input.MOUSE_MODE_HIDDEN:

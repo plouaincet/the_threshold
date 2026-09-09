@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://djpyv4y4t5tg7"]
+
+[ext_resource type="Script" uid="uid://dwia5dfin54dt" path="res://scenes/rotoscope.gd" id="1_e4rtc"]
+[ext_resource type="VideoStream" uid="uid://cd0llc7irrlic" path="res://assets/rotoscopee_normal.ogv" id="2_5wop1"]
+[ext_resource type="FontFile" uid="uid://ctc05h4iw85k6" path="res://assets/PixelOperator.ttf" id="3_5wop1"]
+
+[node name="Rotoscope" type="Control" unique_id=107207757]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e4rtc")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1106491794]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+stream = ExtResource("2_5wop1")
+autoplay = true
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1988173429]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.164
+anchor_bottom = 0.09
+offset_right = 0.07998657
+offset_bottom = 0.19999695
+
+[node name="Label" type="Label" parent="CenterContainer" unique_id=1569985808]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_5wop1")
+theme_override_font_sizes/font_size = 32
+text = "Skip: Space"
+vertical_alignment = 1
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

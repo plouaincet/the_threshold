@@ -38,7 +38,7 @@ grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="ClockMinigameControl/Screen" unique_id=746357571]
 material = SubResource("ShaderMaterial_4i8yj")
-custom_minimum_size = Vector2(1152, 648)
+custom_minimum_size = Vector2(1280, 720)
 layout_mode = 2
 
 [node name="ClockBg" type="TextureRect" parent="ClockMinigameControl/Screen" unique_id=1124995133]

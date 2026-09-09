@@ -6,6 +6,7 @@ extends Interactable
 @onready var fuse3: Sprite2D = $Sprite2D/MarginContainer/HBoxContainer/CenterContainer3/Sprite2D
 @onready var maner: Sprite2D = $Sprite2D/Maner
 @onready var on: Sprite2D = $Sprite2D/ON
+var able_to_turn_on:bool=false
 var fade_tween:Tween
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,10 +19,12 @@ func interact(_player: Node) -> void:
 			fuse2.visible=true
 		elif !fuse3.visible:
 			fuse3.visible=true
-		else:
-			turn_on()
-			return
 		game.remove_slot_obj()
+	if able_to_turn_on:
+		turn_on()
+		return
+	if fuse1.visible and fuse2.visible and fuse3.visible:
+		able_to_turn_on=true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
